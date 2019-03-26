@@ -823,3 +823,10 @@ pre .javascript .function {
     margin: 10px;
   }
 }
+.about {
+  margin: 1em auto;
+  padding: 30px 50px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 2px #ddd;
+}
