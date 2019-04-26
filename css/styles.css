@@ -119,6 +119,9 @@ body {
   font-size: 24px;
   color: #666;
 }
+.main .content .tags {
+  padding: 0 0 270px;
+}
 @media (max-width: 991px) {
   .main .content .archive .year {
     font-size: 22px !important;
@@ -347,7 +350,7 @@ body {
 .post .post-title p {
   border-radius: 3px;
   color: #fff;
-  padding: 3px 10px;
+  padding: 1px 10px;
   display: inline-block;
   background-color: #22c3aa;
 }
@@ -492,22 +495,32 @@ body {
   }
 }
 h1 {
-  font-size: 24px !important;
+  font-size: 28px !important;
+  font-weight: bold !important;
+  margin-bottom: 25px !important;
 }
 h2 {
-  font-size: 22px !important;
+  font-size: 26px !important;
+  font-weight: bold !important;
+  margin-bottom: 24px !important;
 }
 h3 {
-  font-size: 20px !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  margin-bottom: 23px !important;
 }
 h4 {
-  font-size: 18px !important;
+  font-size: 22px !important;
+  font-weight: bold !important;
+  margin-bottom: 22px !important;
 }
 h5 {
-  font-size: 16px !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
 }
 h6 {
-  font-size: 14px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
 }
 article .pullquote.left {
   float: left;
@@ -520,7 +533,7 @@ article .pullquote.right {
   margin-right: 5px;
 }
 article blockquote p {
-  margin-bottom: 25px;
+  color: #a9a9a9;
 }
 article h2.title {
   margin-bottom: 0.25em;
@@ -534,32 +547,32 @@ article h3 {
   margin: 20px 0 10px;
 }
 article p {
-  font-size: 14px;
-  margin: 0 0 25px;
-  line-height: 2;
+  font-size: 18px;
+  margin: 0 0 20px;
+  line-height: 1.5;
 }
-article table {
+color: #ee1289 table {
   width: 100%;
   border: 1px solid #eee;
   border-collapse: collapse;
 }
-article table .gutter pre {
+color: #ee1289 table .gutter pre {
   background-color: #eff2f3;
 }
-article table th {
+color: #ee1289 table th {
   padding: 8px;
   border: 1px solid #ddd;
   line-height: 20px;
   vertical-align: middle;
 }
-article table td {
+color: #ee1289 table td {
   font-size: 14px;
   padding: 8px;
   border: 1px solid #ddd;
   line-height: 20px;
   vertical-align: middle;
 }
-article table tbody tr:nth-child(2n) {
+color: #ee1289 table tbody tr:nth-child(2n) {
   background-color: #fafafa;
 }
 .highlight {
@@ -778,7 +791,7 @@ pre .javascript .function {
 @media (max-width: 480px) {
   .footer {
     padding: 15px 10px;
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 .tags .tags-title {
