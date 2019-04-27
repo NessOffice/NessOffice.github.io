@@ -1,6 +1,6 @@
 <html>
   <head><meta name="generator" content="Hexo 3.8.0">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
     <link rel="icon" href="/images/logo.jpg">
@@ -11,11 +11,11 @@
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
   <script src="/js/common.js"></script>
   <script src="/lib/bootstrap/js/bootstrap.js"></script>
-  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
   <body>
-    <header class="header">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
   <div class="color-bar">
     <ul>
       <li class="bar1"></li>
@@ -122,7 +122,7 @@
 <p>早上刷名单的时候发现wyh也参赛了，寻思人家肯定是solo的。最后在榜上果然赫赫有名，着实是厉害。膜了人家一波，好不愉快。</p>
 <h1 id="现场赛与网络赛"><a href="#现场赛与网络赛" class="headerlink" title="现场赛与网络赛"></a><strong>现场赛与网络赛</strong></h1><p>比赛的形式在很大程度上对发挥会有影响。一直都不喜欢去机房，因为那边的环境，因为那里的键盘。对于这些我都很不习惯。讨厌配环境，讨厌看见稀奇古怪的错误，讨厌程序正确却跑不起来的无力感。<strong>在这类问题上，我一直不愿意走出自己的舒适区。</strong></p>
 <p>此外，现场赛有很多额外的限制，比如不能查东西。查询一般只在对事物有一定认识时才会奏效。查算法一般都是无效的举动。查语法更频繁些，因为这些东西我记不住，而且我觉得它没啥思维深度。查到原题查到相关算法还是少数，是值得高兴的事情，比如之前的趣味C，比如寒假的网络赛中那个让我告别0AC的组合数取模的板子。</p>
-<p>回来今天来。中间，大数的板子搞不出来，zc想用java试一试，但是在语法上就碰到问题了。连大数初始化都搞不起来，更不用谈运算了。事后这些东西一查便知，但当时就是搞不起来。最后xn想卡时，但#include&lt;time.h&gt;之后还是懵了好一会儿，直到在书上查到其用法。（虽然最后还是没有WAhhh）</p>
+<p>回来今天来。中间，大数的板子搞不出来，zc想用java试一试，但是在语法上就碰到问题了。连大数初始化都搞不起来，更不用谈运算了。事后这些东西一查便知，但当时就是搞不起来。最后xn想卡时，但#include<time.h>之后还是懵了好一会儿，直到在书上查到其用法。（虽然最后还是没有WAhhh）</time.h></p>
 <p>开卷虽然看上去比闭卷更为轻松，但若是对知识体系没有明确的认识，往往只能又慌又无助地乱翻书，效率非常低下。故，在这样的限制下我们当怎么做呢？首先还是要搞清楚自己受了什么样的限制，提前做好准备，有所对策，才不至于在事后后悔。虽然在本次比赛我们也没有可以后悔的理由。</p>
 <p>机房的键盘，真心是叫人难受，敲起来又慢，还没有快感。不过即便是如此，我也还是有需要反省的地方。打字容易出错，快捷键用得还不顺（尤其ctrl不会用），等等。这些相对思维是外部的事物，但做好了能起增益效果。一来是需要有提升的意识，意识到自己和键盘和自然语言间的羁绊还不够深；二来是要有科学的方法，归纳出哪些快捷键是能够提升效率的，归纳出自己在打什么词的时候特别容易出错，在此基础上有所提升。</p>
 <p>最后是环境，这个东西真心无聊，我尤其讨厌。但这是很常见的问题，尽管我并不“喜欢”它，我仍然“需要”解决问题的能力。环境不光是指机器上编译、链接、运行等步骤，还关乎对于软件的熟悉程度。视图、快捷键，等等。一个视图没调出来，尤其对状态有一定影响，因为它将原本连贯的思路与预期切断了。不喜欢用dev，VC++，看着那些复杂的条条框框看得很难受，这些软件有做到以人为本么？作为普通用户（然而，它们本就不是为普通用户设计的），我觉得开发者，是有所不足的。（但是，今天仍有许多学校和教师鼓励使用这些老旧的产品，他们是否需要反思呢？）可既然大环境如此，我也便只能熟悉其架构而无法奢谈转变。如何熟悉呢？或许我需要在机房找找答案。</p>
@@ -223,5 +223,20 @@
 </div>
 
     </main>
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
 </html>
