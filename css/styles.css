@@ -394,12 +394,12 @@ body {
   font-size: 14px;
 }
 .posts .post-title .post-tags p {
-  border-radius: 3px;
+  border-radius: 7px;
   color: #fff;
-  padding: 0 10px;
+  padding: 5 10px;
   display: inline-block;
   background-color: #22c3aa;
-  margin-bottom: 10px;
+  margin: 0 5 10px;
 }
 .posts .post-content a {
   color: #368ccb;
@@ -615,14 +615,22 @@ table {
 }
 .highlight pre {
   overflow-x: auto;
-  font-size: 13px;
-  color: #777;
+  font-size: 16px;
+  color: #000;
   background-color: #fafafa;
   white-space: pre;
   word-wrap: normal;
   border: 0;
-  font-family: monospace;
   margin-bottom: 0;
+}
+.highlight .title {
+  color: #00bfff;
+}
+.highlight .keyword {
+  color: #da70d6;
+}
+.highlight .comment {
+  color: #32cd32;
 }
 .highlight table {
   margin: 0;

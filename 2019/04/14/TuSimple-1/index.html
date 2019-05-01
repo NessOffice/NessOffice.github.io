@@ -112,7 +112,7 @@
 <p>A题的话，让你判断一个数列是不是peak sequence，简单模拟即可。但我忘掉了和peak sequence相关的知识欸。我好弱啊。</p>
 <p>D题是顺序买书，已知书的总数、每本书的价格和买的本数，买书的策略是贪心，求最大携带的钱数。一开始想能否二分答案，但想想不行，具体哪里不行就讲不清了……之后想到贪心的思路：把前k本都买下来，剩下的钱再不足买剩下任何一本书，那么这个钱数是符合要求的，而且超过它就不符合要求了，可行！就是不知道这个思路该置于知识网络的哪个位置。我对于算法的认识，在微观层面，还是非常容易搞混且相当想当然的，这是一个得改的毛病。</p>
 <p>B题是给出一个括号序列，给出了一套生成序列的规则，让你求第k个序列从第l项到第r项有个多少‘(’。这题当时没人提交（估计都在查C题吧），我初步想法是这样的：序列是无穷的，故要在一个周期内界定它，而后面的序列和前面的序列又可以通过set判重来得到”序列的周期“（二维的概念啊，有意思）。总之就是有点恶心的模拟了，加上模乱搞不知行不行得通……无法实践验证想法，就不细想了。</p>
-<h1 id="比赛本身"><a href="#比赛本身" class="headerlink" title="比赛本身"></a><strong>比赛本身</strong></h1><p>想做题的话，戳这里qwq：<a href="http://acm.zju.edu.cn/onlinejudge/searchProblem.do?contestId=1&amp;titlefrom=0&amp;authorfrom=0&amp;sourcefrom=0&amp;query=The+19th+Zhejiang+University+Programming+Contest+Sponsored+by+TuSimple" target="_blank" rel="noopener">http://acm.zju.edu.cn/onlinejudge/searchProblem.do?contestId=1&amp;titlefrom=0&amp;authorfrom=0&amp;sourcefrom=0&amp;query=The+19th+Zhejiang+University+Programming+Contest+Sponsored+by+TuSimple</a></p>
+<h1 id="比赛本身"><a href="#比赛本身" class="headerlink" title="比赛本身"></a><strong>比赛本身</strong></h1><p>想做题的话，戳<a href="http://acm.zju.edu.cn/onlinejudge/searchProblem.do?contestId=1&amp;titlefrom=0&amp;authorfrom=0&amp;sourcefrom=0&amp;query=The+19th+Zhejiang+University+Programming+Contest+Sponsored+by+TuSimple" target="_blank" rel="noopener">这里</a>qwq。</p>
 <p>比赛开始时还是有些紧张的，中午睡得也不咋样，总之不是特别有状态。开赛后首先看的是B题，而xn在看A题，zc在配环境。B题定义了一类“偶素数”，还有“偶合数”，让求给定的“偶阶乘”最多能拆分为多少个“偶素数”，本质上应该是$2^s || n!, s = \sum\limits_{i = 1}^ \infty \lfloor \dfrac{n}{2^i} \rfloor$的变形。但是数据量级是$10^{1000}$，不写大数不行。于是zc和xn讨论G的时候，我一直在打板子。这个板子是半年前的，记得当时减法没搞，就没管，不想除法里需用到减法，一下就慌起来了。还有大数比较等等也都没有写，心情就比较地烦躁。中间想到用java写，或者写二进制的大数，但都碰上了问题。临结束时瞎写了一通，不知哪儿出问题了。这题也便不了了之了。想来还是有些遗憾。</p>
 <p>除去B题，我第二个看的是J题，当时已有队伍提交了。这题讲的是给定正数n，让找满足$x + n = y$的一组合数x，y，任意输出一组即可。我当时拍脑袋想想x=2n，y=3n不是满足条件嘛，但觉得这样过于简单了。和xn交流后也没发现问题，但交上去就是一个明亮的WA。为什么呢？是流输入的问题么？总之不会是数据范围的问题吧。搁了一会儿后，xn测试时候来了个“1”，输出“2 3”。很明显，错掉了。于是我只能尴尬地换成x=8n，y=9n，这才搞定。此时已经过去45分钟了。</p>
 <p>不光J题开始没过去，E题一开始也卡在这了。背景就不讲了，总之水题一道，但水水的我们过也过不去，就比较烦。zc花了一些力气把dev调教对，然后测试了自己构造的数据没发现什么问题。此前有交流，此后有深思，卡了好一会儿呢。最后又是xndl敏锐地察觉到虽然输入是在$10^9$，即int范围内的，然而我们有用求和，之后规模可能会超，得换long long。果不其然，改了数据类型后顺利拿到了一血。</p>
@@ -135,7 +135,7 @@
 <p>交流的一方面是传递自己的想法，在这个过程中要尽量避免隐蔽的想当然的想法；另一方面，交流是关于聆听的，而非“听见”：对方的思路是如何展开的？他有什么可能的错误？他没提到什么？</p>
 <p>在交流时，不应是你一句我一句并且交谈没有中心。二或三人交谈时，一方当作为领导者，把握着对话的小主题、中心问题。其他人需要发散思维的广度。提出尽可能多的解决方案，并对其做出一定深度的拓展。然后是围绕可行的方案收敛思维。如是反复。</p>
 <p>对这个话题想的还不多，也没什么条理，先放着吧。</p>
-<h1 id="补题时间"><a href="#补题时间" class="headerlink" title="补题时间"></a><strong>补题时间</strong></h1><p>弱鸡的我的代码在这里QAQ，仅供参考：<a href="https://github.com/NessOffice/Sync_Code/tree/master/history/zju2019_SchoolMatch" target="_blank" rel="noopener">https://github.com/NessOffice/Sync_Code/tree/master/history/zju2019_SchoolMatch</a></p>
+<h1 id="补题时间"><a href="#补题时间" class="headerlink" title="补题时间"></a><strong>补题时间</strong></h1><p>弱鸡的我的代码在<a href="https://github.com/NessOffice/Sync_Code/tree/master/history/zju2019_SchoolMatch" target="_blank" rel="noopener">这里</a>QAQ，仅供参考。</p>
 <h2 id="A"><a href="#A" class="headerlink" title="A"></a><strong>A</strong></h2><p>比赛时一直被数学题搞得状态不佳，A和C都没看。结果A是2019.04.21AC的，而C是2019.04.20AC的，放了好几天嘞。</p>
 <p>A的大意就是给定一组男人一组女人，每个人都有身高和偏好，其中身高各不相同，偏好为0表示只和比ta矮的人匹配，偏好为1表示只和比ta高的人匹配。问什么样的匹配方案能使总配对数最高。</p>
 <p>看上去有点像什么二分图匹配，也好像可以搜索解决，于是我就不大想做……认真看了看，感觉贪心可以搞，那就试试贪心吧！</p>
@@ -180,7 +180,7 @@
   <div class="post-nav">
     <div class="post-nav-next post-nav-item">
       
-        <a href="/2019/03/28/【简牍提要】信息简史：两本字典/" rel="next" title="【简牍提要】信息简史：两本字典">
+        <a href="/2019/03/28/The_Information-CH03/" rel="next" title="【简牍提要】信息简史：两本字典">
           <i class="fa fa-chevron-left"></i> 【简牍提要】信息简史：两本字典
         </a>
       
@@ -190,7 +190,7 @@
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/2019/04/16/【图灵之路】踏过的坑/" rel="prev" title="【图灵之路】踏过的坑">
+        <a href="/2019/04/16/Programming_Pits/" rel="prev" title="【图灵之路】踏过的坑">
           【图灵之路】踏过的坑 <i class="fa fa-chevron-right"></i>
         </a>
       
