@@ -99,7 +99,7 @@
 		  <span class="post-meta-item-icon">
 			<i class="fa fa-keyboard-o"></i>
 			<span class="post-meta-item-text">  字数统计: </span>
-			<span class="post-count">5.4k字</span>
+			<span class="post-count">5.7k字</span>
 		  </span>
 		</span>
 
@@ -108,7 +108,7 @@
 		  <span class="post-meta-item-icon">
 			<i class="fa fa-hourglass-half"></i>
 			<span class="post-meta-item-text">  阅读时长: </span>
-			<span class="post-count">22分</span>
+			<span class="post-count">23分</span>
 		  </span>
 		</span>
 	  </div>
@@ -200,25 +200,27 @@
 <p>比如Yanghui恒等式，可以这么证：$(1+ x)^n = (1 + x)^{n-1} + x (1 + x)^{n-1}$，关注左右式中$x^k$的系数即可。</p>
 <p>又比如Vandermonde恒等式，关键的式子是$(1 + x)^{m + n} = (1 + x)^n (1 + x)^m$。</p>
 <p>不难发现，使用生成函数的思路和组合证明的思路是完全一致的。但这个形式看起来就”正经“的多。</p>
-<h2 id="用生成函数解决组和问题"><a href="#用生成函数解决组和问题" class="headerlink" title="用生成函数解决组和问题"></a>用生成函数解决组和问题</h2><h3 id="生成函数的建模"><a href="#生成函数的建模" class="headerlink" title="生成函数的建模"></a>生成函数的建模</h3><p><strong>例1</strong></p>
+<h2 id="用生成函数解决组和问题"><a href="#用生成函数解决组和问题" class="headerlink" title="用生成函数解决组和问题"></a>用生成函数解决组和问题</h2><h3 id="生成函数的模型"><a href="#生成函数的模型" class="headerlink" title="生成函数的模型"></a>生成函数的模型</h3><p><strong>例1</strong></p>
 <p>$x_1 + x_2 + x_3 = 7$，其中$0 \leq x_1 \leq 2, 2 \leq x_2 \leq 3, 3 \leq x_4 \leq 4$，$x_1, x_2, x_3$为整数。求$(x_1, x_2, x_3)$有多少种可能。</p>
 <p><strong>例2</strong></p>
 <p>八本书，分给三个小孩，每人得到的书不少于两本不多于四本，求总方法数。</p>
-<p><strong>例3</strong></p>
-<p>手上有一元、两元、五元的钞票若干元，求能用多少种方式表示五十元。</p>
 <h3 id="再谈可重复元素的组和"><a href="#再谈可重复元素的组和" class="headerlink" title="再谈可重复元素的组和"></a><strong>再谈可重复元素的组和</strong></h3><p>在讲这个例子前，先要提一提广义二项式定理。</p>
 <p><strong>广义二项式系数</strong>：$C_u^m = \dfrac{u \cdot (u-1) \cdot … \cdot (u - m + 1)} {1 \cdot 2 \cdot … \cdot m}$，其中m为非负整数，u为任意实数。</p>
 <p>特别的，当u为负整数的时候，我们有$C_{-n}^m = (-1)^m C_{n + m - 1}^m$。</p>
 <p><strong>广义二项式定理</strong>：$(1 + x)^u = \sum\limits_{i = 0}^{\infty} C_u^i x^i$。（证明的话，幂级数展开就好）</p>
-<p><strong>例4</strong></p>
+<p><strong>例3</strong></p>
 <p>有n种硬币，每种有无穷多个，问取r个硬币有多少种方法。</p>
 <p>第一种硬币可以取0个、1个、2个、……，这样考虑的话，生成函数便是$G(x) = (1 + x + …)^n$。</p>
 <p>但无穷级数相乘很难算。我们为了能够算出结果，假定级数收敛，那么$(1 + x + …) = \dfrac{1} {1 - x}$。则$G(x) = \dfrac{1} {(1 - x)^n}$。</p>
 <p>于是可以使用上面的广义二项式定理了，得$x^r$的系数是$C_{n + r - 1}^r$。</p>
-<p>回过来再考虑生成函数的问题，它为何要是无穷级数？为了方便表示”可重复元素“。</p>
+<p>回过来再考虑生成函数的问题，它为何要是无穷级数？为了方便表示”可重复元素“，也是为了计算上的方便，因为这样就可以在微积分和组合数学之间建立联系了，从而使用微积分中的一些性质。而对于实际的问题，我们都可以在模$x^r$的意义下考虑原式子，这样让人困惑的无穷就消失啦。</p>
 <p>为何能假定上面的式子收敛？<del>我也不知道，好用就行了</del></p>
-<h2 id="用生成函数解决递推问题-需完善"><a href="#用生成函数解决递推问题-需完善" class="headerlink" title="用生成函数解决递推问题[需完善]"></a>用生成函数解决递推问题[需完善]</h2><p>考虑斐波那契数列的生成函数：$G(x) = \sum\limits_{i = 0}^{\infty} f_i x^i$，$G(x) = x + \sum\limits_{i = 2}^{\infty} f_i x^i = x + \sum\limits_{i = 2}^{\infty} (f_{i-1} + f_{i-2}) x^i = x + x\sum\limits_{i = 0}^{\infty} f_i x^i + x^2 \sum\limits_{i = 0}^{\infty} f_i x^i = x + xG(x) + x^2 G(x)$，则$G(x) = \dfrac{x} {1 - x - x^2}$，因式分解再裂项，就得到我们常见的结果了。</p>
+<p><strong>例4</strong></p>
+<p>有三种硬币，币值分别为1、2、5，每种都有无穷个，求取r元有多少种方法？</p>
+<h2 id="用生成函数解决排列问题-需完善"><a href="#用生成函数解决排列问题-需完善" class="headerlink" title="用生成函数解决排列问题[需完善]"></a>用生成函数解决排列问题[需完善]</h2><h2 id="用生成函数解决递推问题-需完善"><a href="#用生成函数解决递推问题-需完善" class="headerlink" title="用生成函数解决递推问题[需完善]"></a>用生成函数解决递推问题[需完善]</h2><p>考虑斐波那契数列的生成函数：$G(x) = \sum\limits_{i = 0}^{\infty} f_i x^i$，$G(x) = x + \sum\limits_{i = 2}^{\infty} f_i x^i = x + \sum\limits_{i = 2}^{\infty} (f_{i-1} + f_{i-2}) x^i = x + x\sum\limits_{i = 0}^{\infty} f_i x^i + x^2 \sum\limits_{i = 0}^{\infty} f_i x^i = x + xG(x) + x^2 G(x)$，则$G(x) = \dfrac{x} {1 - x - x^2}$，因式分解再裂项，就得到我们常见的结果了。</p>
 <p>为什么生成函数这么奇妙？因为它巧妙地将递推关系用来消项。//<del>然后我也讲不出什么道道了</del></p>
+<p>这里的G(x)看起来是很抽象的，有没有办法让它表现得具体一点呢？您好，有的。我们来算一下$G(1/10) = \dfrac{10}{89} = 0.1123595506…$，不难发现小数点后第i项就是斐波那契数列第i项（仅限前几项，因为后面的要进位）。</p>
+<p>如此，我们便可以用生成函数在小数和数列间建立联系啦，也可以用生成函数得到一些好玩的小数。</p>
 <h1 id="容斥原理-需补充"><a href="#容斥原理-需补充" class="headerlink" title="容斥原理[需补充]"></a>容斥原理[需补充]</h1><p>内容</p>
 <p>素数个数（关注计算复杂度）</p>
 <p>满射的个数</p>
@@ -272,6 +274,10 @@
 
     <div class="post-nav-prev post-nav-item">
     
+        <a href="/2019/05/19/Toughts-CTF/" rel="prev" title="【围炉夜话】打开CTF之门">
+          【围炉夜话】打开CTF之门 <i class="fa fa-chevron-right"></i>
+        </a>
+      
     </div>
   </div>
 

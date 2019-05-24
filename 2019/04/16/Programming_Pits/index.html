@@ -99,7 +99,7 @@
 		  <span class="post-meta-item-icon">
 			<i class="fa fa-keyboard-o"></i>
 			<span class="post-meta-item-text">  字数统计: </span>
-			<span class="post-count">219字</span>
+			<span class="post-count">1.2k字</span>
 		  </span>
 		</span>
 
@@ -108,7 +108,7 @@
 		  <span class="post-meta-item-icon">
 			<i class="fa fa-hourglass-half"></i>
 			<span class="post-meta-item-text">  阅读时长: </span>
-			<span class="post-count">1分</span>
+			<span class="post-count">4分</span>
 		  </span>
 		</span>
 	  </div>
@@ -125,12 +125,32 @@
 <p>最近点对问题。将Points_x与Points_y混淆以致造成了难以发觉的错误。疯狂对拍但几无成效，在四个点的情况下还是直接调试更能发现问题。一开始在Merge中使用了n导致超时。从18：30到20：00再到22：00。</p>
 <p>文件名的问题倒是一下就能发现。</p>
 <h1 id="2019-04-17"><a href="#2019-04-17" class="headerlink" title="2019-04-17"></a>2019-04-17</h1><p>有序序列中位数问题，一直纠结于二分，没想到顺序一下就成。思路没打开。</p>
+<h1 id="2019-05-06"><a href="#2019-05-06" class="headerlink" title="2019-05-06"></a>2019-05-06</h1><p>凸包旋转卡壳的算法中，用$&gt;$出现了问题，换成$\geq$则没事了。凸函数不一定严格单调啊。</p>
+<p>调试时候把数组改小了记得做标记……不然看到RE很惭愧。</p>
+<p>括号很多的时候记得检查，否则调试起来心情差。</p>
+<h1 id="2019-05-10"><a href="#2019-05-10" class="headerlink" title="2019-05-10"></a>2019-05-10</h1><p>这一个标题下尽是，愚蠢的问题和糟心的状态……</p>
+<p>5月8日期中考，旁边的人键盘敲得很响，想起了校赛时候的不适应，我的心境仿佛又回到了高中时代……偏执、疑虑、焦躁……今早的离散考试时状态亦复如是。</p>
+<p>得冷静下来。这不仅是关于programming的问题了，它关系我的学习观，关系我对自己与他人的看法。Just admit it, scorn it, surplus it.</p>
+<p>最后，“Cheers to the goddamn life, society, and everything.”</p>
+<p>①他妈的”由裁判实现细节不表“！Sample都跑不起来的代码就交上去，这是计算机学院的学生做的事情吗？但不光是这一项，对dev的不熟悉，对于win7环境的不熟练还有内心世界的混乱都给解题的过程添了不少堵。一项一项的，都给我去死吧！</p>
+<p>猪头临沂大学的漂亮代码是这样得：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span>  <span class="keyword">int</span>  KeyType;</span><br><span class="line"><span class="keyword">typedef</span>  <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  KeyType *elem; <span class="comment">/*elem[0]一般作哨兵或缓冲区*/</span></span><br><span class="line">  <span class="keyword">int</span> Length;</span><br><span class="line">&#125;SqList;</span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">CreatSqList</span><span class="params">(SqList *L)</span></span>;<span class="comment">/*待排序列建立，由裁判实现，细节不表*/</span></span><br></pre></td></tr></table></figure>
+<p>那这个CreatSqList怎么实现呢？从Sample可以看出是要先读长度，然后一项一项读进来。因为参数是(SqList *L)，所以下面都要用-&gt;，直接L.Length就报错。但是实践之后发现只能读Length，读elem就会报错，为何？因为没有分配地址。所以这笔函数要这么写：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">CreatSqList</span><span class="params">(SqList *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	L-&gt;elem = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span> *));</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;L-&gt;Length);</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= L-&gt;Length;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;L-&gt;elem[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是我一万年没有用malloc了，写这个函数的时候就慌得一批，之后想着要分配元素嘛，就写L-&gt;elem = 1000<em>(int </em>)…，但是这样是不行的。因为它elem啊，只是一个指针而已。</p>
+<p>我不喜欢指针所以平时也不怎么用指针，自己写写代码基本不会有这方面的问题，但一到考试就凉透了！5月7日晚”复习“的指针完全没用。</p>
+<p>这些几把考试不让查资料，所以把语法搞清楚很重要。血的教训！</p>
+<p>②快排在5月7日晚上有“复习”，但是考试的时候还是一团乱麻。要理解快排，先要用例子建立直观的概念模型，从简单的例子到复杂的例子。简单的例子不包括重复项如“3 2 4 1 9 0 7”，还有不直观但容易调试的例子如“1 2”“2 1”等，乱七八糟的例子如“1 1 1”。理解之后是处理细节，考虑重复项他喵的该怎么搞，这样这样，基本就没问题了。</p>
+<p>③有理数均值，特判！0/10这样的。要么在输出分母的时候加上去，要么把euclid写得更鲁棒一点，而不要少怀疑sscanf的有效性，虽然我之前的写法也很漂亮。</p>
+<p>④整数分解，又是傻逼题一道……复习还是有一丁点用处的，因为当时也没有用心对待这题。本质就是个dfs，参数里设m——本次要分解的数，last——上次传下来的最大值，d——当前层数。对于;和\n搞个全局变量mark还有其函数专门处理。就这样，然后细节瞎搞。有的地方?:之类能让代码更简洁。</p>
+<p>综上，关键词如下。<strong>高效复习</strong>、<strong>语法</strong>、<strong>模拟</strong>（从易到难、细节）、<strong>代码风格</strong>（优雅、鲁棒）、<strong>心态</strong>……</p>
+<p>层层深入。</p>
     </div>
   </article>
   <div class="post-nav">
     <div class="post-nav-next post-nav-item">
       
-        <a href="/2019/04/14/TuSimple-1/" rel="next" title="【浮生掠影】2019 浙大校赛 BY NESS @ hash">
+        <a href="/2019/04/14/Competition-TuSimple_1/" rel="next" title="【浮生掠影】2019 浙大校赛 BY NESS @ hash">
           <i class="fa fa-chevron-left"></i> 【浮生掠影】2019 浙大校赛 BY NESS @ hash
         </a>
       
