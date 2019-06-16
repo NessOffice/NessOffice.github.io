@@ -1,0 +1,215 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【图灵之路】管理的困境——记project-tetris开发的心路历程</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">3.1k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">10分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>软件工程</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-06-16</span>
+    </div>
+    <div class="post-content">
+      <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>整个过程中并非徒劳无功的，我收获了什么呢？友情，一些较软的能力，经验教训。只是在程序设计能力上的收获，简直是负的……或者说我原来的能力就是负的吧。这是个简单的项目，但我在管理上的失误，把简单搞得无比复杂。</p>
+<p>C大程的大作业，有四个选题：学生信息管理系统、CAD、俄罗斯方块、自主选题。搞模拟题搞怕了，不想弄第一个；没深入搞过CAD，第二个也不成；对要玩什么没啥想法，自主选题估计选个题就能憋死。这样看来只有俄罗斯方块能搞了。虽然我不太喜欢玩俄罗斯方块，但也只能选这个啦。俄罗斯方块，有什么可以创新的地方呢……（谈到俄罗斯方块，谈到创新，总会想到《伊莉丝症候群(<em>irisu syndrome</em>)》，想到这个兔子和猫的故事……不过这里头的玩法是和剧情相关联的，和俄罗斯方块还有些差别，而且我对剧情根本没有想法呀）</p>
+<p>先不管这些，直接动手做吧。</p>
+<h1 id="进展"><a href="#进展" class="headerlink" title="进展"></a>进展</h1><p>这个项目的进展……非常迷。题目布置得特别早，故项目的工时很长。</p>
+<p>一开始的两三周先是研究这个libgraphics。通过demo看看它是如何运作的，学习回调函数的用法，学习基本的绘图套路。这个时候的心态尚不是很好。因为这些东西跟环境也有关联。明明知道这个东西这么写是对的，可为何就运行不起来呢？总归是某个小地方出了问题，但就是不知是哪里的问题，就很烦。搞前端的时候也经常碰到这样的问题，trivial，麻烦。</p>
+<p>知道了库该怎么用，接下来该是游戏的设计阶段了（我直接跳过了需求理解的部分）。我的想法是先搞下落、消行这些东西，再来搞tetris的类型，旋转啊那些。于是先把所有tetris简化为1*1的方块。下落便是改变中心点的位置，消行便是检测单行的block数。这些现在看来非常容易实现，但写的时候想法很多，一会感觉可以这么写，写着写着感觉那样会更好，就经常重构代码，一会儿换成这种风格，一会儿又是那种风格。重构一时爽，但重构完后就会发现自己啥也没干，就会开始怀疑自己。这是很不好的。探索固然有趣，但要有规划的探索，那应当更为有趣且有收获。</p>
+<p>上面那些写好后，过了若干周，感觉可以开始设计tetris的结构了。怎么设计呢？考虑邻接矩阵吧。设个数组存邻接点的个数，再设两个数组存邻接点的坐标。好，那先弄个“田”出来吧，这一搞发现出了好多问题……比如在边界上的处理。等等。这些解决方案也是一点一点试出来的，主要是细节没搞清楚，我好像也没仔细记录。</p>
+<p>后面的思路好像比较乱了？每次都不知道自己在搞什么，就东搞搞西搞搞，时间就搞过去了。这或许是需求理解和进度规划上的不明确导致的。</p>
+<p>另外，整个项目没有一气呵成的感觉，往往是干个两三天，停个十几天，再来干两三天。然后中间把锅分出去之后就收不回来了，直到快交作业那星期进度才开始提上来。此时我的psycho-pass陡增。看着屏幕上的代码，时常会感到一阵，持久的，沉重的，虚无。</p>
+<h1 id="个人层面的管理"><a href="#个人层面的管理" class="headerlink" title="个人层面的管理"></a>个人层面的管理</h1><p>首先是心态的管理。一方面是要有信念，对自己的信心，对别人的信心，对emergency的解决方案的信心。同时，需要有足够的管理能力提高对项目的把控能力以支撑信念。以下，是此次项目中没能表现出来的能力。</p>
+<p>组织思路与组织代码。不需要很详细的文档，可以是函数调用关系图，可以是对一个功能在实现前的规划草稿，还有把类似功能的函数集中到一块。在开始想好方案不要改，或者事后再重构。封装常用功能。通过肉眼查重降低冗余度。保留档案。</p>
+<p>文件管理。把不同类型的文件搞到不同的文件夹里面，保持树状结构。文件名规范化（”tetris-ln-190616-2117”），并维护更新信息。</p>
+<p>预设测试情形，想好有哪些功能是需要测试的。每拿到一个新的不同版本的文件测试并做标记（“ranklist——符合预期”，“editbox——异常退出”）。</p>
+<h1 id="ui设计中的管理"><a href="#ui设计中的管理" class="headerlink" title="ui设计中的管理"></a>ui设计中的管理</h1><p>（好吧这个标题和上面的标题下面的标题都不对应，不过这个东西有必要讲讲的）</p>
+<p>ui的设计是所见即所得的，能够给予开发者一定的成就感，但也容易利用这成就感极大地耗散开发者的时间与精力，降低其效率。故ui的设计虽然好玩，但也不能仅仅抱着玩的心态看待，它也是需要分析的。</p>
+<p>怎么分析呢？可以先明确一下一个小的阶段中要达成的效果：设计出ranklist的实现样式。这需要先搞出一个原型，提炼出需要使用的控件，确定好控件的颜色，确定好背景，等等。有了原型，设计的时候能更有针对性，而不是这搞搞那搞搞。</p>
+<p>放置控件时我们也经常会想“欸这个放在这里是不是更好看”“欸这个拉长一点会怎么样”。这些常常会在占去大量的时间，但最终效果相差无几。修参的工作最好集中出一块时间来做，同时在这过程中要保证有效的调试手段，如键入位置信息、颜色信息等，而不能总是关闭-重运行。</p>
+<h1 id="沟通与团队协作"><a href="#沟通与团队协作" class="headerlink" title="沟通与团队协作"></a>沟通与团队协作</h1><p>个人观察发现，三人小组往往会退化为两人小组或是一人小组，尤其在组员间相互不是很熟的情况瞎，因为团队的凝聚力不总是很高。作业做着做着有时候就感觉累了，宁愿自己做也不想把任务分出去，或是对这个项目不上心就把它鸽了。但在tetris这个项目中，团队的凝聚力还是较高的，个人认为原因在于组员间有一定的了解，能够相互理解与体谅，所以退化并没有发生。（如果我前几个星期不是特别忙也对tetris特别感兴趣的话，也许io、加密、ui还有其他部分我都揽过去了？这样项目的结束可能会早一些，但也只会像我高中时候的其他作品一样吧，其间我无法收获管理等其他方面的教训。然后我和她们也不会有更多的交集了，应该。）</p>
+<p>一个团队是否总会发生马太效应？能者往往多劳，故强者愈强，弱者愈弱。“弱者愈弱”指的并非在能力上发生倒退，而是指的不受待见的沮丧，对自身能力的怀疑，这么一种心态。这在计算机学科的学习中是非常危险的，因为实际上，许多课程的。个人常秉持这样的观念：别人的东西看不懂，主要原因不是我太弱（这种话都是事后说的），而是对方写得不够清晰。变量名混乱，代码冗余度高，逻辑清奇（尤其这一点！）都是对方而非自身的过错。我已尽自身一部分所能梳理清楚其逻辑但仍对其总体架构抑或细节实现不甚明了，这反映了对方在对程序的运行逻辑的理解上也不够清晰（至少没有表现出来），故我当见不贤而内自省。</p>
+<p>当然……问题也不尽是别人的问题，很多也是自己的问题。只会写hello world然后被lisp系的语法绕晕难道总是语言设计者的过错？在连最基本的图遍历算法都没写过的情况下看不懂人家的tarjan算法难道应该怪对方的代码不友好？这些问题，确实是自身能力不足所造成的，故我们在骂街之余当积极寻求解决方案。这个过程中尤其要注意解决方案面向的对象。在赛场上可以不加注释，但写题解时还应将各个细节点得清楚明白而不是把AC的代码往上一扔。要读懂这段代码需要什么样的前导知识，这些，我认为都是必要的，是将零散的知识点串成一环的有益疏理，也为对这一知识点尚不熟悉的同学提供了学习的方向。但遗憾的是，至少我很少看见这样的尝试，而与之相悖的做法（扔代码，玄学证明）倒是数见不鲜。</p>
+<p>以上的情形更多发生在个人中，与团队中的情形略有不同。团队降低了沟通的成本（在网上发问，指不定有人会理你），但并没有降低沟通的难度（“你在说什么？”）。在这样的情况下，简单的沟通能够传递一些好的习惯，同时解决一些琐碎的问题；而更深入的沟通呢？至少还没想清楚……这或许还需要在长期的实践中思考才好得出一般性的方法论。</p>
+<p>团队协作无可避免地涉及到交易成本——在软件工程中，集中表现为沟通的成本，理解代码的成本，等等。看自己的代码交易成本往往是比较低的，因为潜意识中对一些细节大脑已经做好了思考，整个程序的脉络也往往较为清晰。但是如果过了几个月，代码逻辑比较复杂还没什么注释，那么看自己的代码交易成本可能就上来了。至于看他人的代码，一般也都要付出高额的交易成本——时间、精力、信心。</p>
+<p>那么如何提升交易的能力呢？我们注意到，项目的一部分的代码是整体性的，是许多点连成的面，很稠密，复杂度很高。虽然理解整个面或许较为困难，但是理解一些要点相对来说会简单一些。（CTF一般都是找关键点，在复杂的题目中）于是可以提取关键点，抓住主要矛盾，逐个击破，同时梳理好打持久战的意识，可能会有一些帮助。</p>
+<h1 id="Leadership"><a href="#Leadership" class="headerlink" title="Leadership"></a>Leadership</h1><p>（我可能不具有这个东西，但理应具有这个东西）</p>
+<p>一般而言，组长对项目的把控等级是最高的，ta决定项目宏观的方向，整体的架构。这些尚是个人层面的。在团队的层面，协调就麻烦了……</p>
+<p>要分工，需要要了解他人的相性，了解其所面临的问题，了解其心理状态。这些都不容易做到。机器式的监督只会降低团队的凝聚力，但深入的了解也并不容易，这需要机遇，需要耐心，等等。</p>
+<p>可能还是solo比较容易吧？</p>
+<p>但把有着坚韧意志的厉害的女孩子一直置于对项目的焦虑与对自我的否定中，这实在不应该吧。</p>
+<p>于是我只能随性地瞎指挥了。结果尚可，只是本来能更好。</p>
+<hr>
+<p>开始于2019-06-07</p>
+<p>完稿于2019-06-16</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/06/12/Practice-CodeForces/" rel="next" title="【图灵之路】CF记（2019-06-12更新）">
+          <i class="fa fa-chevron-left"></i> 【图灵之路】CF记（2019-06-12更新）
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
