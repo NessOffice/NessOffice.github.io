@@ -1,0 +1,207 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【数学之美】离散数学及其应用：第三章 算法入门</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">663字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">2分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-06-22</span>
+    </div>
+    <div class="post-content">
+      <h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h2><p>这一章我们要学些什么呢~</p>
+<p>①基本操作：搜索（序列中）与排序</p>
+<p>②具体算法：欧几里得算法、集合生成算法、最短路算法</p>
+<p>③算法思想：BF算法、贪心算法</p>
+<p>④算法限制：时空复杂度</p>
+<h2 id="算法的概念"><a href="#算法的概念" class="headerlink" title="算法的概念"></a>算法的概念</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>实际的问题很多都能转化为数学模型，这是我们上一章的所学~转化成了模型之后，就可以用算法来解决问题啦~</p>
+<p>说到算法，一个很好的类比是菜谱，它们的共性很多：都是有限步的可操作步骤的序列。</p>
+<p>算法（algorithm）的名称来源于阿拉伯数学家阿剌子模（Al-Khowarizmi），也可以看作是“对数”（ Logarithm）的重排。</p>
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>线性搜索、二分搜索（限于良序集）……</p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>冒泡排序、插入排序……</p>
+<h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h3><p>贪心算法（Greedy Algorithm）是解决最优化问题（optimization problem）的一种方式，它常常很有效，但有时也会失效（局部最优不一定保证全局最优）。</p>
+<h4 id="找零问题"><a href="#找零问题" class="headerlink" title="找零问题"></a>找零问题</h4><p>考虑这样一个问题：用25毛，10毛，5毛，1毛来找钱的问题，如何使得硬币总量最少呢？贪心即可。</p>
+<p>并非所有的币值的组合都能保障贪心的最优性，如25毛，10毛，1毛，找30毛的时候贪心就会出问题。</p>
+<p>为什么会有这样的不同呢？关键在于小的币值能否总是换成更大的币值。在第一种情况中，如果5毛有2个，那么换成一个10毛答案会更优。故而5毛不能超过1个。而在第二种情况中，10毛可以超过2个，而不换为25毛。</p>
+<h4 id="区间选择问题"><a href="#区间选择问题" class="headerlink" title="区间选择问题"></a>区间选择问题</h4><p>有这么一些区间$[l_1, r_1], [l_2, r_2], …, [l_n, r_n]$，问如何选区间能够使选择的区间尽可能多并保证没有两个区间相交？</p>
+<p>lrj有做过证明，证得不错，这本书的后面也有相关的证明。</p>
+<p>//待补充。</p>
+<h3 id="停机问题"><a href="#停机问题" class="headerlink" title="停机问题"></a>停机问题</h3><p><a href="http://www.matrix67.com/blog/archives/901" target="_blank" rel="noopener">http://www.matrix67.com/blog/archives/901</a></p>
+<h2 id="大O与大-Theta"><a href="#大O与大-Theta" class="headerlink" title="大O与大$\Theta$"></a>大O与大$\Theta$</h2><h2 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h2><h3 id="Euclid算法的复杂度"><a href="#Euclid算法的复杂度" class="headerlink" title="Euclid算法的复杂度"></a>Euclid算法的复杂度</h3><p>由裴蜀定理，d可表示为a、b的线性组合</p>
+<p>大家可能听过P/NP问题还有NP完全问题等等概念（Steve Cook，就是这崽子发明的稀奇古怪的名称，NP问题、NP完全问题、NP困难问题这样的名称看着真的难受），这里引m67的一篇博文以飨诸位：<a href="http://www.matrix67.com/blog/archives/105。" target="_blank" rel="noopener">http://www.matrix67.com/blog/archives/105。</a></p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/06/22/Discrete_Mathematics-CH02/" rel="next" title="【数学之美】离散数学及其应用：第二章 基本结构">
+          <i class="fa fa-chevron-left"></i> 【数学之美】离散数学及其应用：第二章 基本结构
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/06/22/Discrete_Mathematics-CH04/" rel="prev" title="【数学之美】离散数学及其应用：第四章 数论（残）">
+          【数学之美】离散数学及其应用：第四章 数论（残） <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

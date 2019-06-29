@@ -1,0 +1,209 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【数学之美】离散数学及其应用：第五章 递推与递归</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">955字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">3分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+        <p>数学_数学方法</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-06-22</span>
+    </div>
+    <div class="post-content">
+      <h1 id="数学归纳法"><a href="#数学归纳法" class="headerlink" title="数学归纳法"></a>数学归纳法</h1><p>在第一章的最后我们也谈了谈数学归纳法，但并没有对其进行详细的探讨。所以这里还得补上。数学归纳法，本质上是一种递归的思想。明白了这一点，我们便能从大学而非高中的视角来看待它。</p>
+<p>其正确性很容易为我们所理解，严谨地说呢，则源自良序性公理，集合中存在最小元。</p>
+<p>数学归纳法是一种很强大的方法，用就是了，不用管对要证的东西理不理解。故较难的情形是在不显然的语境中找出使用数学归纳法的条件，这在下面的区间选择，馅饼战争乃至后文中的霍尔婚配定理上均有所体现。</p>
+<p>因为数学归纳法可以无脑使用，它往往不能揭示所要证的命题背后的逻辑。如$\sum i^3 = [\frac{n(n+1)}{2}]^2$。数归一下就证好了。但为什么有这个式子呢？它是怎么被发现的？这都是数归所无法解答的问题。</p>
+<p>数归被广泛地应用在证明和式，不等式，整除问题及算法分析上。简单的例子能够展现数学归纳法的有力之处，同时给予我们学习的信心；而复杂的例子则能给我们带来思维上的挑战。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>例题1：用数学归纳法证明n元的德摩根律。</p>
+<p>例题4：三联骨牌覆盖问题。</p>
+<p>例题2：用数学归纳法证明选区间问题中贪心算法的全局最优性。</p>
+<p>//证明比较刁钻，也比较有创造性，待补充</p>
+<p>例题3（Odd Pie Fights）：有奇数个两两距离不同的人，他们手中各有一个pie，会朝离自己最近的人扔pie。证明扔完一轮以后存在没被扔到pie的人。</p>
+<p>证明（第二步）：由归纳假设，当人数为2k-1时原命题成立。考虑人数为2k+1的情况。</p>
+<p>记AB间距离最短。考虑A，若他被B以外的人扔了pie，则因扔出的pie总数为2k+1，AB以外的2k-1个人只能被少于2k-1个pie扔到（AB被扔了至少3个），必然有人没被扔到。</p>
+<p>若A只被B且B只被A扔了pie，那么可以先不考虑他们。剩下2k-1个人，由归纳假设，必然有人没被扔到。综上，证毕。</p>
+<p>数学归纳法使用的谬误：要么前提错了，要么归纳不合理。这里要注意，归纳的合理性可能跟n的大小有关系。表面看看很有道理的归纳，可能在n较小的情况下不成立。请看下面的例子：</p>
+<p>我们用数学归纳法证明所有的马都是同一颜色的。n=1，显然。n&gt;1，有归纳假设，前n-1匹马和后n-1匹马同色，而所以$color[head] = color[middle] = color[tail]$，证毕。</p>
+<h2 id="第二类数学归纳法"><a href="#第二类数学归纳法" class="headerlink" title="第二类数学归纳法"></a>第二类数学归纳法</h2><p>在计算几何、博弈论等领域，使用第二类数学归纳法相比第一类更为方便。</p>
+<p>例题1：证明任何大于1的整数可写为素数之积。</p>
+<p>例题2：证明仅有2分和5分邮票就能组成大于等于5分的每种邮资。（思考，不可仅由m，n分邮票组成的最大的邮资是多少？）</p>
+<p>例题3：$G(V, E), |V| = n \geq 3$为有向完全图，其中存在长度大于3的环，证明其中存在长度为3的环。（这个例子主要用于了解如何正确运用良序性公理）</p>
+<h1 id="递归定义-待补充"><a href="#递归定义-待补充" class="headerlink" title="递归定义[待补充]"></a>递归定义[待补充]</h1>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/06/22/Discrete_Mathematics-CH04/" rel="next" title="【数学之美】离散数学及其应用：第四章 数论（残）">
+          <i class="fa fa-chevron-left"></i> 【数学之美】离散数学及其应用：第四章 数论（残）
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/06/22/Discrete_Mathematics-CH06/" rel="prev" title="【数学之美】离散数学及其应用：第六章 计数">
+          【数学之美】离散数学及其应用：第六章 计数 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

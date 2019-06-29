@@ -1,0 +1,257 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【数学之美】离散数学及其应用：第二章 基本结构</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">2.6k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">9分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+        <p>数学_数学方法</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-06-22</span>
+    </div>
+    <div class="post-content">
+      <h1 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h1><h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>这里涉及的是康托尔的朴素集合论而非公理集合论。后者是为解决悖论（著名的罗素悖论）而出现的，更为抽象。</p>
+<p>集合有两种表示方法：穷举抑或描述。</p>
+<p>Venn图在证明关于集合的命题中比较直观，关于证明，还可以采取列真值表，等价推导的方法。</p>
+<p>集合是无序的，而有序的概念是“元组”，有了顺序，乘法就有了规范。集合的乘法称笛卡尔积（Cartesian product），它不满足交换律，除非两边相等或有空集。</p>
+<p>谈到笛卡尔，你的第一印象是否会是平面直角坐标系？（抑或是“Cogito ergo sum.”？）事实上，笛卡尔积正是坐标系的基础：$R \times R$的结果便是所有二元组$(x, y)$的集合。推广到更高维也同理。</p>
+<p>正如前面我们提到的模糊逻辑，模糊集合在AI中有广泛的应用。另外，多重集合也用于表示复杂图。</p>
+<h3 id="幂集"><a href="#幂集" class="headerlink" title="幂集"></a>幂集</h3><p>以下是一些关于幂集的结论。</p>
+<p>$x \in P(S) \Rightarrow x \subseteq S$</p>
+<p>$x \in S \Rightarrow \{ x \} \in P(S)$</p>
+<p>$S \in P(S)$</p>
+<p>$P(A) \in P(B) \Rightarrow A \in B, A \in B \not \Rightarrow P(A) \in P(B)$</p>
+<p>$A \subseteq B \Leftrightarrow P(A) \subseteq P(B)$</p>
+<h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><p>总计五种：交（intersection）、并（union）、补（complement）差（difference）、对称差（symmetric difference）。顺带一提，compliment和complement是易混淆的单词，它们的意思是什么呢？</p>
+<p>集合恒等式：类似逻辑中的等价，证明也类似。</p>
+<p>交集的元素个数，用交与并表示对称差，集合的计算机表示。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h3><p>提到函数，我们先要提映射。如同其他的很多概念一样，和图一样，映射也是架构在集合之上的。集合论，是现代数学大厦的基石之一。</p>
+<p>映射相关术语：domain&amp;codomain，image&amp;pre-image（像与原像），range（domain的子集），map。</p>
+<p>映射的类别：one-to-one（单射，亦称injection），onto（满射，亦称surjection），bijection（双射，亦称one-to-one correspondence）。</p>
+<p>映射的逻辑表示如下</p>
+<ul>
+<li>one-to-one：$\forall x \forall y (x \not = y) f(x) \not = f(y)$</li>
+<li>onto：$\forall (y \in B) \exist (x \in A) f(x) = y$</li>
+</ul>
+<p>习题：存在$f : A \rightarrow B$，$|A| = m, |B| = n$。求$f$分别为一般映射、单射（如果是满射，考虑逆映射就好了）以及$f$为partial时满足以上条件可能的f数目。（$key: n^m, A_n^m, (n+1)^m, \sum\limits_{k = 0}^m C_m^k A_n^{m-k}$）</p>
+<p>//最后一项未经验证？</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>书中记了一些不是很常用的记号：$(f_1 + f_2)(x) = f_1(x) + f_2(x), (f_1 f_2)(x) = f_1(x)f_2(x)$。</p>
+<p>$f(S) = \{ t | \exist s \in S (f(s) = t) \}$，以此可以较严谨地证明$f(S \bigcap U) \subseteq f(S) \bigcap f(T)$。</p>
+<p>关于函数复合和反函数，有$(f^{-1} o f)(x) = x$。</p>
+<h3 id="特殊函数"><a href="#特殊函数" class="headerlink" title="特殊函数"></a>特殊函数</h3><p>floor、ceil、fractional……</p>
+<p>这里我们就主要讨论“底与顶”吧，恰好《具体数学》也就其写了一整个章节。</p>
+<p>为什么引入底之后还要引入可以之表示的顶？为了形式上推理的方便，正如我们既有sin也有cos一样。</p>
+<p>$-\lfloor x \rfloor = \lfloor -x \rfloor$不总是成立，但是$- \lfloor x \rfloor = \lceil -x \rceil$。</p>
+<p>如要将$\lfloor x \rfloor$的括号除去，我们可以用不等式（根据n的位置，也有两种形式），或者将它表示出来：$\lfloor x \rfloor = x - \{ x \}$。</p>
+<p>一个真命题：$\lfloor \sqrt x \rfloor = \lfloor \sqrt {\lfloor x \rfloor} \rfloor$</p>
+<p>由其联想到的真命题：$( f(x)为整 \rightarrow x为整) \rightarrow \lfloor f(x) \rfloor = \lfloor f({\lfloor x  \rfloor} ) \rfloor$</p>
+<p>//证明待补充</p>
+<p>由上述命题引出的有用结论：$\lfloor \frac{x + m}{n} \rfloor = \lfloor \frac{\lfloor x \rfloor + m}{n} \rfloor$</p>
+<p>一个假命题：$\lceil \sqrt x \rceil = \lceil \sqrt{\lfloor x \rfloor} \rceil$（思考：它何时为真？）</p>
+<p>实用的问题：$[\alpha, \beta]$中的整数个数？左闭右开如何，左开右闭又如何，左开右开呢？</p>
+<p>有趣的问题：具体数学赌场中的转轮赌轮有1000个（或n个）投币口，标号从1到n，若$\lfloor \sqrt[3]n \rfloor | n$则庄家赔我们五百块，否则我们给庄家一百块。问玩100局是否会被警察抓起来。</p>
+<p>有趣的问题：没有两个谱是相等的；Spec($2$)和Spec($2 + \sqrt 2$)构成正整数的一个划分。</p>
+<p>有趣的问题：隔两人处决一人的约瑟夫问题。</p>
+<p>//细节待补充</p>
+<h2 id="基数"><a href="#基数" class="headerlink" title="基数"></a>基数</h2><h3 id="无限的概念"><a href="#无限的概念" class="headerlink" title="无限的概念"></a>无限的概念</h3><p>无限实际上有两种：潜无限与实无限。前者表明一种趋势，比如微积分中的极限就是一种潜无限：比任意接近都更接近。而后者则是将无限作为一种实体考察，它是一个怪兽一般不符合常识的存在。古希腊人就不承认实无限的存在，他们的证明总是“素数的数量比任意给定的数都大”而非“素数有无穷多个”。另外，芝诺的悖论也令人们对后者感到恐惧。真正以科学而非思辨考察实无限的开拓者，大概就是康托吧。</p>
+<h3 id="无限的大小"><a href="#无限的大小" class="headerlink" title="无限的大小"></a>无限的大小</h3><p>判断无限集合，我们唯一可以信赖的方法便是一一对应，而非“整体大于部分”的原则。这一规则是康托所提出的，它并非先验的，受到了当时（也包括现在）不少人的质疑与排挤，被认为是异端邪说。康托晚年深受精神疾病的折磨，可即便如此，他还是以一己之力将集合论发展到了一定的高度，为现代数学大厦搭好了基石。康托实在是个伟大的人，虽说我对他还并不了解。</p>
+<p>所谓可数，指的是一个集合与有限集或是自然数集具有相同的基数，即可建立二者间的一一映射。</p>
+<p>基数、势，讲的是一个东西，无限集基数相等称为等势。</p>
+<p>先从简单的结论开始吧：证明正整数和整数一样多。（不妨从希尔伯特旅馆的角度再看看这个例子：我们所关注的是每个个体，而非不可描述的整体）</p>
+<p>再来是集合论中经典而又令人惊诧的结论：正整数和正有理数等势；无理数较有理数势更高。</p>
+<p>以上分别用了两种对角线，后者即著名的康托对角线法。</p>
+<p>通过一系列的推导，我们知道整系数多项式是可数的，故代数数——整系数多项式的根是可数的，而超越数是不可数的，即它要比代数数多得多。有趣的是，我们能数的过来的超越数少之又少。//代数数的相关资料？</p>
+<h3 id="Schroder–Bernstein定理"><a href="#Schroder–Bernstein定理" class="headerlink" title="Schröder–Bernstein定理"></a>Schröder–Bernstein定理</h3><p>给定两集合A、B。若存在$A \rightarrow B$与$B \rightarrow A$的单射（即$|A| \leq |B|$且$|B| \leq |A|$），那么|A|=|B|。</p>
+<p>这一定理可用于证明$|(0, 1)| = |(0, 1]|$，构造g:f(x) = x/2是$B \rightarrow A$的单射即可。</p>
+<h3 id="不可计算数"><a href="#不可计算数" class="headerlink" title="不可计算数"></a>不可计算数</h3><p>图灵机的指令数是可数的，而实数是不可数的，故存在不可计算的数，Chaitin常数便是一个，不过我并不知道它为啥不可计算……</p>
+<h3 id="连续统假设"><a href="#连续统假设" class="headerlink" title="连续统假设"></a>连续统假设</h3><p>先看一道例题：从正整数到{0，1，…，9}的所有映射的集合的势与[0, 1]内实数形成的集合的势相等。</p>
+<p>把上面的十进制改为二进制，可以得到$N$的幂集与实数集等势。</p>
+<p>记正整数的势为$\aleph_0$，实数集的势为c，上述结论即$2^{\aleph_0} = c$。如果势是可数的，而且它们按大小可以记成$\aleph_0 &lt; \aleph_1 &lt; …$（所谓一个无穷集“小于”另一者，指的是前者到后者无法得到满射）。那么，连续统假设说的就是$c = \aleph_1$，也即在两者中间没有元素。</p>
+<p>这里连续统假设的语言表述中假设了无穷集的势的集合是离散的，是可数的。</p>
+<p>连续统假设长久没有得到解决，希尔伯特将其作为“第一问题”。之后哥德尔还有科恩证明了CH（continuum hypothesis）在ZF公理系统中不可判定。ZF公理系统是什么？区别于“朴素集合论”的公理体系，规范了一下集合的基本性质等等，具体有八条，至少我不懂。</p>
+<p>连续统假设假设的是$2^{\aleph_0} = \aleph_1$，照这个思路，有“广义连续统假设”（GCH）：$2^{\aleph_i} = \aleph_{i+1}$，这似乎更加困难，不过先贤也已经证明了它在ZF公理系统还有ZFC公理系统中的不可判定。ZFC比ZF多了项选择公理，反正我不懂。</p>
+<p>小声BB一句，这些ZF、ZFC系统的名字第一眼看到感觉比较随便，没有“黎曼几何”“罗巴切夫斯基几何”看着大气，让人感觉这些所谓“公理”有一些随便（个人意见）。</p>
+<p>我有点不明白：为什么$|N| = \aleph_0$呢，即为什么正整数的势是最小的势呢？有没有比可数集更“小”的无限集呢？</p>
+<h3 id="攻玉与其他"><a href="#攻玉与其他" class="headerlink" title="攻玉与其他"></a>攻玉与其他</h3><p>先贴一下m67的文章：</p>
+<p><a href="http://www.matrix67.com/blog/archives/2172" target="_blank" rel="noopener">http://www.matrix67.com/blog/archives/2172</a></p>
+<p><a href="http://www.matrix67.com/blog/archives/4812" target="_blank" rel="noopener">http://www.matrix67.com/blog/archives/4812</a></p>
+<p>然后讲讲文学作品中的“无限”吧。</p>
+<p>谈到基数，弱弱地安利一下刘宇昆的《可数集》。小说将理性与非理性、数学的简单与生活的复杂做了很好的映射，以别出心裁的方式（有些意识流，在这个设定下尤其自然）表现了两个世界的冲突：理性的学术（或者更柏拉图些，“理念”）与非理性的生活。当主人公走在康托的路上，觉察到数学的可怖与不可描述，体味到理念的无稽与诡谲之时，他也只得放弃自己曾经坚守的理性，成为生活的荒诞的一部分，在多种意义上。这篇用大刘的话说，是“从宏大的数学背景上重新审视人生”，颇具“科幻的诗意”。</p>
+<p>谈到无穷，也不能不提博尔赫斯，《小径分岔的花园》《巴别图书馆》《阿莱夫》《沙之书》……不过这边就不展开了。顺便，《可数集》收录在《杀敌算法》里头，而《科幻世界》中的译名是“人生可数集”，我觉得是画蛇添足（原文<em>The Countable</em>）。</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/06/22/Discrete_Mathematics-CH01/" rel="next" title="【数学之美】离散数学及其应用：第一章 逻辑与证明">
+          <i class="fa fa-chevron-left"></i> 【数学之美】离散数学及其应用：第一章 逻辑与证明
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/06/22/Discrete_Mathematics-CH03/" rel="prev" title="【数学之美】离散数学及其应用：第三章 算法入门">
+          【数学之美】离散数学及其应用：第三章 算法入门 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
