@@ -1,0 +1,214 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【数学之美】复变函数与拉普拉斯变换-金忆丹版：第一章 预备知识</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">1.3k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">5分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+        <p>数学_分析</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-06-29</span>
+    </div>
+    <div class="post-content">
+      <h1 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h1><p>一般来说，复数有三种表示：$x + y i, r(cos \theta + sin \theta i), re^{i \theta}$。三种表示各有其适用范围，前两者分别对应平面直角坐标系与极坐标系，而最后的表示法与极坐标系的表示有共同点也略有区别，一般来说它在运算上最为方便。</p>
+<p>复数的模和辐角本身是独立的刻画复数的单元，故我们可以将二者分离来看。模是对于距离的刻画，很好理解，与模相关的知识要点则多和不等式相连结。至于辐角（$Arg z$与$arg z$），则要规定其范围。这样便可在$x + y i, r(cos \theta + sin \theta i)$两种表示间相互转化。（求辐角的规则有些麻烦，结合实例，比如$\pm 2 \pm 3i$感受更佳）</p>
+<p>三种表示的共轭均非常简单，而能解决许多问题，降低运算复杂度。共轭的概念虽简单，但要灵活运用并不容易。另外，用共轭可以分离实部与虚部。</p>
+<p>需要注意的是，复数更接近向量而非一般意义上的实数，是不可比的。复数集并非偏序集。</p>
+<p>正如我们可以用实数刻画数轴一般，我们也能用复数（向量）来刻画坐标面。这便是复平面，在第三小节中将对其作进一步的探讨。</p>
+<h1 id="复数运算"><a href="#复数运算" class="headerlink" title="复数运算"></a>复数运算</h1><p>将复数视作向量（即用$z = x + yi$看待复数），则加法同乘法非常好进行。至于除法，自然可以硬算，但是考虑$z \cdot \overline{z} = |z|^2$从而推出$z^{-1} = \dfrac{\overline{z} }{|z|^2}$显然更加优美，在计算上也更方便。</p>
+<p>乘积的意义为何呢？在形式上，$z_1 = r_1 e^{i \theta_1}, z_2 = r_2 e^{i \theta_2}$，故而$z_1 z_2 = r_1 r_2 e^{i (\theta_1 + \theta_2)}$。考虑e的指数的意义，则能发现$Arg(z_1 z_2) = Arg(z_1) + Arg(z_2)$。故乘法的意义即旋转。</p>
+<p>在这个意义下，除法作为乘法的逆运算，其意义也与上面相类似。</p>
+<p>复数的乘幂和开方也是需要讨论的话题，比如求-1的四次方根，需要用到开方，而在此之前要先对乘幂有所了解。乘幂的形式，即$z = r e^{i \theta} \rightarrow z^n = r^n e^{i n \theta}$。</p>
+<p>由这一式子可以引出de Moivre公式：，$r^n (cos \theta + i sin \theta)^n = r^n (cos n \theta + i sin n \theta)$，故有$(cos \theta + i sin \theta)^n = cos n \theta + i sin n \theta$，此即de Moivre公式（自然，它可以根据其他方式推出，不过这里我们实际上是是采用欧拉公式来推的）。</p>
+<p>至于开方，经过推导，可以得到n个相异的根，其中第k个根$w_k = \sqrt[n] r  e^{i \frac{\theta_0 + 2k \pi}{n} }, k = 0, 1, 2, \dots, n-1$。把这些根放到复平面上看或可加深对其的理解，对复数乘积的理解。</p>
+<h1 id="点集与复球面"><a href="#点集与复球面" class="headerlink" title="点集与复球面"></a>点集与复球面</h1><p>点集系函数定义域与值域的本质属性。在直角坐标面上，我们定义过点集。类似地，此处我们可以通过复数对其加以定义，只消将$\rho$替换为$|z|$即可。由此我们先后定义了邻域，内点，边界，有界/无界区域，曲线，单/复连通区域。</p>
+<p>图形也可以用复数表示，如$|z - z_0| \leq R$表示一个圆域。在辐角、距离上加以限制，我们不难得到几类简单图形的复数表示。</p>
+<p>（复球面详见书本，没图不好描述）</p>
+<p>复球面的中心思想是将平面上的点与球面上的点做一一映射，从而将虚无缥缈的无穷远点转化为了看得见摸得着的北极点。可以用用$tan \theta$与实数轴间的一一映射与之作类比。</p>
+<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><p>①de Moivre公式的运用：用$cos \theta$与$\sin \theta$表示$cos 3 \theta$。（手算的复杂度为$O(n^2)$）</p>
+<p>②共轭与模：或者$|z| = 1$或者$|w| = 1$，证明$|\dfrac{z - w}{1 - \overline{z} w}| = 1$。</p>
+<p>③（瞎搞）若复数$z_1, z_2, z_3$满足$\dfrac{z_2 - z_1}{z_3 - z_2} = \dfrac{z_1 - z_3}{z_2 - z_3}$，证明$|z_2 - z_1| = |z_3 - z_1| = |z_2 - z_3|$。</p>
+<p>④复数与多项式间的联系：若$w$为1的一个n次方根，证明$1 + w + w^2 + \dots + w^{n-1} = 0$。</p>
+<p>⑤复数与不等式：证明在闭单位圆盘$D = \{ z \big| |z| \leq 1 \}$上，$|z^2 + 1| \leq 2$。</p>
+<p>⑥数形结合：将$(1 + cos \theta) + i sin \theta$表示为指数形式。</p>
+<p>⑦共轭：证明$\overline{(\dfrac{z_1}{z_2})} = \dfrac{\overline{z_1} }{\overline{z_2} }(z_2 \not = 0)$。</p>
+<p>⑧共轭：证明实系数多项式$P(z) = a_0 + a_1 z + \dots + a_n z^n$若有一根为$z$，则$\overline{z}$也必为其根。</p>
+<p>⑨复数与不等式（不会做）：$z_1, z_2$为复数，证明$|z_1 - z_2|^2 + |z_1 + z_2|^2 = 2(|z_1|^2 + |z_2|^2)$。</p>
+<p>以上数题中，③不知其考点，⑨尚不会做，其他的题目较为灵活，知识点覆盖率也较高，结论也较有用，值得一做。</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/06/29/ICPC-Practice_Codeforces_3/" rel="next" title="【图灵之路】CF记-其三（2019-07-18更新）">
+          <i class="fa fa-chevron-left"></i> 【图灵之路】CF记-其三（2019-07-18更新）
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/07/17/ICPC-Feeling-July/" rel="prev" title="【围炉夜话】七月集训自省书">
+          【围炉夜话】七月集训自省书 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
