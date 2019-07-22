@@ -99,7 +99,7 @@
 		  <span class="post-meta-item-icon">
 			<i class="fa fa-keyboard-o"></i>
 			<span class="post-meta-item-text">  字数统计: </span>
-			<span class="post-count">560字</span>
+			<span class="post-count">5k字</span>
 		  </span>
 		</span>
 
@@ -108,7 +108,7 @@
 		  <span class="post-meta-item-icon">
 			<i class="fa fa-hourglass-half"></i>
 			<span class="post-meta-item-text">  阅读时长: </span>
-			<span class="post-count">1分</span>
+			<span class="post-count">17分</span>
 		  </span>
 		</span>
 	  </div>
@@ -129,7 +129,7 @@
 </blockquote>
 <p>当然，我知道自己的能力还很有限，所以参加集训的主要目的是学习，同时希望在比赛中收获经验，提升自我。不过从七月中我的所为来看，自己仍心有余而力不足，提升得还不够，能力上还是差了厉害的同学一大截。这有心态上的原因，有思维结构上的原因，还和具体的能力也有一定的关联。不论如何，总归是一段经历吧。</p>
 <h1 id="个人赛总结"><a href="#个人赛总结" class="headerlink" title="个人赛总结"></a>个人赛总结</h1><h2 id="contest-1"><a href="#contest-1" class="headerlink" title="contest 1"></a>contest 1</h2><p>这场总体而言打得不好，爆零了。一方面题目不太容易，另一方面自己的知识点还太薄弱，A题将kmp稍作变式就不会了，hash也出锅了。写题策略也不是很得当，一直在纠结没有人做的D题，废了挺多时间的，导致到了挺后面才开始看B题（虽然即便能逃出WA的命运还是躲不过TLE啊）。知识点薄弱，于是在将E题的操作抽象出来后沮丧地发现自己的数据结构水平碰不动这题。</p>
-<p>A题想了想发现可以用last数组记录上一个位置，然后就是字符串匹配了，但是要更新节点。自己之前写的kmp是迭代地算出来的，不支持更新的操作，于是改用hash：$map<deque<int>, int&gt;$，但不知道哪里出了问题，WA了三发。之后换成自己写的hash就过了。STL有些靠不住？</deque<int></p>
+<p>A题想了想发现可以用last数组记录上一个位置，然后就是字符串匹配了，但是要更新节点。自己之前写的kmp是迭代地算出来的，不支持更新的操作，于是改用hash：$map &lt; deque &lt; int &gt; , int &gt;$，但不知道哪里出了问题，WA了三发。之后换成自己写的hash就过了。STL有些靠不住？</p>
 <p>B题一开始看到有点怕，但想了想发现还好，就是个树上的dp，状态的转移很自然，但还是WA了，原因不明。听讲题组说还要先bfs一遍确定顺序，要预处理逆元……虽然这些都做了但还是T了，不知为何，常数太大了？</p>
 <p>D的话一直在推式子，看看这个CNF如何转化为full CNF，但越想越感到它不好描述，就弃了。</p>
 <p>E看了看发现这就是个带修改的区间第k大值问题，不会做，还需要学习。</p>
