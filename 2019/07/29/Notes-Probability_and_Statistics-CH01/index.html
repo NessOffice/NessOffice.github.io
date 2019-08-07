@@ -1,0 +1,232 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【数学之美】概率论与数理统计-张帼奋版：前一章 基本概念</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">3.4k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">12分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-07-29</span>
+    </div>
+    <div class="post-content">
+      <p>首先概率这个概念是比较玄学的，虽然它可以被“数学地”用测度刻画，不过那个东西形式上比较可怕，工科的数学书也不会细讲。学概统，万万不能纠结在“什么是概率”“何谓随机”诸如此类的问题上。（虽然经常不自觉地会纠结……）而是当站在集合论的视角看待它，把它看成一种定义良好的运算，然后再结合组合数学中的方法对具体的问题进行求解。</p>
+<h1 id="样本空间、事件、概率、概型"><a href="#样本空间、事件、概率、概型" class="headerlink" title="样本空间、事件、概率、概型"></a>样本空间、事件、概率、概型</h1><p>首先我们引入样本空间和随机事件的概念。定义就不定义了，举个例子说明一下吧：比方说Alice和Bob在玩游戏，那么{Alice胜，Bob胜，平局}对一局而言便是一个<strong>样本空间</strong>。其中三个元素都是一个<strong>样本点</strong>。<strong>事件</strong>有很多：{第二局Alice胜或者Bob胜}、{第三局Alice不负}，等等等等（组合数学的阴魂在这一刻就注定要缠绕在概统上）。我们发现一些事件是好的，比如{Alice胜}，因为其他事件可以由这些基本事件组和而成，我们便称这样只含一个样本点的事件为<strong>基本事件</strong>。</p>
+<p>不同于实变函数复变函数中将”数“作为集合（往往是数域）的基本元素，概统中的主角是”事件“。”事件“并不好定量地描述，这也使得这门课程有了丝玄学的味道（虽然好定量描述也不是不能搞出玄学）。</p>
+<p>事件的运算，和集合论一开始的定义一样一样的，比如我们熟知的De Morgan律，后面经常会用到它。唯一需要关注的便是积事件的符号了：$\cup$往往省去不写。不知道是哪个鸟人打开偷懒的先风……可能因为在概统中$\cap$的出现频率远低于$\cup$吧。</p>
+<p>知晓了样本空间和事件的概念，我们可以引入概率的概念了。同样也不定义了。{Alice胜}的概率是0.3，这句话里面的概率是什么意思？不谈。但你要知道概率是在样本空间和随机事件之后定义的。</p>
+<p>基本概念都懂了，大家可以来解水题了：甲乙丙三人每个人参加集会的概率是0.4，且三人中至少两人参加的概率为0.3，三人共赴的概率为0.05，求三人中至少一人参加的概率。（$key：0.85$）</p>
+<p>然后我们引入<strong>等可能概型</strong>的概念。啥是等可能概型？就是各个基本事件发生的概率都是等可能的。明显，这是一个理想模型，也不是唯一的概型。既然基本事件发生的概率是等可能的，那么求事件的概率便等价于求事件中样本点的数目，于是很多问题在确定了样本点之后便都能够转化为排列组合问题。举个例子：一副52张牌的扑克牌组，求不放回抽样/放回抽样恰能抽到一红一黑的概率。更一般地，可以求a张红牌b张黑牌中不放回取n张时恰取到k张红的概率。这些都是在等可能概型中求概率的问题。（$key1: 26/51, key2: 1/2, key3: \dfrac{C_a^k \cdot C_b^{n-k}}{C_N^n}$）</p>
+<p>等可能概型中的经典问题，抽签问题：袋中有标号为1-n的n个球，a红b黑。每次摸一个不放回，共摸n次。假设各球大小材质均等，求第k次摸红概率。此题至少有三种解法：①将球号的排列作为样本点；②将“哪一次摸红”的排列作为样本点；③将第k次摸到的球号作为样本点。无论是哪种做法，答案均为$a/(a+b)$，等价于第一次摸红的概率。同样的，我们能够证明某两次摸到红的概率和前两次摸到红的概率相等。</p>
+<p>等可能概型中的另一个模型是生日模型。23个人中，有1/2概率使得存在两人生日相同（假设各人的生日在一年365天中是等可能分布的并且不存在多胞胎的情形）。这一论断似与我们的常识相悖。然而，它说的是“存在两人生日相同”而非“选定某人有另一人与其生日相同”。</p>
+<h1 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>条件概率，顾名思义，是“某一条件下的概率”，这个条件自然也是一个事件。我们记$P(A|B)$为在B事件发生的情况下A事件发生的概率。这个概率和$P(A)$有何关系呢？二者的样本空间不一样。明白了这点，很容易便能得出，$P(A|B) = \dfrac{P(AB)}{P(B)}$。</p>
+<p>水题1.4.1：掷一颗骰子两次，已知两次点数之和大于8，求第一次为6的概率。可以用上面的公式做，也可以用缩减了的样本空间来求解。（$key: 2/5$）</p>
+<p>中档偏水题1.4.2：袋中9球，5红4黑。摸4次，不放回。已知第四次摸红，求前两次均摸红概率。（$key: 3/14$）</p>
+<h2 id="乘法公式"><a href="#乘法公式" class="headerlink" title="乘法公式"></a>乘法公式</h2><p>条件概率有个乘法公式，看着很可怕：$P(A_1 A_2 \dots A_n) = P(A_1) P(A_2 | A_1) P(A_3 | A_1 A_2) \dots P(A_n | A_1 A_2 \dots A_{n-1})$。证明的话，把右边式子按条件概率的公式展开就好。这鬼公式有个什么用？它的用处在于，能够依据一些条件概率求出积事件的概率。正如容斥原理虽然右边的项也远多于左边但仍能派上用场一般，这个公式是有其作用的，尤其在已知的条件概率信息较多的情形之下。</p>
+<p>水题1.4.4：某人打靶，凡三内，一回即中概率为0.6，一回不中而二回中概率为0.7，头二回不中而三回中概率为0.8。问三回以内中概率几何。（$key: 0.976$。分析：考虑反面固然容易，但是考虑正面能加深对于条件概率公式的掌握能力，<del>我不知道我瞎说的</del>）</p>
+<h2 id="全概率公式与贝叶斯公式"><a href="#全概率公式与贝叶斯公式" class="headerlink" title="全概率公式与贝叶斯公式"></a>全概率公式与贝叶斯公式</h2><p>首先呢，这个公式是正确的：$P(A) = P(A \overline{B}) + P(A B) = P(\overline{B}) \cdot P(A|\overline{B}) + P(B) \cdot P(A|B)$。</p>
+<p>这个公式有什么意义呢？就是在$P(A)$不好直接求解，而A事件和B事件的关联较为紧密时，我们可以考虑这样，把含A的样本空间划分为和B有关联的样本空间来思考问题。</p>
+<p>把的$B$和$\overline{B}$替换为$B_i$，集合的划分。这样就能得出全概率公式：$P(A) = \sum\limits_{j = 1}^n P(B_j) \cdot P(A|B_j)$。其中$\bigcup B_i = S$且$\forall i \forall j B_i B_j = \varnothing$。</p>
+<p>然后是贝叶斯公式（Bayes formula）：$P(B_k | A) = \dfrac{P(B_k A)}{P(A)} = \dfrac{P(B_k) \cdot P(A | B_k)}{\sum\limits_{j = 1}^n P(B_j) \cdot P(A | B_j)}$。这个公式……虽然很自洽，但看起来比上面的还麻烦？这个公式又有什么意义？<del>我不知道别问我</del></p>
+<p>例题1.4.6：凡三盒，其一内有三黑五红，其二内有二黑二红，其三内有五黑二红。任选一盒，摸二球，不放回。问若一回摸黑，则二回摸黑概率几何。（$key: 42/89$。分析：枚举第一回摸黑的情形下摸到每个盒子的概率）</p>
+<p>例题1.4.7：日有人失K型车一乘，知县持八成把握以J为之。已知为盗者是日所驾为K型车，而此地驾K型车者，恰十三也。问若J是日驾K型车，其为盗概率几何？（$key: 80/86$。分析：这个题目的麻烦之处在于给定的条件。0.8显然是$P(J)$，而0.3实为$P(K | \overline{J})$（这一点不是马上发现的，而是推式子的时候用到才发现的）。另外，再注意到$P(K | J) = 1$，这个题就能做了。）</p>
+<h1 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h1><p>独立事件不是孤立的定义，而是事件与事件间的关系，比如A表示第一枚骰子投5，B表示第二枚骰子投3，C表示两枚骰子之和为8，那么一般情况下A和B是没关系的，也就是说A的发生与否对B的样本空间不会产生任何缩减作用。但是A、B的发生与否对C的样本空间是会产生缩减作用的。容易看出，这里“独立”的定义和“发生与否”有关，那么，我们可以这样定义A和B独立：$P(B) = P(B | A)$。</p>
+<p>很明显，这个定义和$P(A) = P(A | B)$等价，也和$P(AB) = P(A) \cdot P(B)$等价。实际上书本是用后者来定义A和B独立的。事实上，这些定义和$P(A) = P(A | \overline{B})$、$P(\overline{A}) = P(\overline{A} | \overline{B})$等等，均等价（或者表述为，$AB$相互独立$\Leftrightarrow$ $A\overline{B}$相互独立$\Leftrightarrow \cdots$）。证明，以前两项为例，就是这样的：</p>
+<p>$A = AB \cup A \overline{B} \Rightarrow P(A) = P(AB) + P(A \overline{B}) \Rightarrow P(A \overline{B}) = P(A)(1 - P(B)) = P(A) \cdot P(\overline{B})$，证毕。</p>
+<p>用上面的骰子的例子刻画一下样本空间，我们能够发现，每个样本点都是一个二元组，包含了第一次的信息和第二次的信息。而A和B分别是横着的和竖着的直线，横跨不同的维度。这有点像……笛卡尔积？</p>
+<p>学到这里，我们了解到随机事件A和B间至少有三种关系：包含、不相容、独立。它们间的关系如何呢？它们都是对$P(AB)$与$P(A), P(B)$间关系的刻画。</p>
+<p>例题1.5.1：$P(A) = 0.5, P(B) = 0.4$，求AB分别满足1）不相容；2）B发生必有A发生；3）独立；4）$P(AB) = 0.3$。这四类情况下AB至少有一个发生的概率。这道题目告诉我们，仅仅了解AB的概率还不够，必须要了解AB之间的关系。</p>
+<p>以上是两个事件的情形，那么多个事件呢？我们有定义：ABC中，AB独立，AC独立，BC独立，则称ABC两两独立。而若在此基础上，还满足$P(ABC) = P(A) \cdot P(B) \cdot P(C)$，则称ABC相互独立。相互独立也能推广到n维的情形。</p>
+<p>不难看出，相互独立是个很强的定义，在n元的情况下要$2^{n-1}$个式子都成立才能推出这个结论。式子，也就是信息能否少一些呢？并不能，因为$P(ABC) = P(A) \cdot P(B) \cdot P(C) \not \Rightarrow P(AB) = P(A) \cdot P(B)$。显然，$C = \varnothing$就能证明该式。或者，我们也可以在确定$P(AB) \not = P(A) \cdot P(B)$后再确定$P(ABC)$而动态地调整$P(C)$使得左式成立。总而言之，这两个式子并无甚关联。左边无法推出右边，右边也无法推出左边。关于右边无法推出左边，我们有个好记的例子：袋中有4球，1红1白1黑1红白黑，令A事件表示摸红B事件表示摸白C事件表示摸黑，则ABC两两独立但不相互独立。</p>
+<p>接下来是独立试验和重复试验的定义，前者是试验结果互不影响，后者是子试验条件完全相同。但我们判断事件是否独立往往不是通过定义去判的，而是根据实际情形，比如上面骰子的例子。</p>
+<p>书中后面三道例题，1.5.2，1.5.3，1.5.4，都是值得一做的，<del>比后面的习题质量略高</del>。</p>
+<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><p>这一章的习题，有些大同小异了，总体而言不难，但可用于巩固概念。</p>
+<p>第二题可一看，以回忆集合论的基础知识。</p>
+<p>第三题及其他题用到了全概率公式。</p>
+<p>第四题指出了：给定$P(A), P(B), P(AB)$，可求出$P(A \cup B), P(\overline{A} \overline{B}), P(\overline{A} B)$等信息。</p>
+<p>第十题是个值得一做的题目（回忆一下组合数学吧2333），其中我们不能通过三号盒子中的球数刻画样本空间——其他两个盒子中的组和对样本数也有影响。</p>
+<p>第十三到十七都是和条件概率相关的，十三稍创新些，其他太过相像，做一道即可。</p>
+<p>第十八题的题干有些新意，尚可一做。</p>
+<p>第二十一题提到了一个判定AB相互独立的充要条件（虽然看起来没什么用），不妨一做，反正这章也没多少证明题。</p>
+<p>第二十四题中提到了“连续抛一枚硬币若干次，$B_j$表示第j-1次抛掷和第j次抛掷是首次出现的一次连续抛掷”。想知道这个$B_j$是否有一般的通项公式，或者递推式？</p>
+<p>第二十七题的第二问可能会做错（菜鸡就做错了，捂脸），可以一看。</p>
+<p>然后呢，还有三门问题，可以一想，此处就不介绍了。</p>
+<p><del>结果学完这章贝叶斯方法还是没搞清楚呢</del></p>
+<hr>
+<p>初稿写于2019.07.23</p>
+<p>完稿写于2019.07.29</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/07/29/Notes-Data_Structure_and_Algorithm_Analysis_In_C-CH01/" rel="next" title="【图灵之路】基于C语言的数据结构及其算法分析-Weiss版：前两章 基础知识">
+          <i class="fa fa-chevron-left"></i> 【图灵之路】基于C语言的数据结构及其算法分析-Weiss版：前两章 基础知识
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/08/03/Game-OneShot/" rel="prev" title="【围炉夜话】从艺术设计的角度看OneShot">
+          【围炉夜话】从艺术设计的角度看OneShot <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

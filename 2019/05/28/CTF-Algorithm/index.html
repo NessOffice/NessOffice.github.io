@@ -93,7 +93,7 @@
         
   <article class="post">
     <div class="post-title">
-      <h2 class="title">【图灵之路】如何在CTF中考察算法能力——从ACTF中的rev和crypto谈起</h2>
+      <h2 class="title">【白冠之礼】如何在CTF中考察算法能力——从ACTF中的一道rev谈起</h2>
 	  <div style="margin: 0 10 20px;">
 		<span class="post-count">
 		  <span class="post-meta-item-icon">
@@ -125,26 +125,26 @@
       <h1 id="rev中的算法题"><a href="#rev中的算法题" class="headerlink" title="rev中的算法题"></a>rev中的算法题</h1><p><del>戳我获得题目链接</del></p>
 <p>这次ACTF中，做到这么一个rev：</p>
 <p><img src="/2019/05/28/CTF-Algorithm/question.jpg" alt></p>
-<p>其中a1，a3都是已知的整数数组，a2是要求的整数数组。因为是字节的运算，涉及到的常数初看乱糟糟的，可能会把人看晕掉。我们把这段话用C语言（伪代码，有错请指出）重写一遍使之更清晰先：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> last;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> plain[], <span class="keyword">int</span> key[], <span class="keyword">int</span> cipher[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *ptr_plain = plain;</span><br><span class="line">    <span class="keyword">int</span> *ptr_cipher = cipher;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">37</span>;i++)<span class="comment">// 5476 / 148 = 37</span></span><br><span class="line">    &#123;</span><br><span class="line">        last = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">37</span>;j++) <span class="comment">// 148 / 4 = 37</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = *(ptr_plain + j) * *(key + j);</span><br><span class="line">            <span class="keyword">int</span> ans = last + temp % <span class="number">79</span>;</span><br><span class="line">            ans %= <span class="number">79</span>;</span><br><span class="line">            last = ans;</span><br><span class="line">        &#125;</span><br><span class="line">        *ptr_cipher = ans;</span><br><span class="line">        ++ptr_cipher;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中a1，a3都是已知的整数数组，a2是要求的整数数组。因为是字节的运算，涉及到的常数初看乱糟糟的，可能会把人看晕掉。我们把这段话用C语言（塑料代码，没跑过，可能有错）重写一遍使之更清晰先：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> last;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> plain[], <span class="keyword">int</span> key[], <span class="keyword">int</span> cipher[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *ptr_plain = plain;</span><br><span class="line">    <span class="keyword">int</span> *ptr_cipher = cipher;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">37</span>;i++)<span class="comment">// 5476 / 148 = 37</span></span><br><span class="line">    &#123;</span><br><span class="line">        last = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">37</span>;j++) <span class="comment">// 148 / 4 = 37</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = *(ptr_plain + j) * *(key + j);</span><br><span class="line">            <span class="keyword">int</span> ans = last + temp % <span class="number">79</span>;</span><br><span class="line">            ans %= <span class="number">79</span>;</span><br><span class="line">            last = ans;</span><br><span class="line">        &#125;</span><br><span class="line">        *ptr_cipher = ans;</span><br><span class="line">        ++ptr_cipher;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这看着并不好搞，直接暴力搜索的复杂度显然不合理，逆推也不好推。想了好久，才想到要是把最后得到的ans的计算方式写出来，能得到一个线性同余方程。37个方程，37个未知数，这不便可以用高斯消元法解决么！于是，我想起了自己从没有写过高斯消元法的板子……</p>
 <p>这道题本身并不难，但我们是否能从其身上得到进一步的启示呢？比如，如何从众多CTFer中筛选出ICPCer？</p>
 <p>这好像是个<del>鬼畜</del>有趣的值得探讨的话题……</p>
 <h1 id="模式异同"><a href="#模式异同" class="headerlink" title="模式异同"></a>模式异同</h1><p>在把这两个竞赛联系起来之前，我们有必要看一看它们间的模式。</p>
 <p>ICPC：根据题目描述，设计出<strong>高效</strong>的算法，通过input计算得output。</p>
 <p>CTF：根据题目的描述，通过<strong>可行</strong>的方法，获得flag。</p>
-<p>在效率上，ICPC较为严格，留给程序的时间多以秒或毫秒为单位。考虑到数据的量级，一般而言O($n^3$)以上的算法都通不过。而CTF对于效率要求较低，更关注正确性。所以一般多项式级别的算法都可以。虽然CTF对效率没有过高的要求，但它也不会纵容无脑的暴力搜索。许多RSA的题目就是很好的例子。</p>
-<p>无脑的暴力搜索的一种方案便是枚举答案，看它是否能够算出flag。在实际的情况中，flag中的各位间应当缺乏联系（迭代的关系也可以，还有什么关系呢？）。这样暴力枚举的复杂度便是组和量级的。故而参赛者只得找出加密/检验算法中的vulnerability，以快速而优雅地解出flag。</p>
+<p>在效率上，ICPC较为严苛，留给程序的时间多以秒或毫秒为单位。考虑到数据的量级，一般而言运算量要在1e8以下。而CTF对于效率要求相对较低，更关注正确性。所以一般多项式级别的算法都可以。虽然CTF对效率没有过高的要求，但它也不会纵容无脑的暴力搜索，在密码学中，这是“好的加密”的首要特点。</p>
+<p>无脑的暴力搜索的一种方案便是枚举待枚举项，看它是否是flag或者能够算出flag。在实际的情况中，flag中的各位间应当缺乏联系（迭代的关系也可以，还有什么关系呢？）。这样暴力枚举的复杂度便是组和量级的。故而参赛者只得找出算法中的vulnerability，以快速而优雅地解出flag。</p>
 <p>多数CTF题是没有input的，除了crypto（好吧，misc里给的图片算是input吗？）。为了向ICPC看起（虽然也有少量ICPC题目中无输入，这里头很多毒瘤题），我们一般可以在crypto题中加入算法的要素。也不只是crypto，rev、ppc都可以。从这个角度看，这三类题还是共性大于个性的。</p>
 <p>于是，通过设置解密的模式，给参赛者cipher，（文章开头提到的那道rev的模式也是类似的：please enter the flag，然后检测输入的flag是否能通过检测），我们可以检验与赛者的代码阅读理解能力，对算法的理解能力，还有各方面杂七杂八的能力。</p>
 <p>不过，也有另一种思路。</p>
-<h1 id="关注复杂度"><a href="#关注复杂度" class="headerlink" title="关注复杂度"></a>关注复杂度</h1><p>说到复杂度，这次ACTF里还有另外一道rev，说是只要耐心等程序跑完就能拿到flag。用IDA一看，是个递归方程，没有记忆化，复杂度妥妥的O($k^n$)，等它跑完宇宙都凉了（好吧，是热寂，热得凉了）。怎么破呢？很简单，加个记忆化自己跑一遍就完了。</p>
+<h1 id="关注复杂度"><a href="#关注复杂度" class="headerlink" title="关注复杂度"></a>关注复杂度</h1><p>说到复杂度，这次ACTF里还有另外一道rev，说是只要耐心等程序跑完就能拿到flag。用IDA一看，是个递归函数，没有记忆化，复杂度妥妥的O($k^n$)，等它跑完宇宙都凉了（好吧，是热寂，热得凉了）。怎么破呢？很简单，加个记忆化自己跑一遍就完了。</p>
 <p>这个题目能够给我们一些复杂度上的启示：提示与赛者优化算法的复杂度。但是这个方向，私以为比较狭窄。把O($k^n$)和O($n!$)一类优化到多项式级别固然是一种思路，但是复杂度这样大得可怕的算法也不多，尤其是较为有名的。如要控制O($nlogn$)能通过而O($n^2$)不能通过，这也不好操作（除非是和服务器交互然后超时了它不给你flag，不过这样不就<strong>变成</strong>ICPC模式了吗……）。比如，我想这么出题：给定平面上n个点，求两个点间的最大距离。这个数取整再转为16进制再转为字符，就得到了flag。然后，控制n的规模，使得了解凸包的选手能在稍短的时间内跑完得到flag，而只会暴力的选手则在比赛时间内都跑不完。</p>
-<p>理论上这个思路确实可行，但实操起来……假设一场比赛赛程十天，那么十天都跑不完的O($n^2$)中的n要多大？还能不能跑起来？如果能跑起来，还有没有其他的思路？比如用划分一下数据范围多台机子一起跑等等……总之这个方向看上去不是很漂亮，也不能很好地检验算法能力。而要真正检验算法能力，还是O($n^4$)，O($n^5$)更加适合，可问题在于我们也少有接触过这个复杂度量级的算法……</p>
+<p>理论上这个思路确实可行，但实操起来……假设一场比赛赛程十天，那么十天都跑不完的O($n^2$)中的n要多大？还能不能跑起来？如果能跑起来，还有没有其他的思路？比如分一下块跑并行等等……总之这个方向看上去不是很漂亮，也不能很好地检验算法能力。而要真正检验算法能力，还是O($n^4$)，O($n^5$)以及更高次数才适合，可问题在于我们也少有接触过这个复杂度量级的算法……（或者可以在计算中引入冗余操作让player除去它们？）</p>
 <p>（以上是关于时间复杂度的，关于空间复杂度还莫得思考）</p>
 <h1 id="解密模式"><a href="#解密模式" class="headerlink" title="解密模式"></a>解密模式</h1><p>上面讲到了解密的模式，我们再来更深入地看一看。</p>
 <p>首先是阅读理解代码，阅读crypto中给出的代码，或是IDA反编译出的伪代码。这些代码的码风和我们自己写的不尽一致，故而阅读理解并不总是很轻松。阅读时，当在草稿上画出函数间的流程图，标记出重要的，还未完全理解的语句。将代码转化为等价的更容易为自己接受的形式。再来是保持清晰的头脑。这样就差不多了，能够对这段代码做了什么，效率如何，产生初步的理解。</p>
-<p>然后是关注关键点了，比如以上的例子中，ida里头那一段代码。它反映了什么知识点？这是很难从代码反推出来的，除非我们已对这一知识点有了一定的认识。我们能做的，只是将代码转化为尽可能多的，等价的形式，从各个角度看能否解出更多的信息。这对于与赛者而言，无疑是充满挑战的。</p>
+<p>然后是关注关键点了，比如以上的例子中，ida里头那一段代码。它反映了什么知识点？这是很难从代码反推出来的，除非我们已对这一知识点有了一定的认识。我们能做的，只是将代码转化为尽可能多的，等价的形式，从各个角度看能否解出更多的信息。这对于player而言，无疑是充满挑战的。</p>
 <p>而站在命题人的角度，我们能怎么调戏参赛者呢？</p>
 <p>自行设计加密/检验算法想想也很伤脑筋，还是结合已有的算法更能体现CTF的精神。结合已有的算法的时候，不能像ICPC那样关注剪枝啊，数据结构之类，往模板题或是毒瘤题的方向靠拢或许更好。</p>
 <p>比如，这次ACTF就考察了以下方向（这里只列了我会做的555）。<del>戳我获得题目链接。</del></p>
@@ -155,8 +155,8 @@
 <p>5.线性同余方程组</p>
 <p>（如果看不了题，可以想想从这些方向出发，能怎么调戏参赛者）</p>
 <p>除了这些方向，我们还可以在CTF中考察什么样的算法呢？</p>
-<p>线性基（类似上面线性同余方程组的检验方法）？尼姆博弈（逐位检验）？欧拉函数？……</p>
-<p>以上的方向还没有归类，或许需要进一步的探讨。</p>
+<p>线性基（类似上面线性同余方程组的检验方法）？尼姆博弈（逐位检验）？乘性函数？……</p>
+<p>以上的方向还没有归类，也不一定都能编出漂亮的题目，或许需要进一步的探讨。</p>
 <hr>
 <p>开始于2019-05-28</p>
 <p>完稿于2019-05-30</p>
@@ -165,8 +165,8 @@
   <div class="post-nav">
     <div class="post-nav-next post-nav-item">
       
-        <a href="/2019/05/21/Competition-ACTF/" rel="next" title="【围炉夜话】ACTF十日谈">
-          <i class="fa fa-chevron-left"></i> 【围炉夜话】ACTF十日谈
+        <a href="/2019/05/21/Competition-ACTF_2019/" rel="next" title="【浮生掠影】ACTF十日谈 BY NESS">
+          <i class="fa fa-chevron-left"></i> 【浮生掠影】ACTF十日谈 BY NESS
         </a>
       
     </div>

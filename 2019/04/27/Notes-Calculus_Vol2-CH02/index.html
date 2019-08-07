@@ -1,0 +1,247 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【数学之美】微积分下-苏德矿版：第二章 多元函数微分学</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">2.1k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">7分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+        <p>数学_分析</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-04-27</span>
+    </div>
+    <div class="post-content">
+      <h1 id="极限与连续"><a href="#极限与连续" class="headerlink" title="极限与连续"></a>极限与连续</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>多元函数：一种特殊的映射。比如，$R^2 \rightarrow R$的映射，这里又用到了笛卡尔积！</p>
+<p>关注定义域（二位情况下为一平面）</p>
+<h2 id="平面点集"><a href="#平面点集" class="headerlink" title="平面点集"></a>平面点集</h2><p>邻域（依据距离描述，事实上一维情况中也是用距离描述的）</p>
+<p>点的类别：内点外点与界点，通过邻域来描述</p>
+<p>集的类别：开集与闭集（关注描述方式）</p>
+<p>连通性（通过折线描述）与开区域</p>
+<p>对于上述概念，我们能够发现，开集与闭集（集的类别）是通过内点外点（点的类别）刻画的，而连通性也是由点的相连刻画的。然而，点本身则是依据其他点（邻域）刻画的。在这里，点本身并不重要，重要的是点与点之间的联系。</p>
+<h2 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h2><p>二重极限：由任意路径逼近都趋于极限值，方有二重极限。</p>
+<p>累次极限：先x后y或先y后x的趋近极限值，两种算法可能不一，本质是一元极限。</p>
+<p>二重极限中的“任意”难以直接确定，但否定只需找出反例即可。故若有函数满足在两条路径下趋向某点的极限值不一，函数在该点没有二重极限。</p>
+<p>举个例子：$f(x, y) = \dfrac{2xy}{x^2 + y^2}$。取$y = kx$，可说明其在$(0, 0)$处无极限。</p>
+<p>虽说二重极限似乎比累次极限更“苛刻”更“强”一些，但事实并非如此，$f(x, y) = xsin \dfrac{1}{y} + y sin \dfrac{1}{x}$便是一个非常好的例子。</p>
+<p>有定理：若两累次极限与二重极限均存在，则三者相等。</p>
+<p>该定理的推论为：若两累次极限存在但不相等，则二重极限不存在。</p>
+<p>在用定义求二重极限时，通过不等式（如基本不等式）还有齐次化的方法有时能够在一定程度上简化问题。</p>
+<h2 id="连续"><a href="#连续" class="headerlink" title="连续"></a>连续</h2><p>//二元函数的连续性较之一元更为难以判断，是否有判断连续的方法？</p>
+<p>二元函数中的连续继承了一元函数中的一些方法：最值、介值、一致连续……</p>
+<h1 id="偏导数与全微分"><a href="#偏导数与全微分" class="headerlink" title="偏导数与全微分"></a>偏导数与全微分</h1><p>介绍偏导数前，先介绍的是“增量”的概念。</p>
+<p>所谓偏导数，理解起来相当容易，不论是在代数上还是几何上。</p>
+<p>值得注意的是：$\dfrac{\partial f(x, y)}{\partial x \partial y} = \dfrac{\partial f(x, y)}{\partial y \partial x}$，当$f_{xy}^{‘’}(x, y)$与$f_{yx}^{‘’}(x, y)$在给定点均连续时。（至于证明，先考虑如何得到二阶导数？可以通过两次一元的中值定理，而这需要构造出一个四元的F，再“算两次”即可）</p>
+<p>至于偏导数的计算，主要有两种策略：先代入另一变量再套公式，或者先套公式再代入，计算复杂度不一。</p>
+<p>全微分，和一元的情况很像，写出来是$df(x, y) = A(x)dx + B(y)dy + o(\rho)$</p>
+<p>关键在于全微分与偏导数的关系：$df(x, y) = \dfrac{\partial f(x, y)}{\partial x}dx + \dfrac{\partial f(x, y)}{\partial y}dy + o(\rho)$，此即全增量公式（这个式子是先假定全微分存在，再令$\Delta y = 0$，则可得到$A = \dfrac{\partial f(x, y)}{\partial x}$，非常奇妙的思路）</p>
+<p>也正和一元的情况一样，可微强于连续：可微必然连续，连续不一定可微。另外，可微还能推出偏导存在。反过来不成立，反例：$f(x, y) = ((x, y) == (0, 0) ? \dfrac{2xy}{\sqrt{x^2 + y^2}} : 0)$。（这一反例与前面的例子略有差异）</p>
+<p>但是偏导函数连续（作为二元函数的连续）能够推出可微（证明也是用的两次一元中值定理），这是判断函数可微的重要方法。</p>
+<p>概念的话，关系比较错综复杂，大致有连续、可导、可微、偏导连续这几项。</p>
+<h1 id="复合函数微分法"><a href="#复合函数微分法" class="headerlink" title="复合函数微分法"></a>复合函数微分法</h1><h2 id="求偏导"><a href="#求偏导" class="headerlink" title="求偏导"></a>求偏导</h2><p>证明（直接代入$\Delta z = (A + \epsilon_1) \Delta u + (B + \epsilon_2) \Delta v, \Delta u = …$）</p>
+<p>算法（类似dfs的算法，变量间的关系是树状结构的，方向是从高层到低层，此之谓链式法则）</p>
+<p>应试中需要关注当变元只有一个的时候，$\partial$得换成d。</p>
+<p>//微分恒等式是如何构造出来的？</p>
+<p>//变换方程的一般算法？</p>
+<h2 id="全微分"><a href="#全微分" class="headerlink" title="全微分"></a>全微分</h2><p>一阶微分形式不变性//二阶情形？联系一元？普遍适用性？</p>
+<h1 id="隐函数微分法"><a href="#隐函数微分法" class="headerlink" title="隐函数微分法"></a>隐函数微分法</h1><p>计算方法：用求导，抑或是用全微分//例子，及全微分在解题时的优越性？</p>
+<p>//自由变量？自变量与因变量？</p>
+<h2 id="隐函数组"><a href="#隐函数组" class="headerlink" title="隐函数组"></a>隐函数组</h2><p>一元情形下并没有这个东西，但多元就有了，为啥捏？因为变量间的关系更加错综复杂了。可以一个方程刻画一个隐函数，也可以两个方程刻画两个隐函数（f、g），故而有了隐函数组的概念。</p>
+<p>求解隐函数组其实很简单，把所有方程都对同一变量求偏导，然后解方程就行了。归纳起来便是雅可比行列式。</p>
+<p>//记号问题</p>
+<h1 id="方向导数与梯度"><a href="#方向导数与梯度" class="headerlink" title="方向导数与梯度"></a>方向导数与梯度</h1><h2 id="方向导数"><a href="#方向导数" class="headerlink" title="方向导数"></a>方向导数</h2><p>方向导数的本质：将两个自由变量化为一个自由变量，即坐标系的一维化</p>
+<p>可微则方向导数必存在，其公式也比较简单。但是这里因为有了新的概念引入，概念间的关系又更复杂了：①可微是方向导数存在的充分而非必要条件；②……</p>
+<p>例子：蚂蚁旅行//这个例子的本质？</p>
+<h2 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h2><p>梯度用于刻画$\dfrac{\partial u}{\partial l}$的最值</p>
+<h1 id="多元函数近似运算"><a href="#多元函数近似运算" class="headerlink" title="多元函数近似运算"></a>多元函数近似运算</h1><h2 id="多元函数泰勒公式"><a href="#多元函数泰勒公式" class="headerlink" title="多元函数泰勒公式"></a>多元函数泰勒公式</h2><p>用“多项式”刻画多元函数。</p>
+<p>n阶泰勒公式（证明：构造新的函数，将多元转化为一元，先配出公式，再考虑余项），关注记号。</p>
+<p>注意：因为偏导连续，故而$\dfrac{\partial^2 f}{\partial x \partial y}= \dfrac{\partial^2 f}{\partial y \partial x} $。</p>
+<p>二元函数拉格朗日中值公式及其推论（偏导为零，函数值不变）</p>
+<h2 id="多元函数的极值"><a href="#多元函数的极值" class="headerlink" title="多元函数的极值"></a>多元函数的极值</h2><h3 id="多元函数极值概念"><a href="#多元函数极值概念" class="headerlink" title="多元函数极值概念"></a>多元函数极值概念</h3><p>极值点能够推出偏导不存在，或是存在而为零（证明前者：利用拉格朗日中值定理，$f(x_0 + h, y_0) - f(x_0, y_0) = hf’(x_0 + \theta h, y_0)$，再加个保号性）</p>
+<p>如何判定驻点是极值点呢？记$A = f^{‘’}_{11}(x_0, y_0), B = f^{‘’}_{12}(x_0, y_0), C = f^{‘’}_{22}(x_0, y_0)$，则</p>
+<p>—————$B^2 - AC &gt; 0$：驻点非极值点</p>
+<p>—————$B^2 - AC &lt; 0$：驻点为(A &gt; 0 ? “极小值” : “极大值”)（A不会为0哒）</p>
+<p>—————$B^2 - AC = 0$：得特判</p>
+<p>证明的话依旧是拉格朗日中值定理：$f(P) - f(P_0) = \dfrac{1}{2!}[f^{‘’}_{11}(x_0 + \theta h, y_0 + \theta k) h^2 + …]$，而$f^{‘’}_{11}(x_0 + \theta h, y_0 + \theta k) = f^{‘’}_{11}(x_0, y_0) + \epsilon_1$，然后后者在$h \rightarrow 0, k \rightarrow 0$时为无穷小量，可以忽略。所以考虑二次函数$Ah^2 + 2Bhk + k^2$，判断一下$\Delta$就能得出$\Delta \not = 0$时候的结论啦（因为$\dfrac{h}{k}$可以任意取值，所以要看在全部区间上二次函数是否同号）。//书上为何在$\Delta &lt; 0$时用了其他方法？</p>
+<p>但是这样还有一个疑问：$\Delta = 0$的时候为什么需要特判呢？这些是佐证需要特判的例子：$f_1(x, y) = x^2 + y^4, f_2(x, y) = -f_1(x, y), f_3(x, y) = x^2 + y^3$在(0, 0)点处。<del>下面我不会了</del></p>
+<h3 id="多元函数的最值"><a href="#多元函数的最值" class="headerlink" title="多元函数的最值"></a>多元函数的最值</h3><p>比之极值，还要考虑边界点（不同于一元的情形，边界点有无穷个）</p>
+<h3 id="条件极值"><a href="#条件极值" class="headerlink" title="条件极值"></a>条件极值</h3><p>还记得以前的线性规划么？这里约束条件也来了，不过不一定是线性的……</p>
+<p>条件极值的简单情形如是：$G(x, y, z) = 0$，求$f(x, y, z)$的最大值。</p>
+<p>传统的做法是消元法，但是当z为x、y的隐函数时消元可能做不了。这样还有什么算法呢？拉格朗日乘数法。</p>
+<p>//拉格朗日乘数法的可靠性</p>
+<p>//拉格朗日乘数法的优越性</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/04/27/Other-Hot_Keys/" rel="next" title="【图灵之路】常用快捷键与常见命令">
+          <i class="fa fa-chevron-left"></i> 【图灵之路】常用快捷键与常见命令
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/04/27/Notes-Calculus_Vol2-CH01/" rel="prev" title="【数学之美】微积分下-苏德矿版：第一章 矢量代数与空间解析几何">
+          【数学之美】微积分下-苏德矿版：第一章 矢量代数与空间解析几何 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

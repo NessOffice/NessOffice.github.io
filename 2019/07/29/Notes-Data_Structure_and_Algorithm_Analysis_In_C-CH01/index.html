@@ -1,0 +1,232 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【图灵之路】基于C语言的数据结构及其算法分析-Weiss版：前两章 基础知识</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">2.6k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">9分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+        <p>计算机</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-07-29</span>
+    </div>
+    <div class="post-content">
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>数据结构是什么？提及数据结构我们往往会想到链表、队列、栈、堆、树等等，但事实上，我们在C语言基础课程中所用的int, char, double，都是数据结构。数据结构，顾名思义，便是存储数据的结构。为什么要考虑数据的结构？因为对于不同特点的数据，对于不同的需求，不同的结构处理问题的复杂度（包括实现的复杂度与计算的复杂度）往往大相径庭。随着计算机科学的发展，我们遇到的问题也在增多，为了处理各式各样各不相同的问题，我们需要用各有特色的数据结构辅助程序设计。</p>
+<p>简言之，数据结构是为提升处理问题的效率而被使用的。数据结构的多样表现在不同容器在特点上的的各不相同。故而学习数据结构时我们需要秉承联系的观点，比较的观点，要清楚什么样的问题该使用什么样的数据结构处理，并能对其效率进行科学的分析。</p>
+<p>以上是学习的目标。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>CH01：简单的回顾性的章节，回顾了一些离散中的概念，还有递归的概念。</p>
+<p>CH02：简单的算法分析的章节，介绍了复杂度相关的概念和记号，一些常见简单算法的复杂度分析，结合了图表和较多实例。</p>
+<p>CH03：线性表、栈、队列</p>
+<p>CH04：树的基础，主要介绍了包括B-树在内的搜索树</p>
+<p>CH05：哈希</p>
+<p>CH06：堆</p>
+<p>CH07：排序</p>
+<p>CH08：并查集</p>
+<p>CH09：图论相关算法</p>
+<p>CH10：算法设计相关知识</p>
+<p>CH11：对前面章节的较难的数据结构进行复杂度分析：斐波那契堆，等</p>
+<p><a href="https://wenku.baidu.com/view/30ab767b5acfa1c7aa00ccec.html" target="_blank" rel="noopener">答案链接（狗日的百度文库）</a></p>
+<h1 id="第一章：预备知识"><a href="#第一章：预备知识" class="headerlink" title="第一章：预备知识"></a>第一章：预备知识</h1><p>首先是两个关于“这本书是讲什么的”的例子。这本书讲数据结构也讲算法，在程序正确性的基础上对效率有了更进一步的要求。于是例子，无非是关于效率的重要性的。第二个例子比较无聊此处略去。第一个例子是“找出n个数中的第k大值“。很明显，我们可以用排序的方式或是其他方式得出正确答案。可是这些个方式足够高效吗？当n为1e7的时候，程序要跑几天呢？事实上，我们有解决这个问题的高效的算法，它是这样的：先……</p>
+<p>接着是介绍本书在算法分析时要用到的一些简单的数学知识：指数的运算法则（有哪些呢？初中内容哦），对数的运算法则（换底公式等），若干前缀和的渐进值（几何级数，还有$\sum i^k$，注意k=-1即调和级数的情形），同余的概念及性质，证明的策略（这里只提到了数归、反证法、举反例，离散书里梳理地更详细些）。</p>
+<p>接下来是递归。递归便是自调用，没什么神奇的。因为函数的行为由其参量决定，所以函数递归调用的过程事实上可以看作一张有向图（简单的情况下会退化为链）的生成过程，图中的节点即参量下的函数。只要里头没有环，有终点，ok，程序就能跑出来。不要管字典，把那个抽象成图要复杂多了，虽然这可能更容易理解。递归函数执行的过程很像把归纳倒过来——为了得出结果，我们需要知道上一步的结果。</p>
+<p>所以关于递归的概念还有什么能讲的呢？<del>程序即证明。</del>书中作为例子的print_digit函数的正确性证明和程序内容的一致性，实则体现了数学归纳法与递归的程序设计这两者的内在一致性。故而在程序设计时，我们可以将递归调用的步骤抽象为一个被证明正确的黑箱子，于是只要设计递归的出口（对应于归纳法中的basis step），状态的转移（对应于inductive step）即可，而不必在乎计算机是如何进行递归的。这样的思维方式具有一定的价值（虽然对debug不一定有价值）。</p>
+<p>顺便，书中还说不宜使用递归来进行数值计算，比如计算Fibonacci数列的第n项。它说原因之后讲。不是关于效率，而是关于习惯。</p>
+<p>这一章的练习都没啥好做的。散。浅。少。当然上面哪个部分感觉学得不扎实，还是不妨做一做对应的习题的，虽然这个量实在补不出什么东西。（虽然”这一章的练习都没啥好做的“这种话很潇洒，但其实是我不会做orz。1.4看不懂题意；1.6d感觉答案的形式颇为复杂）</p>
+<h1 id="第二章：算法分析初步"><a href="#第二章：算法分析初步" class="headerlink" title="第二章：算法分析初步"></a>第二章：算法分析初步</h1><p>首先是big-O, big-Omega, big-Theta记号的定义。不懂的同学去翻下离散书，顺带复习一下它们运算的性质。为什么要引入这些记号呢？因为我们要分析程序的时间复杂度。为了简化问题，我们假设内存无限，“基本操作”所用的时间均为一个单位元。这样理想化以后，程序运行的时间便只和程序的细节，还有输入相关了。我们所要关注的，是输入较大时程序的渐进复杂度，即用什么样的函数可以很好地近似它（这些函数也要尽可能简单，多项式，对数，指数，它们的组和，都挺简单。至于系数？那不是主要矛盾。所以可以把$O(n^2)$视作一个等价类，用它可以刻画好多程序的上界呢）。big-O给出的是上界，big-Omega给出的是下界，而big-Theta则是给出了一个类似“等价”的概念。</p>
+<p>好了，有了好的记号（高德纳提出的，膜），我们来研究时间复杂度吧。具体要怎么研究呢？既然复杂度和问题的规模有关系，我们可以先研究一下最坏的情况（worst case），极端数据；再来研究一下平均情况（average case），数据等概率分布时候的平均复杂度。<del>至于什么期望复杂度我不会分析就不说了，比如什么最小圆覆盖，Pollard Rho，太玄了。</del></p>
+<p>为了对复杂度有一些感性的认识，我们来看一个实际的问题：给定序列$a[1 \dots n]$，求$max \{ \sum\limits_{k = i}^j a_k \}$。</p>
+<p>$O(n^3)$做法：枚举i，枚举j，算sigma，求最大值。炒鸡好理解，也跑的炒鸡慢，n=500就跪了。</p>
+<p>$O(n^2)$做法：枚举i，枚举j，算sigma，求最大值。看上去和上面的流程一样？但是上面的做法在计算sigma时做了很多重复的工作。这里，我们可以在枚举j的同时算sigma（维护前缀和的思想），这样复杂度就降下去一个n啦。炒鸡好理解，跑得比较慢，n=10000会跪。</p>
+<p>$O(nlogn)$做法：分治。具体看书，此处不表。很多情况下复杂度出现$log$都可以考虑是不是用了分治，二分，倍增，等等等等。当然，也有些特殊的情况，这在下面会讲。这个复杂度一般情况下都很棒了，n=1e5可以处理。</p>
+<p>$O(n)$做法：滑动窗口！具体看书，此处不表。在枚举j的同时动态地最优地更新i，嗯，就这样。n=1e7可以处理。顺便，这个做法可以在线做，所以它基本没有空间复杂度！太棒了对吧！</p>
+<p>（以上数据范围都是口胡的，没有测试过，不要信以为真呀。然后所谓“会跪”差不多就是超过1s这样）</p>
+<p>上面的复杂度是怎么分析得出的呢？（随便看看就好了）抓住主要矛盾，常数不要管，就管最高次。关注递归，关注循环，大概就差不多了吧……</p>
+<p>然后书里举了一个非常经典的复杂度爆炸的例子：$fib(n) = fib(n-1) + fib(n-2)$。递归运算的冗余操作太多太多了，以至于复杂度从$O(n)$飙到$O(2^n)$。这个例子告诉我们：不要随便用递归代替循环（如果要也一定要记忆化）。</p>
+<p>然后因为对数复杂度好高效，书里就介绍了三种对数复杂度的算法：二分搜索（从这里可以引出数据结构了！）、欧几里得算法、快速幂。其中Euclid算法为何是$O(logn)$的呢？只要注意到$mod(m, n) \leq m/2$这样一个不等式就好了。这能否说明这一算法是$\Theta (logn)$的呢？嗯……这比较困难，需要“pages and pages of sophisticated mathematical analysis”，不过这个问题（对初学ds者而言）似乎没有什么研究的必要？毕竟这个上界已经很强了不是么。</p>
+<p>上面的复杂度很多都是“感知”出来的。为何检验我们的猜想，我们有两种方案：①跑程序，根据数据-运行时间图感受；②推式子，把$T(n)$求出来然后慢慢化。</p>
+<p>然后这章讲的有些东西是比较难的，碰到一些牛逼的数据结构，比如并查集什么的，普通的分析方法就跪了。这就要具体问题具体分析了，在之后的章节会讲。</p>
+<p>习题的话，2-2是定义题，不妨一做。</p>
+<p>2-7提到了个有趣的随机排列生成算法，不妨一看（<em>programming pearls</em>里面也有），另外它对于前两种做法复杂度的分析也值得一看。</p>
+<p>2-10提到了秦九韶算法。</p>
+<p>2-14提到了埃氏筛法的复杂度，这是个问题……答案指向了<em>TAOCP</em>的第二卷第394页……</p>
+<p>2-19是个比较有意思（duliu）的问题。但是并没有看懂n为奇数的情形……</p>
+<p>2-20题意没看懂。</p>
+<hr>
+<p>初稿写于2019.07.17</p>
+<p>完稿写于2019.07.18</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/07/28/Notes-Understanding_Cryptography-CH01/" rel="next" title="【白冠之礼】深入浅出密码学：前一章 密码学导论">
+          <i class="fa fa-chevron-left"></i> 【白冠之礼】深入浅出密码学：前一章 密码学导论
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/07/29/Notes-Probability_and_Statistics-CH01/" rel="prev" title="【数学之美】概率论与数理统计-张帼奋版：前一章 基本概念">
+          【数学之美】概率论与数理统计-张帼奋版：前一章 基本概念 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

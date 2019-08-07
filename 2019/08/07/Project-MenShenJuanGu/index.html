@@ -1,0 +1,232 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【通天之塔】游戏设计5：记《门神眷顾》，及开发过程的的心路历程</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">4k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">13分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>软件工程</p>
+      
+        <p>设计</p>
+      
+        <p>游戏</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-08-07</span>
+    </div>
+    <div class="post-content">
+      <p>三年前与三年后。</p>
+<h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>今年五月到六月，因为某个原因和蒋哥一起开发了个小游戏。虽然比较粗糙，也没有取得什么，但不管怎么说也是心头肉呀……我比较没用，前期因为ACTF在划水，后期因为ICPC在划水，中间信心满满地接过蒋哥扔过来的锅，但打开sublime就陷入了看着代码痛苦不堪地“这是啥呀”“天哪这代码怎么这么乱”的死循环，这就比较累。其实自己没有写多少（程序上只是完成甲方的要求，话说哪有这么靠谱的甲方……游戏的平衡性和测试上也没有做太多工作。音乐放了等于没放。io又鸽了，话说我是讨厌io吗……写文档做PPT……），辛勤耕耘的都是蒋哥。虽然结果尚可（我觉得这作为一个游戏还是有可玩性与创新点的，虽然小瑕疵有些多……），但这样劳累的过程实在是不应该，而应该是happy coding的。那么问题出在哪里呢？在探讨之前，还是先来看一看这块心头肉。</p>
+<p>（总算有一个不是以组长的身份参加的项目了……虽然我还是名义上的组长。为啥我总是组长啊orz还总是很糟糕的那种组长。）</p>
+<h1 id="《门神眷顾》日后谈"><a href="#《门神眷顾》日后谈" class="headerlink" title="《门神眷顾》日后谈"></a>《门神眷顾》日后谈</h1><p>一开始的题目是“和门相关的游戏”（<del>暴露了呢</del>），然后我们觉得和传统文化挂钩比较好，就先独立地策划游戏策划了若干天。我的想法呢，是这个门，要大气，要恢弘，应该是“Gate”，整个部落的守护之门，而不能是“door”这种。既然如此，那么时间就得拨到部落时代，游戏得是生存向的。玩家是gate中的神灵，白天作为部落的一员参与活动，晚上作为神守护部落。这样玩家既是见证者，又是守护者，但不是决策者（部落首领）。游戏是rougelike性质的：有经济生活，政治生活，有军事要素，科技水平随部落规模不断提升后会出现更多要素……因为我不会画画所以游戏画面就走<em>dwarf fortress</em>这种风格好了，越简陋越好，以此作为卖点，突出游戏性。游戏的主题也能在这个设定下往高大里走：“反映整个部落乃至全世界中人类的不屈斗志与乐观精神”“门之守护神的守护即人类的自我守护；它也使向往安宁的人们汇聚在一起，构建出社会的原型；它还象征着人们对美好生活的憧憬与希冀。”……就叫它《巢湖志》吧。故事，发生在有巢氏所领导的部落……</p>
+<p>然后蒋哥跟我说，要求里面有“致力于中国传统文化在游戏中的传承与创意呈现”。然后我就“嗯……”。如果坚持这个方案的话主导权就在我了，而我现在都很忙，对《巢湖志》在细节上当如何设计还不是很清楚，而蒋哥似乎颇有想法的样子，所以就决定改策划给蒋哥打工了……</p>
+<p>（中国传统文化？Freud Gate体现了哪门子的传统文化啊怎么大家都在关心抑郁症患者啊这跟中华传统文化有个球的关系啊）</p>
+<p>蒋哥设计游戏是以《金庸群侠传》为原型的（疑似），而我压根没接触过这个……于是策划全权交给蒋哥了，伴随着leadership。</p>
+<p>蒋哥的《门神眷顾》是strategy game，钓鱼/砍柴-&gt;买门神-&gt;斗夜魔-&gt;钓鱼/砍柴，游戏模式就是这样，很简单，但挺好玩。游戏特色啥的全部写在游戏说明文件里，这里就不放了，这里毕竟是日后谈呀，该谈些没有写出来的东西……</p>
+<p>一开始游戏的画风并没有确定，我想的是简约风（我也只会简约风了hhh），花13笔画了个“関聖帝”，蒋哥感觉不可，想试试Q版画风。虽然我一向不大喜欢Q版风格（国内很多辣鸡游戏都这种风格，不喜），但看到蒋哥画出的第一张“神荼郁垒”感觉还是好萌的，很可。于是之后蒋哥就进入了肝画的境界……咱也没体验过，咱也不知道什么样。</p>
+<p>噢，说到游戏文件，我把它托管在github上：<a href="https://github.com/NessOffice/Game-MenShenJuanGu" target="_blank" rel="noopener">门神眷顾</a>。游戏的<a href="https://nessoffice.github.io/Game-MenShenJuanGu/">链接</a>也在里面。</p>
+<h1 id="问题1-初始的游戏策划"><a href="#问题1-初始的游戏策划" class="headerlink" title="问题1.初始的游戏策划"></a>问题1.初始的游戏策划</h1><p>一开始蒋哥把大框架给了我，也就是游戏有哪些form，主界面是怎样的。不过看完这个框架后我还是一脸茫然并不知道蒋哥想要怎么设计，不知道这个village放在这是干嘛用的，不知道这个fish的模式是如何的，啥也不知道。直到蒋哥把魔物的属性发给我让我写Monster.js，我才猛地发现这游戏的游戏模式就这么简单……</p>
+<p>设计课上提到，“原型设计”是设计中的一个关键步骤（真要说起来，没有哪个步骤不关键，嗯）。原型设计不仅表现在设计师对产品须具有初步的全局性的认识上，还表现在设计师同设计师，设计师同用户的交流上。</p>
+<p>前者大家都明白，但后者不亲身经历并不好理解，尤其是设计师同设计师之间的交流。如果是两三个人的小作坊，大家对彼此的想法能很快理解，对于一个模型能够快速达成共识，这就几乎不存在交易成本，合作的效率也能比较高。</p>
+<p>但如果人变多了，或者相互不能很快理解对方的想法，此时有效进行原型设计就比较重要了（要不然得用f(n)次研讨会替代，还不是等价的替代……），因为它能够让一方的想法能够快速被大家接受，以此提升合作的效率，同时避免错误理解造成的“走弯路”。原型设计的方法有很多，糊个交互界面出来固然是一种方法，但这个交互界面也不能过于简陋，必要的说明应当加上。不过个人更倾向于以故事板的方式呈现游戏的原型。</p>
+<p>在这一次的游戏策划中，蒋哥有设计游戏的原型，但其保真度过低，缺乏说明，连基本的游戏模式都不能让别人领会。这样的原型无疑是失败的。而没有即时指出它的失败而是选择摸鱼的我也相当失败。第一步选择摸鱼，往往在后面因为信息不对称也补不回来，只能摸鱼了。所以这第一步得走好呀。一是摸鱼可耻，二是沟通技巧需要加强（不光是通过自然语言沟通，用原型沟通也是沟通）。</p>
+<p>（谈起游戏策划，回想起以前和蒋哥口胡游戏的某几个中午，两支笔，一张草稿，两张嘴，一个主题。一个中午就这么过去，一个游戏，从大纲到细目，就全部清晰了。虽然还有很多要糊的dlc还没糊出来。有点累，因为没睡午觉，太过兴奋以至于头脑发胀，但还是兴奋地回不过神来，脑袋里一直盘旋着这个还没出生的游戏，想象着它这里这么做会更好，那里也能加点料，还有……真好啊，这样的感觉）</p>
+<h1 id="问题2-交易成本"><a href="#问题2-交易成本" class="headerlink" title="问题2.交易成本"></a>问题2.交易成本</h1><p>策划已经确定，那么接下来就可以码代码了。在一番协商之后，我和蒋哥决定了合作的模式：</p>
+<p>1）最新的代码（以日期区分版本）只能在一个人手里；</p>
+<p>2）双方轮流更新，一方工作时另一方休息或处理其他工作（如绘图、搞音乐、学习要实现某一功能的相关知识等）；</p>
+<p>3）维护log并每次在其中声明自己在本次更新中的done，to-do，对方的to-do。</p>
+<p>这样的模式是较为高效的，它保证了版本清晰不会出现混乱（虽然最后还是挺混乱的，同一个名字下的“门神眷顾1.0.0”被传了好几遍，不过那个阶段已经不用写代码了）。但这样的模式的问题在于它仅适用于两人小组间的合作，而若要移植到三人小组上，就要做一些额外的工作，组员在更新之前需要声明自己要更新哪些内容，和其他同学的工作会不会产生冲突，并在各方均完成任务后由组长集成组员的更新。不然，版本一旦产生混乱，整个工程的进展也会被搅和地乱七八糟。MenShenJuanGu这一项目和Tetris这一项目是同时进展的，合作的模式大抵相同，但前者在版本管理上做得较好，而后者的版本管理在后期陷入严重的混乱。（zyls的RankList和ljq的StartMenu同时进展，她们把代码发给我，我不知道她们更新的代码基于哪个旧版本，也不知道她们彼此交流地如何，只能手动fc手动整合，也算是一种补救措施了，虽然这样比较累）</p>
+<p>但模式的高效并不意味着实际操作的高效。蒋哥每次把代码发给我，我都得先略读一遍他的更新，以找出自己完成to-do所需要与之关联的变量、函数等。起初我还想着要重构蒋哥的代码的，但这实在太耗费时间耗费精力却不带来多少成就感，只得自降要求，只完成蒋哥给的to-do了。</p>
+<p>即便如此，工作也并不轻松，一开始的困难显然是阅读蒋哥的代码，这个过程……一言难尽。</p>
+<p>不得不承认，蒋哥代码的冗余度相当高。比如声明一个按钮，每次都得六行，中间一堆相似的变量名。这一做法的罪恶不仅在增加代码的冗余度，使本当精简的代码变得肥硕而丑陋。更罪恶的是，它使得代码更难分析更难找出要点了。F3变量名的跟踪效果变差了，因为要按F3的次数基本都乘上了个6，虽然听起来没什么，但是谁试谁知道，这到底有多难受……</p>
+<p>代码中的冗余当然不止这一个地方。场景转换时的addEventListener/removeEventListener，一个文件存天下的模式，等等。这些有的解决了，有的没有解决，但总之都让分析代码的复杂度提高了若干个层级。</p>
+<p>相对于对代码逻辑的理解，冗余还是小问题。接过一个涨了若干KB的文件，看到一大推完全不认识的新函数新变量，还要理清楚它们之间的关联，以开始自己的工作，这想想就可怕。更何况这些代码并不友好，没有显示函数调用关系的流程图，没有说明函数功能的注释。所有这些，都使得分析代码的工作痛苦非常。</p>
+<p>写好注释，说明大框架下的小框架，讲明白函数的内容，这是对coder的要求。而对于analyst，也不能对着代码就这么看，还是要拿起纸拿起笔，梳理清楚代码的逻辑的，如果这个逻辑比较复杂。事实上蒋哥的代码并不复杂，静下心来就能看懂，但我的状态实在是太差了。后期蒋哥疯狂提醒我没时间了得肝肝Monster.js的部分，但我一直都不在状态。倒数第二天随便写写，也就写完了。不在状态的原因，一来是心理状态不佳（可能这个学期就没好过），二来是对代码逻辑缺乏认同吧。</p>
+<p>我看蒋哥的代码看得挺难受，但想想如果自己是他的话写下这些代码的时候相比是充满激情有一定成就感的，而没有太管他人在阅读这样的代码时候是如何感受的……想到这里感觉有些愧疚（tetris一来就写了50%，只顾自己写得爽，没有考虑到她们在之后接锅时候的感受），就问了问ljq“我的代码冗余度是不是很高”“看我的代码的时候有没有很难受”。并没有得到有效的信息，反而让人家感叹“我太菜了”……明明应该是我的问题，你们要指出的呀。</p>
+<h1 id="问题3-心理状态"><a href="#问题3-心理状态" class="headerlink" title="问题3.心理状态"></a>问题3.心理状态</h1><p>正反馈过少。这是在玩js时不太可能出现的一个问题，但它毕竟还是出现了。</p>
+<p>为何会如此呢？首先是读蒋哥的代码读得很累，然后就不想读了，也不想完成任务。想摸鱼，可又想到有其他项目在身：whatolearn（我好棒哟，又咕咕咕了呢），史纲论文，物理考试，对微积分的理解，英语六级，打CF并写题解……其实这些都不算难，虽说有的可能比较烦。但没有祭出对它们在战略上的轻蔑就会导致心态很崩，感觉自己什么都做不好，什么都不想做，又水，又咸，就会很难过。写游戏应该是快乐的事情，解压的事情，但也加入了“锅”的行列，扩大了它们作为一个整体对我的影响，这很不应该呀。</p>
+<p>这一学期的状态差得可怕，原因何在呢？我对事物的认识似乎发生了一些错位。不应该天天觉得自己很菜什么都做不成因为这种状态本身就很糟糕，没有认识到写游戏的快乐而只是抱着摸鱼的心态和蒋哥合作，没有发现史纲论文是一个晚上就能搞出来的而是让它烦了自己一个月，没有体会到英语六级的重要性及紧迫性故而在最后的关头才开始慌张，没有想到……这么多错位都叠在一块，也真是够可以的。更糟糕的是，我好像还一直把负能量传播给同学……我应该看开一点，心态摆好一些，这样应该就能，享受写游戏的乐趣，享受探索的乐趣，享受生活的乐趣了吧。</p>
+<h1 id="问题4-知识掌握程度"><a href="#问题4-知识掌握程度" class="headerlink" title="问题4.知识掌握程度"></a>问题4.知识掌握程度</h1><p>我们是用的一个js库，但对库的用法，对js内对象的特性还不是很清晰，以至做不到把对按钮的声明封装起来以降低代码冗余度。</p>
+<p>不太熟悉web相关的操作，在io上毫无头绪，游戏的一些功能（“昔日荣誉”）也就被鸽掉了。</p>
+<p>不懂音乐也不会创作，不懂在这个库里循环播放的正确用法，这个功能又鸽掉了。</p>
+<p>以上……</p>
+<p>前端的事，很多查文档就好了，但在文档较少的情形之下， 必要的理解能够帮助解决问题，而这是我们所缺乏的，所不应该缺乏的。</p>
+<h1 id="有趣的地方"><a href="#有趣的地方" class="headerlink" title="有趣的地方"></a>有趣的地方</h1><p>①游戏的demo出来后调参以调平衡性的这部分很有意思，玩过都知道，这就是很有意思。</p>
+<p>②把游戏的demo发给同学后他认真地评测了……还提出了些有力的见解。</p>
+<hr>
+<p>开始于2019-08-05</p>
+<p>完稿于2019-08-07</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/08/05/ICPC-Practice-Codeforces_4/" rel="next" title="【图灵之路】CF记-其四（2019-08-05更新）">
+          <i class="fa fa-chevron-left"></i> 【图灵之路】CF记-其四（2019-08-05更新）
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/08/07/Project-Tetris/" rel="prev" title="【通天之塔】记tetris的开发，借之略谈工程设计及管理的部分范式">
+          【通天之塔】记tetris的开发，借之略谈工程设计及管理的部分范式 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,287 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【数学之美】微积分下-苏德矿版：第十一章 级数</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">3.1k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">12分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+        <p>数学_分析</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-04-27</span>
+    </div>
+    <div class="post-content">
+      <h1 id="级数的概念"><a href="#级数的概念" class="headerlink" title="级数的概念"></a>级数的概念</h1><p>级数，是用于<strong>表达函数</strong>的<strong>数值计算</strong>的工具。（<del>我口胡的</del>）</p>
+<p>我们要学的级数与数列息息相关，可以说是后者的加强版本。两者从敛散性开始便有了亲密的联系。</p>
+<h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>1.n阶Koch雪花的边长与面积。</p>
+<p>这个例子中重要的是分析n阶与n-1阶的递推关系。而分析时则应牢牢抓住一条单独的边。</p>
+<p>结论如下：$C_n=\dfrac{4}{3}C_{n-1}$（每条长为3的边均分裂成了4条长为1的边）</p>
+<p>$S_n=S_{n-1}+\dfrac{3 \cdot 4^{n-2}}{9^{n-1}}S_1$（S1的系数中3表示分裂出三个子图形，4表示边的数目，9表示面积的缩减程度）</p>
+<h2 id="敛散性"><a href="#敛散性" class="headerlink" title="敛散性"></a>敛散性</h2><p>回忆数列的敛散性，我们掌握了夹逼定理、单调有界、取子列、柯西准则等方法。而在这一章中我们会学习更多的方法。</p>
+<p>1.几何级数的敛散性（分四类讨论即可）</p>
+<p>2.调和级数的敛散性</p>
+<p>方法有积分判别法、柯西准则或其变形，还有放缩。</p>
+<p>3.p级数的敛散性</p>
+<p>可用积分判别法或放缩判断。</p>
+<h2 id="计算性质"><a href="#计算性质" class="headerlink" title="计算性质"></a>计算性质</h2><p>1.线性运算法则</p>
+<p>2.级数可改变（增/减/变）其有限项而保持敛散性不变</p>
+<p>3.结合性</p>
+<p>//对于结合性，我还没有理解一些细节</p>
+<p>4.$\sum\limits_{n=1}^{\infty}u_n$收敛，则$\lim\limits_{n \to \infty}u_n=0$。</p>
+<p>4的推论即其逆否定理：$\lim\limits_{n \to \infty}u_n\not=0$或者不存在，则$\sum\limits_{n=1}^{\infty}u_n$必发散。（逆命题的反例：调和数列）</p>
+<p>5.级数收敛的柯西准则//什么时候用呢？</p>
+<h1 id="正项级数敛散性的判定"><a href="#正项级数敛散性的判定" class="headerlink" title="正项级数敛散性的判定"></a>正项级数敛散性的判定</h1><p>负项级数可向正项级数转化，正如负定二次型可向正定二次型转化一样。故此处我们只研究正项级数。</p>
+<h2 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h2><p>找上界是一种方法。（化归到单调有界定理）</p>
+<p>还可以通过计算$\lim\limits_{n \to \infty}u_n$来判断。</p>
+<p>柯西准则。</p>
+<h2 id="方法2：比较判别法"><a href="#方法2：比较判别法" class="headerlink" title="方法2：比较判别法"></a>方法2：比较判别法</h2><p>比较判别法常用于有三角函数的情况，如sin x, cos x可以替换为x。</p>
+<p>比较判别法有两处可减弱的条件（忽略前有限项，常数），它们强调了问题的主要部分，使原本可能需要的特判不再需要，因而小幅降低了问题的复杂程度。</p>
+<p>例题1：求证$\sum(1-cos\dfrac{a}{n})$收敛。</p>
+<p>例题2：已知$\sum a^2$收敛，求证$\sum \dfrac{|a_n|}{\sqrt{n^2+\lambda}}$收敛。</p>
+<p>例题3：$a_n &lt; b_n &lt; c_n, \sum a_n,\sum c_n$均收敛，求证$\sum b_n$收敛。</p>
+<p>例题4：设$a_n = \int_{0}^{\pi/4}tan^nxdx$，求证$\sum \dfrac{a_n}{n}$收敛。</p>
+<p>较比较判别法更容易使用的是它的极限形式。</p>
+<p>例题5：求证$\sum(\sqrt{n+1}-\sqrt{n})^p ln\dfrac{n+1}{n-1}$收敛。</p>
+<p>例题6：求$\sum [e - (1+ \dfrac{1}{n})^n]^p$的敛散性。</p>
+<h2 id="方法3：达朗贝尔判别法"><a href="#方法3：达朗贝尔判别法" class="headerlink" title="方法3：达朗贝尔判别法"></a>方法3：达朗贝尔判别法</h2><p>达朗贝尔判别法与柯西判别法的作用实际在于将原级数放为几何级数，但在lim = 1时会不起作用，因为存在“波动”的可能性。</p>
+<p>这两项判别式的条件充分而不必要，因极限不存在的级数也可能收敛，如$\sum \dfrac{2+(-1)^n}{2^n}$。</p>
+<p>例题1：求证$\sum \dfrac{ncos^2 n\pi}{2^n}$收敛。</p>
+<p>例题2：判断$\sum \dfrac{n! a^n}{n^n}$的敛散性。</p>
+<p>在例题2中，对于a=e的情况，最后还要结合基本方法，这是道较为灵活的题目。</p>
+<p>例题3：判断$\sum \sqrt[n]{a} - \sqrt{1+\dfrac{1}{n}} $的敛散性。</p>
+<p>答案：$lna = 1/2$时收敛，否则发散。</p>
+<h2 id="方法4：柯西判别法"><a href="#方法4：柯西判别法" class="headerlink" title="方法4：柯西判别法"></a>方法4：柯西判别法</h2><h2 id="方法5：积分判别法"><a href="#方法5：积分判别法" class="headerlink" title="方法5：积分判别法"></a>方法5：积分判别法</h2><p>例题1：判断p级数的敛散性。</p>
+<p>例题2：判断$\sum \dfrac{1}{n(lnn)^p}$的敛散性。</p>
+<p>答案：p&gt;1时收敛，否则发散。</p>
+<p>例题2的变式还有$\sum \dfrac{1}{ln(n!)}, \sum \dfrac{lnn}{n}, \sum \dfrac{sin\dfrac{1}{n}}{lnn}$等，它们都可以转换到上式。</p>
+<p>例题3：求证$\sum \int_n^{n+1}e^{-\sqrt{x}}dx$收敛。</p>
+<p>例题4：求证$\sum \int_0^{1/n} \dfrac{\sqrt x}{1 + x^2} dx$收敛。</p>
+<h1 id="幂级数"><a href="#幂级数" class="headerlink" title="幂级数"></a>幂级数</h1><h2 id="收敛半径"><a href="#收敛半径" class="headerlink" title="收敛半径"></a>收敛半径</h2><p>Abel定理：若$\sum a_n x^n$在$x=x_0$处收敛，则它在满足不等式$x &lt; x_0$的一切x处绝对收敛；若$\sum a_n x^n$在$x=x_0处发散$，则他在满足不等式$x &gt; x_0$的一切x处发散。</p>
+<p>至于证明，将$a_n x^n$转化成为$a_n {x_0} ^n \dfrac{x^n}{ {x_0} ^n}$即可。</p>
+<p>由Abel定理我们可知幂级数的收敛域是关于原点左右对称的，故可引入收敛半径和收敛区间的概念。它们相对收敛域是较弱的概念。</p>
+<p>Cauchy-Hadamard公式与其根式形态。</p>
+<p>注意：若幂级数为缺项级数，不可直接由Cauchy-Hadamard公式求，需应用定义法求。</p>
+<p>//Cauchy-Hadamard公式无极限时候的意义？</p>
+<h2 id="和函数"><a href="#和函数" class="headerlink" title="和函数"></a>和函数</h2><p>简单的变式：对涉及$\dfrac{1}{x^n}$或$x^{2n-1}$这些项的“伪“幂级数，换元即可。</p>
+<p>幂级数的和函数满足连续、可微、可积这样的分析性质，并且微分/积分后收敛半径不变。</p>
+<p>值得注意的是，虽然收敛半径不变，但收敛域是可能发生改变的。$f(x) = \sum \dfrac{x^n}{n^2}$和他的导数及二阶导数在收敛域上的差异就是一个很好的例子。</p>
+<p>唯一性定理：S(x)为幂级数在x=0某邻域的和函数，则其各项系数满足$a_n = \dfrac{S^{(n)}(0)}{n!}$这一关系，这使得幂级数由其和函数的导数唯一地确定下来。</p>
+<p>对幂级数除法的直观感受：$\sum a_n x^n = 1, \sum b_n x^n = 1 - x$，其商收敛半径远小于原式收敛半径。（$R &lt; min(R_a, R_b)$？）</p>
+<p>通过求幂级数的和函数，我们得以从一般到特殊，求出一些幂级数的取值，如$\sum \dfrac{(-1)^n}{n} = ln 2$。</p>
+<p>例题：求$\sum \dfrac{x^n}{2n + 1}$的和函数。</p>
+<p>//幂级数的加减乘除结果的收敛半径满足什么条件？</p>
+<p>//和函数在收敛半径之外为何仍有取值？</p>
+<p>//在算和函数时可能会算错，有什么好用的检错算法呢？（代入边界值貌似行不通？）</p>
+<h1 id="函数展幂级数"><a href="#函数展幂级数" class="headerlink" title="函数展幂级数"></a>函数展幂级数</h1><h2 id="展开"><a href="#展开" class="headerlink" title="展开"></a>展开</h2><p>相较于微积分I中直接的求导，在这里泰勒级数的面貌显然要复杂得多了——要确认收敛半径，还有有$lim R_n (x) = 0$的先决条件（不然，有反例$f(x) = x ? e^{- \frac{1}{x^2}} : 0$）</p>
+<p>习题：求$2x - \dfrac{4}{3!}x^3 + \dfrac{6}{5!}x^5 + …$的收敛域与和函数。</p>
+<p>求基本的五种级数的麦克劳林展开：$e^x, sin x, cos x, ln(1 + x), (1 + x)^a$。</p>
+<p>其中$cos x$可以化归到$sin x$，而$ln(1 + x)$用积分的方法会更加好算。这些是基本的方法，也是在后面的求解中会渗透进去的。至于$(1 + x)^a$，猜出结果再反推回去也未尝不是一种方法。</p>
+<p>$(1 + x)^a$本身在端点处的收敛性与a的取值有关：$a \leq -1$两边开，$a &gt; 0$两边闭，否则左开右闭。另外，这个展开本名是“牛顿二项式展开”。</p>
+<p>有了基本的五种函数的展开还是远远不够的，不过有了它们我们就能推出更多的级数展开了。请先展开$\dfrac{1}{1 + x^2}, arctan x$。</p>
+<p>接着，再展开$\dfrac{1}{\sqrt{1 + x}}, \dfrac{1}{\sqrt{1 - x^2}}, arcsin x$。</p>
+<p>一些多项式的函数也可以展开了：如$\dfrac{x}{1 + x - 2x^2}$。//$\dfrac{1}{x^2 + x + 1}$则如何呢？</p>
+<p>一些复杂的函数，因为可以写成简单函数的组和，也是可展开的。如$\dfrac{1}{4} ln \dfrac{1 + x}{1 - x} + \dfrac{1}{2}arctan x - x$。不过，先求导再求积可能更为方便。</p>
+<p>变式：非标准情况下的幂级数展开，如展成关于$(x - 3), ln \dfrac{x - 1}{x + 1}$的幂级数之类。</p>
+<p>//级数展开的端点值问题？</p>
+<p>//$sin^3 x$如何展开幂级数？这个问题本身是否值得研究？</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>1.计算积分的近似，如$\int \dfrac{sin x}{x}$//$\int \dfrac{x}{sin x}$则如何呢？</p>
+<p>2.计算高阶导数，如$f(x) = e^{x^2}$，求$f^{(n)}(0)$。</p>
+<p>3.导出欧拉公式，联通实数域与复数域。</p>
+<p>4.数值计算，如计算$sin1°$。</p>
+<h1 id="傅里叶级数"><a href="#傅里叶级数" class="headerlink" title="傅里叶级数"></a>傅里叶级数</h1><p>三角解函数的正交性为傅里叶级数的求解各项系数提供了依据，也提供了具体的算法，但是它虽容易接受，却并不容易计算。$a_0$与$a_n$还需要分开讨论，因为$cos 0x$不能积分成$sin 0x$。</p>
+<p>周期函数是否能够展开需要用到迪利克雷定理，条件十分的特殊，相较级数展开也比较弱，但书中并未给出证明。</p>
+<p>计算傅里叶级数的时候要关注函数的奇偶性，因为这样也许可以大大简化计算步骤。</p>
+<p>例题：计算巴塞尔级数的值。</p>
+<p>（假设我们还不会算）首先我们来分析一下，这一节在讲傅里叶级数，所以应该把一个函数展开成傅里叶级数然后再算。为方便起见，算f(0)好了，这样$f(0) = a_0 / 2 + \sum a_n$。我们希望$\sum a_n = \sum \dfrac{1}{n^2}$或是与之结构相似。</p>
+<p>展什么函数好呢？先从简单的情况开始分析吧。试试$f(x) = x(-\pi &lt; x &lt; \pi)$，展开得$f(x) = 2 \sum \frac{(-1)^{n+1}}{n} sin nx$，嗯，根据$b_n^2$的形式可以用一用帕塞瓦尔等式，至此题目就做完啦。</p>
+<p>（不会帕塞瓦尔等式也不要紧）展开$f(x) = x$的过程中我们看到$\int x sinnx dx$在分部积分时会生成系数的$\dfrac{1}{n}$，$\int x^2 cosnx dx$或许就能给出我们梦寐以求的$a_n = \dfrac{1}{n^2}$。那么试试$f(x) = x^2 (-\pi &lt; x &lt; \pi)$，（虽然复杂度已经有些高了hhh）能不能得到$\sum a_n = \sum \dfrac{1}{n^2}$呢？嗯，$a_n = (-1)^n \dfrac{4}{n^2}$，形式相仿！然后瞎搞一通也就做好了……（这样的分析有点马后炮2333）</p>
+<p>如果原函数是在[a, b]而非[-l, l]上呈周期性，比方说，$x - [x]$，并不用有什么特殊的考虑！因为它在[-l, l]也是呈周期性的，$\int_a^b f(x) = \int_{-l}^l f(x)$。所以只要将积分区间换一换即可，答案不会有任何影响。</p>
+<p>如果原函数不是周期函数，我们也可以截取我们想要的部分把它周期化。</p>
+<p>//傅里叶展开的价值</p>
+<p>//已知傅里叶级数求原函数？（或验证结果？）</p>
+<h2 id="帕塞瓦尔等式"><a href="#帕塞瓦尔等式" class="headerlink" title="帕塞瓦尔等式"></a>帕塞瓦尔等式</h2><p>我们可以用它来巩固我们对于级数乘法还有（三角正交）的概念。证明的话也有两种思路，一种是直接拆开，一种是只拆一个f(x)。虽然后者在思想上与前者等价，但它在形式上要简洁得多。</p>
+<p>例题：f(x)可被傅里叶展开，求卷积函数$F(x) = \int_{- \pi}^\pi f(t) \cdot f(t+x) dx$的傅里叶级数。（key：$A_0 = a_0^2 / 2, A_n = a_n^2 + b_n^2, B_n = 0$）</p>
+<h1 id="综合题"><a href="#综合题" class="headerlink" title="综合题"></a>综合题</h1><p>例题1：求级数$\sum \dfrac{(n+1)^2}{n!}$的和。（$key: 5e$）</p>
+<p>例题3：设$0 &lt; P_1 &lt; P_2 &lt; … $，试证$\sum \dfrac{1}{P_n}$收敛$\Rightarrow$$\sum \dfrac{n}{P_1 + P_2 + … + P_n}$收敛。</p>
+<p>例题4：设正项级数$\{ a_n \}$单调增加有上界，证明级数$\sum (1- \dfrac{a_n}{a_{n+1}})$收敛。</p>
+<p>书上未整理的题：2、5、7、13、14</p>
+<p><strong>借级数包装微分中值定理的题</strong></p>
+<p>例题4：设f(x)在x=0的某一邻域内具有二阶连续导数，且$\lim\limits_{x \to 0} \dfrac{f(x)}{x}=0$，证明级数$\sum f(\dfrac{1}{n})$收敛。</p>
+<p>例题5：设偶函数f(x)在x=0处存在二阶导数，且$f(0)=1$，证明级数$\sum [f(\dfrac{1}{n})-1]$收敛。</p>
+<p>//过程待补充</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/04/27/Notes-Calculus_Vol2-CH01/" rel="next" title="【数学之美】微积分下-苏德矿版：第一章 矢量代数与空间解析几何">
+          <i class="fa fa-chevron-left"></i> 【数学之美】微积分下-苏德矿版：第一章 矢量代数与空间解析几何
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/05/19/Toughts-Lets_CTF/" rel="prev" title="【白冠之礼】来玩CTF吧！">
+          【白冠之礼】来玩CTF吧！ <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
