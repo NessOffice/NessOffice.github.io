@@ -1,0 +1,240 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/logo.jpg">
+  
+  <title>Ness</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.jpg" alt="logo">
+      
+      <a href="/" class="title">Ness</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>标签</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/NessOffice" class="menu-item-link"><i class="fa fa-github"></i><span>GITHUB</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">【白冠之礼】深入浅出密码学：第二章 序列密码</h2>
+	  <div style="margin: 0 10 20px;">
+		<span class="post-count">
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-keyboard-o"></i>
+			<span class="post-meta-item-text">  字数统计: </span>
+			<span class="post-count">3.9k字</span>
+		  </span>
+		</span>
+
+		<span class="post-count">
+		  &nbsp; | &nbsp;
+		  <span class="post-meta-item-icon">
+			<i class="fa fa-hourglass-half"></i>
+			<span class="post-meta-item-text">  阅读时长: </span>
+			<span class="post-count">14分</span>
+		  </span>
+		</span>
+	  </div>
+       
+        <p>课程笔记</p>
+      
+        <p>信息安全</p>
+      
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2019-09-08</span>
+    </div>
+    <div class="post-content">
+      <p>（这篇文章本该有图的，实际却没有，因为画图太累惹……LFSR的部分对着图看效果会好很多，但我懒得画，同学们请自己脑补吧~）</p>
+<h1 id="何谓序列密码"><a href="#何谓序列密码" class="headerlink" title="何谓序列密码"></a>何谓序列密码</h1><p>上一章中我们了解了对称密码的一类炒鸡简单的情形：替换密码，这一章我们继续讲对称密码学。</p>
+<p>通过对现有加密算法类型的归纳，我们发现对称密码主要可分为序列密码（Stream Ciphers）还有分组密码两大类。其差异是较大的：序列密码对每位加密，而分组密码将原文分成若干块进行加密。</p>
+<p>序列密码相较分组密码使用较为不广泛一些，但它适合在计算资源受限的设备上运作（因为小而快？）。在效率上，二者的所差实际不多。</p>
+<p>本章我们主要讨论序列密码，因为这是一个大话题。</p>
+<p>序列密码分<strong>同步序列密码</strong>与<strong>异步序列密码</strong>两类。前者是在线的：实际使用的密钥由预设的密钥与原文一并生成；而后者是离线的，所设的密钥就是加密的密钥。容易看出，前者的安全性更高一些，但是所耗时间更久（因为不能并行计算了）。但实际生活中，还是同步序列密码用的更多一些。</p>
+<p>至于序列密码的加解密，非常简单：加密是$y_i = e_{s_i}(x_i) = x_i + s_i \ mod \ 2$。解密是其反函数也便是其本身。</p>
+<p>为什么序列密码的加密解密可以这么简单呢？因为在模二加法等价于异或，而已知$x_i, y_i, s_i$的一个元素无法求出剩下两个元素。只要$s_i$有良好的随机属性，那么已知原文的部分片段及密文是无法解出其他原文的。书上说，异或运算具有可逆性，是完全均衡的（输出有多原像且它们出现的概率均等）。这二者保证了序列密码是一种良好的对称密码。</p>
+<p>从上文的表述我们容易发现：序列密码的安全性完全取决于密钥序列。故而密钥序列的生成是序列密码的关键。密钥序列必须有良好的统计属性，足够“随机”，这样才能提升安全性。故而，我们需要了解随机数相关的知识。</p>
+<p>（序列密码也被称为Vernam加密，因为它最早在1917年由Gilbert Vernam发明）</p>
+<h1 id="随机数生成器"><a href="#随机数生成器" class="headerlink" title="随机数生成器"></a>随机数生成器</h1><p>在讲随机数生成器之前，我们就不讲随机数了。顾名思义，随机数是数列中的概念，表明这一数列足够“随机”。至于“随机”，这是一个玄学词汇。我们往往会依据数据的各项统计属性刻画它的“随机性”，或，可预测性。在计算机中，我们会使用三类（其实是两类）随机数生成器（Random Number Generator）。</p>
+<p>其一，TRNG（T for True），真随机数生成器，即通过各式物理过程生成随机数。这样做的好处在于输出几乎具有不可复制性。</p>
+<p>其二，PRNG（P for Pseudo），伪随机数生成器，是可以计算出来的，但具有良好的统计属性（<del>至于是什么属性，就别问啦</del>）。比如ANSI C中的rand()函数，就是通过一个初始的种子还有一个运算实现的。</p>
+<p>其三，CSPRNG（Cryptographically Secure Pseudo-Random Number Generator），密码学安全的伪随机数生成器。它是PRNG的一种特例，具有更多的属性：它不可预测（当然，这是不可能的，毕竟是伪随机数。这里不可预测指给定部分密钥，计算出前继位/后续位在计算上是不可行的，即不存在时间复杂度为多项式的算法能够确定前继位/后续位）。</p>
+<p>我们先不管随机数生成器的实现细节，假设我们有了足够标准的上述三类随机数生成器作为我们的密钥流生成器，那么我们要怎么得到一个完美的序列密码的密钥呢？在此之前，我们需要看这个“完美”要如何定义：密码体制若在无限计算资源的情况下也无法破译，则其为无条件安全的，或信息理论上安全的。</p>
+<p>很明显，这个定义和计算安全不一样，它更强一些。那么是否存在无条件安全的密码呢？一次一密（OTP，One-Time Password）便是这样一种无条件安全的密码。它有三个条件：①通过TRNG生成密钥序列；②有且仅有合法通信方知道密钥序列；③每一密钥序列位$s_i$仅被使用一次。</p>
+<p>很明显，这样的OTP是无条件安全的。我们把等式系统写出来，容易发现这样一个等式系统是不可解的，知晓$s_i$与知晓$x_i$完全等价。这里用到了第一个条件：随机数是通过TRNG生成的。如不然，各位间存在这样那样的函数关系，即使求解很困难，这样的等式系统在理论上仍是可解的（因为它们彼此不独立），已知部分明文的话。</p>
+<p>这样的OTP虽然理论上似乎很理想，但它的使用并不广泛，条件一首先是一个限制，但主要的问题在条件二与条件三，尤其是条件三。条件二要求信道绝对安全，但这并不容易满足。而条件三要求一段密钥只能用于一篇原文且密钥需与原文登长。这里，密钥只能使用一次的限制要求通信双方频频交换密钥，而密钥与原文等长的条件则大大提高了交换密钥的成本（想象一下，你在传输1GB的机密视频前要先交换1GB的密钥……）。</p>
+<p>因为这些原因，实际生活中我们很少使用OTP。但它启迪了我们，只要密钥足够随机，攻击者便无法通过破解得到原文。所以问题在于如何设计随机数生成的算法使得得到的随机数足够随机，这是一个被研究了很久的话题，而我们不妨看看现实生活中的序列密码是生成随机数的，具体是如何运作的，它们与OTP存在怎样的不同。</p>
+<p>需要说明的是，实际的序列密码均不是无条件安全的，我们期望它们是计算安全的，即采用最好的算法的操作数的下界也在我们的期望之上。但这一定义里存在许多问题，其中一个便是：“最好的算法”如何确定？</p>
+<p>为了避免OTP多次交换密钥的麻烦，我们采取新的模式：通信双方交换一次短密钥，通过密钥序列生成器来依据初始密钥（它很像是种子）生成实际使用的密钥。</p>
+<p>那么这个密钥生成器要如何设置呢？我们能否通过线性同余发生器（比如ANSI C中的rand()），一种PRNG得到密钥序列呢？很明显，不能。因为简单的已知明文攻击足够帮助攻击者计算出整个密钥。</p>
+<p>所以，我们需要CSPRNG。利用反馈移位寄存器可以得到CSPRNG的一种可能。那么我们就来学学吧。</p>
+<h1 id="基于移位寄存器的序列密码"><a href="#基于移位寄存器的序列密码" class="headerlink" title="基于移位寄存器的序列密码"></a>基于移位寄存器的序列密码</h1><p>本节所述“移位寄存器“均为线性反馈移位寄存器（LFSR，Linear Feedback Shift Register）。它由若干时钟存储元件（触发器）还有一个反馈路径组成。触发器的个数称LFSR的度。LFSR通过反馈网络计算一些触发器的异或和，将其作为上一触发器的输入，重复此过程，这便是LFSR的基本运作模式。</p>
+<p>书上给出了一种度为3的简单的LFSR模型，我们能够通过它对LFSR的运作模式产生一些感性的印象。于是，我们可以抽象出LFSR的数学描述。我们注意到，触发器输出后的开关决定了该输出是否参与反馈，故我们可以$p_j$，反馈系数刻画某一输出对整一反馈路径的贡献。而本次输出与且仅与反馈系数、此前的输出（输入也算在输出里了）存在关联。简单归纳后我们不难得到：</p>
+<p>$s_{i+m} = \sum\limits_{j = 0}^{m-1} p_j \cdot s_{i+j} \ mod \ 2, s_i, p_i \in \{ 1, 2 \}, i = 0, 1, 2, \dots$。</p>
+<p>显然，本次输出是此前输出的一些线性组合，故LFSR也被称为线性递归（为啥不叫递推呢）。</p>
+<p>很自然，LFSR中可能的状态共$2^m$种，其中全0的下一个状态还是全0。至于其他状态，它必然绘在若干步之后陷入某个循环之中。故度为m的LFSR可产生的最大序列长度为$2^m - 1$。</p>
+<p>我们如何确定LFSR的循环节，换言之，我们如何确定$(s_i, s_{i+1}, \dots, s_{i+m-1})$在给定的递推条件下多少步后会走进一个循环里呢？我们考虑这一LFSR的特征多项式$P(x) = x^m + p_{m-1}x^{m-1} + \dots + p_1 x + p_0$。那么当此多项式为本原多项式时输出序列的周期能取到$2^m - 1$。证明？我不懂哦。</p>
+<p>至于LFSR的安全性，其实它是堪忧的。如果LFSR被作为序列密码使用，那么密钥k便是反馈系数向量$(p_{m-1}, \dots, p_1, p_0)$。假设攻击者知道一些明文，一些密文，他还知道LFSR的度m，那么他便可以展开攻击了：把$s_m = \dots, s_{m+1} = \dots$写出来，只要m个方程就够了。然后我们发现这是一个由m个方程组成的m元一次异或方程组，跑个高消就能解出密钥了。这足以说明LFSR的密码学属性之差了。这也反映LFSR是一个具有良好统计属性但密码学属性的PRNG实例。</p>
+<p>然而，LFSR并未丧失其所有密码属性，我们可以把多个LFSR垒在一起得到一个健壮的密码体系。比如Trivium就是这么来的。至于为什么垒在一起就更安全了呢……这我就不懂了。</p>
+<p>书中介绍的Trivium是一种较新（新？2005年呀）的序列密码，它是否安全还是有待时间检验的（好像是有不少攻击，网上能搜得到，虽说并未细看）。它是把三个移位寄存器垒在一块，然后它的独特之处在于放了个AND操作，这样Trivium的数学描述便不完全是线性的了。这Trivium的设计初看也挺复杂，就不分析了。</p>
+<p>事实上，序列密码非常非常容易受选择明文攻击。因此，我们需要在输入参数里加入一个nouce，它是随机生成的，并不需要保密，只是用于让同一密钥每次生成的密钥序列都不相同，以抵御选择明文攻击。</p>
+<p>Trivium的加密分三个阶段：初始化，热身，加密。初始化阶段用于读入nonce还有清空寄存器；热身阶段计时4×288=1152次，用于充分随机化密码；加密阶段从第1153周期开始，每位吐出的位便是密钥序列位。</p>
+<p>Trivium的一大特点在于它的紧凑性（硬件实现上的紧凑）。Trivium由288位长的移位寄存器组成，其所占面积约为4000个门，大致可以16位/时钟周期的速率计算密钥序列（为什么是这样的呀）。来做一下简单的计算，假设硬件设计的主频是125MHz。那么加密速率为16位×125MHz=2G位/秒。（当然，没有比较，我们并无法知晓这快在哪里）</p>
+<h1 id="要点回顾"><a href="#要点回顾" class="headerlink" title="要点回顾"></a>要点回顾</h1><p>1.在绝大多数领域，分组密码的使用要广泛于序列密码，当然也有例外的情形，尤其是计算资源受限的情况之下。</p>
+<p>2.在对随机数的要求少，很多时候PRNG就够了。但在密码学这一块，我们需要CSPRNG或是TRNG。</p>
+<p>3.OTP是无条件安全的，但是它的应用比较受限，因为它苛刻的条件。</p>
+<p>4.LFSR虽具有良好的统计属性，但它并非很好的序列密码，除非我们把多个LFSR组合起来。</p>
+<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><p>2.1是个人应该都会吧。顺便，<em>Kaspar Hauser</em>我个人并不是很喜欢。</p>
+<p>2.2中提了一些概念：密钥的生命周期，生命周期内与外密钥的存储，密钥的生成与分发。要求我们以OTP为例解释这些概念。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">一次一密系统在实际生活中的意义：在需要近乎绝对安全且对资源消耗几乎没有限制的场景下</span><br><span class="line">密钥的生命周期：使用前无限期，使用后作废</span><br><span class="line">在生命周期内密钥的存储：安全地存储</span><br><span class="line">在生命周期后密钥的存储：无需存储</span><br><span class="line">密钥的分发：通过安全的信道</span><br><span class="line">密钥的生成：物理手段</span><br></pre></td></tr></table></figure>
+<p>2.3是找出多次使用的假OTP（不满足第三条件）的vulnerability。很明显，它易受已知明文攻击或者选择明文攻击。</p>
+<p>2.4没意思。2.5让手工模拟LFSR的计算过程。</p>
+<p>2.6已知明文攻击即可，解50个异或方程组即可。复杂度为$50 \times (200^3) = 4e8$，标准PC可以一跑。</p>
+<p>2.7不懂。表2-3里没有m=8的本原多项式。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Understanding Cryptography exercise 2.8</span></span><br><span class="line"><span class="comment">// code by Ness</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> LEN = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">int</span> feedback[LEN+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> seq[(<span class="number">1</span>&lt;&lt;LEN)+<span class="number">5</span>];</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; hash_pool;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">encode</span><span class="params">(<span class="keyword">int</span> begin)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; LEN;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans *= <span class="number">2</span>;</span><br><span class="line">		ans += seq[begin + i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> begin)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; LEN;i++)</span><br><span class="line">		ans ^= (feedback[i] * seq[begin + i]);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">load_feedback</span><span class="params">(<span class="keyword">int</span> id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	feedback[<span class="number">4</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(id == <span class="number">1</span>) feedback[<span class="number">0</span>] = feedback[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// x^4 + x + 1</span></span><br><span class="line">	<span class="keyword">if</span>(id == <span class="number">2</span>) feedback[<span class="number">0</span>] = feedback[<span class="number">2</span>] = <span class="number">1</span>; <span class="comment">// x^4 + x^2 + 1</span></span><br><span class="line">	<span class="keyword">if</span>(id == <span class="number">3</span>) feedback[<span class="number">0</span>] = feedback[<span class="number">1</span>] = feedback[<span class="number">2</span>] = feedback[<span class="number">3</span>] = <span class="number">1</span>; <span class="comment">// x^4 + x^3 + x^2 + x + 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	load_feedback(<span class="number">3</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> seq_encode = <span class="number">1</span>;seq_encode &lt; (<span class="number">1</span> &lt;&lt; LEN);seq_encode++)</span><br><span class="line">	&#123;</span><br><span class="line">		hash_pool.clear();</span><br><span class="line">		<span class="keyword">int</span> seq_encode_copy = seq_encode;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">4</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			seq[i] = seq_encode_copy % <span class="number">2</span>;</span><br><span class="line">			seq_encode_copy /= <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		hash_pool.insert(encode(<span class="number">0</span>));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> step = <span class="number">0</span>;;step++)</span><br><span class="line">		&#123;</span><br><span class="line">			seq[step + LEN] = calc(step);</span><br><span class="line">			<span class="keyword">int</span> hash_val = encode(step+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span>(hash_pool.count(hash_val))</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= step + LEN;i++)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%d"</span>, seq[i]);</span><br><span class="line"></span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">" %d\n"</span>, step+<span class="number">1</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				hash_pool.insert(hash_val);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（当然，2.8背后的数学原理我一点也不懂不要问我）</p>
+<p>2.10也不知道什么情况就有点不想做……这本书的印刷是怎么回事？</p>
+<p>2.11就一综合题，要求我们把之前所有的口胡都转化为实践，有点烦的……（还是口胡舒服啊）懒得跑高消，就手解方程组了。</p>
+<p>2.12手工模拟即可，因为寄存器里的1很少（良心出题人），关于当下的1什么时候会转移到会有影响的位置就好了。算出来只有第2、3、68、69位是1。从这个例子我们可以看出来，Trivium的周期是较大的，某一位要经过较多shift操作之后才能影响到全局。</p>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2019/09/05/Life_Pattern-Summer_2019/" rel="next" title="【浮生掠影】流水账：2019年的夏天">
+          <i class="fa fa-chevron-left"></i> 【浮生掠影】流水账：2019年的夏天
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2019/09/14/Toughts-On_Evaluations_In_ZJU/" rel="prev" title="【围炉夜话】对高等教育中的评价体系的简单批判，以浙江大学为例">
+          【围炉夜话】对高等教育中的评价体系的简单批判，以浙江大学为例 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Ness</span>
+    </div>
+    
+      <span>由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</span>
+    
+    
+      <span>|</span> <span>主题 - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
