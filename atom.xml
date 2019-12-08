@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nessoffice.github.io/"/>
-  <updated>2019-09-14T12:26:22.208Z</updated>
+  <updated>2019-11-08T14:59:40.565Z</updated>
   <id>https://nessoffice.github.io/</id>
   
   <author>
@@ -15,6 +15,106 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【图灵之路】踏过的坑（2019-11-08更新）</title>
+    <link href="https://nessoffice.github.io/2019/11/08/Other-Programming_Pits/"/>
+    <id>https://nessoffice.github.io/2019/11/08/Other-Programming_Pits/</id>
+    <published>2019-11-07T16:00:00.000Z</published>
+    <updated>2019-11-08T14:59:40.565Z</updated>
+    
+    <content type="html"><![CDATA[<p>伤痕，与并不美好的记忆……</p><a id="more"></a><p>（不定期更新，一般心情好的时候会咕）</p><h1 id="2019-04-15"><a href="#2019-04-15" class="headerlink" title="2019-04-15"></a>2019-04-15</h1><p>Merge的函数题，没有保存变量就直接elem[i] = elem[j++]，导致数据丢失。从22：06：04到23：26：41，提交共十次。</p><h1 id="2019-04-16"><a href="#2019-04-16" class="headerlink" title="2019-04-16"></a>2019-04-16</h1><p>大数阶乘，压位做法。在j从0到len遍历的前提下把res[j] *= i和res[j+1] += res[j] / MOD混在一起写，这样的运算顺序是有误的。从1：36到1：52。</p><p>最近点对问题。将Points_x与Points_y混淆以致造成了难以发觉的错误。疯狂对拍但几无成效，在四个点的情况下还是直接调试更能发现问题。一开始在Merge中使用了n导致超时。从18：30到20：00再到22：00。</p><p>文件名的问题倒是一下就能发现。</p><h1 id="2019-04-17"><a href="#2019-04-17" class="headerlink" title="2019-04-17"></a>2019-04-17</h1><p>有序序列中位数问题，一直纠结于二分，没想到顺序一下就成。思路没打开。</p><h1 id="2019-05-06"><a href="#2019-05-06" class="headerlink" title="2019-05-06"></a>2019-05-06</h1><p>凸包旋转卡壳的算法中，用$&gt;$出现了问题，换成$\geq$则没事了。凸函数不一定严格单调啊。</p><p>调试时候把数组改小了记得做标记……不然看到RE很惭愧。</p><p>括号很多的时候记得检查，否则调试起来心情差。</p><h1 id="2019-05-10"><a href="#2019-05-10" class="headerlink" title="2019-05-10"></a>2019-05-10</h1><p>这一个标题下尽是，愚蠢的问题和糟心的状态……</p><p>5月8日期中考，旁边的人键盘敲得很响，想起了校赛时候的不适应，我的心境仿佛又回到了高中时代……偏执、疑虑、焦躁……今早的离散考试时状态亦复如是。</p><p>得冷静下来。这不仅是关于programming的问题了，它关系我的学习观，关系我对自己与他人的看法。Just admit it, scorn it, surplus it.</p><p>最后，“Cheers to the goddamn life, society, and everything.”</p><p>①他妈的”由裁判实现细节不表“！Sample都跑不起来的代码就交上去，这是计算机学院的学生做的事情吗？但不光是这一项，对dev的不熟悉，对于win7环境的不熟练还有内心世界的混乱都给解题的过程添了不少堵。一项一项的，都给我去死吧！</p><p>猪头临沂大学的漂亮代码是这样得：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span>  <span class="keyword">int</span>  KeyType;</span><br><span class="line"><span class="keyword">typedef</span>  <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  KeyType *elem; <span class="comment">/*elem[0]一般作哨兵或缓冲区*/</span></span><br><span class="line">  <span class="keyword">int</span> Length;</span><br><span class="line">&#125;SqList;</span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">CreatSqList</span><span class="params">(SqList *L)</span></span>;<span class="comment">/*待排序列建立，由裁判实现，细节不表*/</span></span><br></pre></td></tr></table></figure><p>那这个CreatSqList怎么实现呢？从Sample可以看出是要先读长度，然后一项一项读进来。因为参数是(SqList *L)，所以下面都要用-&gt;，直接L.Length就报错。但是实践之后发现只能读Length，读elem就会报错，为何？因为没有分配地址。所以这笔函数要这么写：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">CreatSqList</span><span class="params">(SqList *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line">L-&gt;elem = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span> *));</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;L-&gt;Length);</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= L-&gt;Length;i++)</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;L-&gt;elem[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但是我一万年没有用malloc了，写这个函数的时候就慌得一批，之后想着要分配元素嘛，就写L-&gt;elem = 1000<em>(int </em>)…，但是这样是不行的。因为它elem啊，只是一个指针而已。</p><p>我不喜欢指针所以平时也不怎么用指针，自己写写代码基本不会有这方面的问题，但一到考试就凉透了！5月7日晚”复习“的指针完全没用。</p><p>这些几把考试不让查资料，所以把语法搞清楚很重要。血的教训！</p><p>②快排在5月7日晚上有“复习”，但是考试的时候还是一团乱麻。要理解快排，先要用例子建立直观的概念模型，从简单的例子到复杂的例子。简单的例子不包括重复项如“3 2 4 1 9 0 7”，还有不直观但容易调试的例子如“1 2”“2 1”等，乱七八糟的例子如“1 1 1”。理解之后是处理细节，考虑重复项他喵的该怎么搞，这样这样，基本就没问题了。</p><p>③有理数均值，特判！0/10这样的。要么在输出分母的时候加上去，要么把euclid写得更鲁棒一点，而不要少怀疑sscanf的有效性，虽然我之前的写法也很漂亮。</p><p>④整数分解，又是傻逼题一道……复习还是有一丁点用处的，因为当时也没有用心对待这题。本质就是个dfs，参数里设m——本次要分解的数，last——上次传下来的最大值，d——当前层数。对于;和\n搞个全局变量mark还有其函数专门处理。就这样，然后细节瞎搞。有的地方?:之类能让代码更简洁。</p><p>综上，关键词如下。<strong>高效复习</strong>、<strong>语法</strong>、<strong>模拟</strong>（从易到难、细节）、<strong>代码风格</strong>（优雅、鲁棒）、<strong>心态</strong>……</p><p>层层深入。</p><h1 id="2019-06-10"><a href="#2019-06-10" class="headerlink" title="2019-06-10"></a>2019-06-10</h1><p>今天补CF的状态……实在……一言难尽。题目是<a href="https://codeforces.com/contest/1176/problem/D" target="_blank" rel="noopener">这个</a>，看着很像密码题，它勾起了我关于ACTF的一些回忆……</p><p>一开始先是把题目看错了，不知怎地就把$p_{a_i}$理解成了$p_i$，导致处理$a_i$为质数和$a_i$为合数的方法产生了很大的分离，代码很冗长，而且写完后才发现有细节没想到，要处理非常麻烦。重新看题才发现是自己理解有误，只得把代码推倒重来。</p><p>之后是采用贪心的思路，分别用last_prime与last_composite维护$a_i$为质数/合数时$b_i$的index。但是在处理$a_i$为质数时，没有真正搞清楚变量的真实含义，以致屡出问题。在认识到所谓last_prime本质上是一个index后才对代码的正确性有了更深入的感受。</p><p>但这样还是碰到了一个很诡谲的error……本地测试没有问题，但是提交到服务器上便出错，此记录如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// origin</span></span><br><span class="line"><span class="keyword">while</span>(primes[nodes[last_prime].num] &gt; nodes[i].num)</span><br><span class="line">last_prime--;</span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// polished</span></span><br><span class="line"><span class="keyword">while</span>(nodes[last_prime].num &gt;= <span class="number">200000</span>) <span class="comment">// caution</span></span><br><span class="line">last_prime--;</span><br><span class="line"><span class="keyword">while</span>(primes[nodes[last_prime].num] &gt; nodes[i].num)</span><br><span class="line">last_prime--;</span><br></pre></td></tr></table></figure><p>隐蔽的数组越界。以后在手工模拟是要尤为注意，越界与否，这样的问题。</p><p>在越界的问题上，还碰到了RE的问题。RE是因为题目中给定的n最大规模为2e5，但是输入的是2n，故而该规模需×2。在校赛时也碰到了类似的问题，还需要多加注意。</p><p>之后在跑一个点时出现错误。debug的思路为：判断output和answer中不一样的数，发现answer中一个位置为质数而output中对应的位置为合数。猜想nodes[last_composite].used = 0出现问题。调试发现last_composite对应的位置存在问题！last_prime确实可用贪心维护，但是last_composite并不能用贪心维护！于是手写了一个lower_bound，才得以通过此测试点。</p><p>然而这样还是碰到了TLE的问题。观察测试点发现它有相当多的重复数据。于是此时，lower_bound的复杂度会由二分退化为线性。需要添加记忆化的操作。至此，此题成功AC。</p><p>有何启示？明天再说……</p><h1 id="2019-11-08"><a href="#2019-11-08" class="headerlink" title="2019-11-08"></a>2019-11-08</h1><p>ds的bonus 2，再次在这些睿智课上感到了自己的睿智。</p><p>题目要求MST，我们的老师只给C，所以sort啊priority_queue呀用不了了。要么prim，要么kruskal。简单回忆了一下，前者要手打堆，后者要手写归并。因为不想手写归并，就手打堆了。把自己之前写的prim粘了出来，然后修修改改调了老半天，代码又臭又长，整整130行，交上去，一半点没过。</p><p>把手打的堆换成priority_queue试试看，然后还是有1WA2T。理论上不该T啊，prim不是适用于稠密图的么，那个WA又是什么情况。浪费时间猜想猜了半天啥也不懂。</p><p>assert半天，测了一下PTA速度，发现读3e5的数据就要个70ms，离谱。prim里面也没有死循环，应该就是复杂度炸了。（但是为什么呢，不懂不懂不懂啊）</p><p>搜题解，发现别人的prim里没堆，就直接搜。咱也不懂为啥这样能对……反正能对就能对吧，默写一遍……</p><p>还是有两个点过不去，memset啊assert啊又调了老半天，最后发现prim的松弛和dijkstra是不一样的……wsdsb。</p><p>心态得调整好啊还是。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;伤痕，与并不美好的记忆……&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="计算机" scheme="https://nessoffice.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【艺苑偶得】吉静文选 世界尽头</title>
+    <link href="https://nessoffice.github.io/2019/11/03/Composition-My_Novels-The_End_of_the_World/"/>
+    <id>https://nessoffice.github.io/2019/11/03/Composition-My_Novels-The_End_of_the_World/</id>
+    <published>2019-11-02T16:00:00.000Z</published>
+    <updated>2019-11-13T11:45:39.918Z</updated>
+    
+    <content type="html"><![CDATA[<p>“外面，斑驳的，漆黑的树。”</p><a id="more"></a><p><strong>一 出逃</strong></p><p>出了东四，就到了世界的尽头。</p><p>世界是环形的，上面是无尽的天，下面是无尽的地，只有在地之上，世界是有界的。世界很小，沿着边境走上半个钟头，就能回到原点。</p><p>世界之外是什么，没有人知道。</p><p>每个人来到世界上都是有任务的，要做课题，要作报告，所有人都很忙。没有人关心世界之外是什么。</p><p>某在边境上看到了外面，斑驳的，漆黑的树，于是他想要到世界之外看看。</p><p>从世界中出去并没有什么后果，每个人都很忙，没有人管他。</p><p>借着单车，他出了东四，看到了世界的尽头。</p><p>前方是楼房，无尽的楼房，蔓延到无穷远点。清一色的浅黄色四层楼房，阳台上晾着五彩的衣服，蔓延到无穷远点。</p><p>楼房间并无空隙，他知道，如果进去，便会迷失在那无尽之中，再也回不来了。</p><p>只有沿着边境行走，才是安全的。</p><p>单车在呼啸，在风中呼啸。咆哮的风，吹来生命的气息，吹来死亡中摇曳的生命之息。</p><p>世界之外，不仅是安然的居民区，亮起星星点点的灯；还是诱惑的人造光，光之内繁华商场，商场内人头攒动；还是望不见头的黑暗分岔路径，通向看不见的所有的可能性。在黑夜中，一切都无比真实，真实得有一丝虚幻。</p><p>他有点害怕了，但他别无选择，只能向前走，向前走。至于前面有什么，他并不知道。</p><p>此时虽只是下午七点，但天黑得不可思议，似乎太阳永远不会再升起。</p><p><strong>二 光柱</strong></p><p>他绕了个弯，从那片诱惑与商场中逃出了。他松了一口气。</p><p>如以方向来说，他此时正处于世界的西面。西面是不稳定的，边境是一片废墟。往常只有工人们会出入世界西境。</p><p>因为不清楚西境的地形，即便他贴着边境走，他也不知道自己会不会走到其他地方。</p><p>但是四下里光很明亮。柔和的微黄路灯光，相当温暖。</p><p>此外，他还在东方，看到了操场上，射向天穹的那道光。准确的说，那是一道光柱，是■■■■结束时亮起的光。■■■■虽然让世界外的人涌入世界，侵占了他们的资源，引得民不聊生。但此刻，他突然对这■■■■充满了感激之情。</p><p>这样走下去的话，就能返回了吧。他想。</p><p><strong>三 出逃</strong></p><p>走了不知多久，他经过了若干通向东边的路口，有的是不与世界联通的，很明显；有的或许是与世界联通的，但他并没有验证过。此刻他停留在一条宽敞的路口。他看见一幢自己曾见过的塔楼，他看见微弱的灯光下蓝色衣服下的保安人员。无疑，这里能通向世界内部，能通向那片光所在的操场，能通向自己的寝室，而且这是他验证过的。</p><p>那是若干月前抑或若干年前，他并不记得或是并不知晓自己出逃的原因，正如此刻他并不记得或是并不知晓自己出逃的原因。那时他逃向了西边，在下午四点的阳光下，在西边徘徊游荡，在空无一人的新楼外游荡，在崎岖的石子路间游荡。最后，他在回程途中把车摔坏了，拉着破败的自行车走回了寝室。</p><p>他清晰地记得这一条路，这一幢塔楼。这是一条安全的路，没有任何危险，能够让他平安回到寝室，回到寝室做并不存在的课题，回到寝室思考自己为什么而活着。这样一想，他感到有些害怕。</p><p>所以他没有进去。</p><p><strong>四 黑夜与立交桥</strong></p><p>如果按原路返回，那么必可回到原点。这样证明不了世界是联通的，但可以回去，好让他继续做他不存在的课题，思考生存的目的。这是很没意思的，因为是一条已经走过的路。但这是最后的手段。如果他迷失了，这是他唯一的出路。无趣，但是安全。</p><p>但是绕过又一个弯之后——此时他理应处于世界的北面，他发现原路返回已是不可能的了。一座巨大的立交桥横亘在他与对面之间，立交桥似乎通往无穷远。因为这座桥，他到达不了对面，他的一条路径被割断了。只有前方能走了。充满不确定的，通向美丽死亡的，前方。</p><p>柔和的微黄路灯光暗了许多。他朝右边望去，虽然光柱依旧在视力所及范围内，但前方的路似乎通往不了右侧。</p><p>他进入了一片密林中，耸立的黑暗楼房挡住了那光柱，阳台上看不见任何衣服，因为太黑了。他似乎已经迷失在这密林中了。</p><p>心脏在强烈地泵着，他确乎已经无路可走了，除了前进，除了前进。一旦停下来，他就会消失了。唯有更快地骑，唯有更快地骑，骑行便是他的意义所在。抱着这颗泵跳的心脏，他体味到了在世界之中未曾感受到的，存在的实感。</p><p><strong>五 港湾</strong></p><p>过了密林，又是一个转弯。</p><p>他看见些许人烟，看见平房门口的小卖铺老板还有他身后五光十色的零食，看见冒着热腾蒸汽亮着各色招牌的路边小馆子。他看得有些饿了。想吃东西。想吃好多好多东西。但不是现在，现在他要回去。</p><p>在人烟中穿行和在无人区穿行不同，前者是只要行进便会有安定感，后者则是要在速度中获取安定感。他一向不喜欢人烟，但此刻这些擦肩而过的人们却让他感到了些微妙的温情，即便他们与他毫无联系。</p><p>渐渐地，他发现这片区域自己似乎来过，这些招牌，这个地形。确实，再转一个弯，他便到了■■街，他已经回来了，他已经回来了。</p><p>他有点想哭。</p><p>他没有买夜宵，径自回寝了。路上枯萎的树似乎活过来了。</p><p><strong>六 莫比乌斯</strong></p><p>第二天，他发现自己没有感冒。</p><p>今天虽然也没有事情可干，但生活还是要生活的。</p><p>起码我到过世界尽头了，世界是联通的，如同一个环，一个莫比乌斯环。他想。</p><p><strong>日后谈</strong></p><p>取材于某人的亲身经历，基本是如实记录，对乌七八糟的意识过程。</p><p>出于文学意义考虑，把现实的地名事件名全隐去了。本来小说所选的意向比较现实偏工业化比较无趣，就尽可能往魔幻里改了，但还是很现实很工业化很无趣。</p><p>灵感来源：</p><p>①《世界尽头与冷酷仙境》，村上春树著，仅仅是取个标题而已，两篇差得挺远的，个人感觉。</p><p>②《莫比乌斯》，郝景芳著，主要灵感来源，个人特别欣赏的一部作品，很浪漫，也很悲哀。</p><p>③《逃离》，爱丽丝·门罗著，主题有一定的相似。个人很不喜欢这一篇，也没用心看。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;“外面，斑驳的，漆黑的树。”&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="创作" scheme="https://nessoffice.github.io/tags/%E5%88%9B%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【围炉夜话】《天气之子》简评：古典神话的现代演绎</title>
+    <link href="https://nessoffice.github.io/2019/11/02/Animes-tenki_no_ko/"/>
+    <id>https://nessoffice.github.io/2019/11/02/Animes-tenki_no_ko/</id>
+    <published>2019-11-01T16:00:00.000Z</published>
+    <updated>2019-11-07T14:13:10.822Z</updated>
+    
+    <content type="html"><![CDATA[<p>十六岁真好啊。</p><a id="more"></a><p>和同学去看了&lt;天气之子&gt;，新海诚作品。影片开头比较主流，中期发展略奇怪，结尾有一丝悲哀的意味（可能是因为我肚子痛）。总体而言，还是部相当不错的电影。</p><p>影片的亮点非常多，尤其在画面上。新海诚动画的画面风格尤其在人物特写，风景类场景上表现得特别明显：色彩明亮和谐，线条细腻柔和，较为唯美。画面上，女性角色的足部演出，尤为出彩。</p><p>影片音乐以摇滚电音为主（？），较为现代。音乐同场景间的联系非常紧密，烘托氛围的效果尤其好。</p><p>影片的世界观还是值得一说的，这也是贯穿剧情的主线：在神存在的巫女存在的世界中，神的心情表现为天气，而巫女作为神的使者能够通过祈祷来改变天气，为人们带来幸福，但巫女实质上是神的祭品。女主人公阳菜便是这样一个巫女，男主人公帆高启发她利用自己的能力来养活自己，来为人们带来幸福。之后阳菜了解到了真相，发现自己成了祭品被禁锢在云上，然后帆高用爱的力量把她救回来了，然后天气也一直很坏，就是这样一个故事。</p><p>（突然想到了&lt;秽翼的尤斯蒂娅&gt;，同样是多灾多难的土地，同样是祈祷的圣女，这大概是日本文化的一项表征吧）</p><p>这样的世界观能够诞生很多不同类型的作品：古典神话，克苏鲁神话，政治小说，等等。&lt;天气之子&gt;，实质上便是一个古典神话的现代演绎，里面充满了超自然的难以解释但又能够解释（引入神即可）的要素。影片的主题似乎多元似乎不清晰，但至少爱是一个清晰的主题，爱就完事。</p><p>我比较关心的是对那些超自然现象的社会解释：为什么要设置阳菜成为巫女的原因？神的目的是什么？等等。从这个角度看，我看到的是一个小圆式或者克苏鲁式的故事：愚昧的神在进食本能的指引下选择少女成为巫女，神因吃下少女而欢愉，因吃不下少女而愤怒。每个时代都会出现成为祭品的巫女，但男主人公为了女主违逆神的意志，展现了人类的勇气与抗争。</p><p>影片里很多细节很棒，比如对人物的刻画(男主的腼腆，女主的善良，nagi的风骚)，比如突然紧张的气氛，还有还有，此处不一一列举。</p><p>但电影在主题上显得较为混乱，这是硬伤：中途似乎在强调天气对人心情的变化，后期似乎在探讨人与世界的选择，但并未做深刻的诠释。</p><p>我对影片中的一些细节也不甚满意，比如异地三年（太不负责任了，电影的处理也太理想太浪漫了），比如拿枪指人，霹雷。毕竟十六岁啊，不是出个门就是麦田里的守望者来着，得有思想才行啊。推荐同学们不要学男女主翘课打工早恋，学习知识才是正道。</p><p>如果我还是十六岁，我可能会很认同这样的主题与价值观吧。</p><p>十六岁真好啊。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;十六岁真好啊。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="动漫" scheme="https://nessoffice.github.io/tags/%E5%8A%A8%E6%BC%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【围炉夜话】番剧推荐及简评——第一辑：cult</title>
+    <link href="https://nessoffice.github.io/2019/10/20/Animes-My_Recommendations_Cult/"/>
+    <id>https://nessoffice.github.io/2019/10/20/Animes-My_Recommendations_Cult/</id>
+    <published>2019-10-19T16:00:00.000Z</published>
+    <updated>2019-11-08T01:19:15.840Z</updated>
+    
+    <content type="html"><![CDATA[<p>虽然标题是番剧，但所推荐内容是较广义的……咱对这些名词归属也不大懂。</p><a id="more"></a><h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>模仿steam商店简介所做的娱乐向简介。</p><p>排序与喜好程度无关，随性的排序。</p><p>含一定量的剧透。</p><h1 id="简评"><a href="#简评" class="headerlink" title="简评"></a>简评</h1><p>被标上cult的作品一般会有哪些特点呢？似乎不好说清楚。这更多是从观众行为而非作品本身特点出发的分类。</p><p>《兽爪》是从头cult到尾的，看似随性实则认真的作品。</p><p>《小圆》的cult性质完全不在于剧本而在于魔女结界的艺术风格，虽然这部作品的剧本足够优秀。</p><p>《大护法》的血腥程度已经足够了，虽然杀的不是人流的血也是绿色的，但这是真正意义下的恐怖统治。</p><p>《怪化猫》画面谈不上cult，但分镜是的。</p><p>《柯赛特的肖像》，也是因为画面入选的，还有其中梦幻的镜头。</p><p>《大世界》是优秀的国产动画电影，很荒诞，也很现实。</p><p>《Psycho-Pass》不算。</p><p>（其实这里面贴的除了《兽爪》其他cult意味不是特别浓重……）</p><h1 id="1-兽爪"><a href="#1-兽爪" class="headerlink" title="1.兽爪"></a>1.兽爪</h1><p>ED：<a href="https://music.163.com/#/song?id=826418" target="_blank" rel="noopener">好き</a></p><p>深刻（？）而混乱的世界观，故事线。乌七八糟的哲理。</p><p>草稿式的粗犷的画面，时而会出现写实的元素。</p><p>不时闯入画面中的超现实场景与荒诞。</p><p>血腥，暴力，性。</p><p>纯粹的爱情，纯粹的浪漫。</p><h1 id="2-魔法少女小圆"><a href="#2-魔法少女小圆" class="headerlink" title="2.魔法少女小圆"></a>2.魔法少女小圆</h1><p>OP：<a href="https://music.163.com/#/song?id=489998110" target="_blank" rel="noopener">コネクト</a></p><p>红蓝主题曲：<a href="https://music.163.com/#/song?id=28138667" target="_blank" rel="noopener">and I’m home</a></p><p>高度个性化的人物，从形象到性格。</p><p>萌萌的小圆脸，超治愈。可爱的外星萌兽，和少女并肩作战，拯救宇宙。</p><p>充满艺术感的魔女结界，包括11种以上不同的富有冲击力的艺术风格。</p><p>富有未来感的前卫建筑风格，取材自全球各地。</p><p>悠扬咏叹的音乐，出自梶浦由记之手。</p><p>无处不在的象征。</p><blockquote><p>我，真是个笨蛋呢。</p></blockquote><p>（不是很推荐《叛逆的物语》）</p><h1 id="3-大护法"><a href="#3-大护法" class="headerlink" title="3.大护法"></a>3.大护法</h1><p>纸片眼睛，注视着你。不说话。</p><p>蚁穴，死镇。从始至终平静之下的惊悚。</p><p>极富文学性的台词。</p><p>什么，是人呢。</p><p>（想不透为啥会有人觉得里面的台词尴尬）</p><h1 id="4-怪化猫"><a href="#4-怪化猫" class="headerlink" title="4.怪化猫"></a>4.怪化猫</h1><p>流动的浮世绘。</p><p>迷幻的世界。</p><h1 id="5-柯赛特的肖像"><a href="#5-柯赛特的肖像" class="headerlink" title="5.柯赛特的肖像"></a>5.柯赛特的肖像</h1><p>玻璃器皿，娃娃，眼球。</p><p>意识流下的叙事。</p><p>哥特式恐怖。</p><hr><p>初稿写于2019年08月02日</p><p>完稿写于2019年10月20日</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;虽然标题是番剧，但所推荐内容是较广义的……咱对这些名词归属也不大懂。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="动漫" scheme="https://nessoffice.github.io/tags/%E5%8A%A8%E6%BC%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图灵之路】应用快捷键提升效率（更新至2019-09-25）</title>
+    <link href="https://nessoffice.github.io/2019/09/25/Other-Hot_Keys/"/>
+    <id>https://nessoffice.github.io/2019/09/25/Other-Hot_Keys/</id>
+    <published>2019-09-24T16:00:00.000Z</published>
+    <updated>2019-10-13T12:39:39.602Z</updated>
+    
+    <content type="html"><![CDATA[<p>熟练地掌握快捷键，在很大程度上能够提高使用计算机（不仅仅是编程）的效率。</p><a id="more"></a><p>熟练地掌握快捷键，在很大程度上能够提高使用计算机（不仅仅是编程）的效率。</p><p>至于能提升多少，我就不知道了……这个应该由人文社科的同学来研究。</p><p>作为平凡的学生，熟练掌握快捷键是很爽的。本来要3s做的一个动作，现在0.5s就能做了；本来要按4步的动作，现在1步2步就能做了。没试过不能体会这种感觉，试过了就回不去了。因为是真的爽啊。</p><p>（文中涉及的很多快捷键不好归类，推荐随意浏览，或是想找快捷键时F3）</p><h1 id="平凡的快捷键"><a href="#平凡的快捷键" class="headerlink" title="平凡的快捷键"></a>平凡的快捷键</h1><p>F1：显示帮助</p><p>F2：重命名</p><p>F3：搜索（文本编辑器中、文件夹中、浏览器中）</p><p>F4：显示最近浏览目录（文件夹中）</p><p>((ctrl)+(shift))+(fn)+arrow：到达/选中 文章/页/句/词 首/尾</p><p>ctrl+L：选中一行（删除时用）</p><p>win+V：剪切板</p><p>win+R：运行（cmd、注册表等）</p><p>win+D：显示桌面</p><p>win+E：资源管理器</p><p>win+L：锁屏</p><p>win+shift+S：截屏</p><p>win+W：windows ink（包括便笺、草稿、截屏，弱弱吐槽一句，这个便笺和草稿都为啥强制全屏啊）</p><p>ctrl+S：保存</p><p>ctrl+Z：撤销</p><p>ctrl+X/C/V：剪切/复制/粘贴</p><p>ctrl+‘+’/‘-’：页面放大/缩小</p><p>ctrl+滚轮移动：页面放大/缩小</p><p>ctrl+F/H：查找/替换（需要注意“全部替换”和“下一个”在不同文本编辑器/IDE/浏览器中可能不一）</p><h1 id="资源管理器中的快捷键"><a href="#资源管理器中的快捷键" class="headerlink" title="资源管理器中的快捷键"></a>资源管理器中的快捷键</h1><p>alt+2：创建新文件夹</p><p>键入文件(夹)名的前面部分，即可定位到该文件(夹)，这一性质也适用于其他场合。</p><h1 id="浏览器中的快捷键"><a href="#浏览器中的快捷键" class="headerlink" title="浏览器中的快捷键"></a>浏览器中的快捷键</h1><p>F11：全屏</p><p>F12：开发者工具</p><p>ctrl+H：历史</p><p>ctrl+B：书签</p><p>ctrl+W：关闭标签页</p><p>ctrl+tab：切换标签页</p><p>alt+tab：切换窗口</p><h1 id="vim中的快捷键"><a href="#vim中的快捷键" class="headerlink" title="vim中的快捷键"></a>vim中的快捷键</h1><p>gg：回到文首</p><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>fc：用以比较两个文件的差异，对拍的时候很好用。</p><h1 id="一些小结论"><a href="#一些小结论" class="headerlink" title="一些小结论"></a>一些小结论</h1><p>在文件夹中直接输入文件夹名/文件名即可定位到要找到文件夹/文件，这个性质可以推广到其他环境下。</p><h1 id="愿景"><a href="#愿景" class="headerlink" title="愿景"></a>愿景</h1><p>（所谓愿景，就是没有实现但是想要实现的功能）</p><h2 id="快速新建txt"><a href="#快速新建txt" class="headerlink" title="快速新建txt"></a>快速新建txt</h2><p>要顺手写一个.cpp文件怎么办？自然可以先打开IDE然后“新建文件”然后“保存”。但是“保存”要设置路径好麻烦。我习惯把文件分门别类放到不同的目录里，在这个前提下“保存”是真的麻烦。</p><p>个人一般都是在当前目录下搞事情。新建.txt改后缀为.cpp，有时候也改成.py，.md等等等等。这里头的问题主要在新建.txt上，因为要“右键，w，up，up，enter”，巨麻烦。然后w完电脑还要抽风一小会儿的。有没有更快的方式呢？</p><p>改了一下注册表，这样up，up，enter就没了。操作序列为“右键，w，t”，方便了一些，但电脑抽风的问题还是没有解决，而且既要用鼠标还要用键盘好拙劣呀，我想只用键盘实现。仿照alt+2能新建一个文件夹，我们能否给alt+3 bind 一个新建.txt的功能呢？</p><p>用AutoHotKey试了一试，发现电脑还是会抽风，好拙劣啊。</p><p>做不来，太难了。</p><h2 id="分组复制粘贴"><a href="#分组复制粘贴" class="headerlink" title="分组复制粘贴"></a>分组复制粘贴</h2><p>debug的时候常常会遇到这样的问题：代码里面有一些冗余要粘来粘去的，然后测试样例也要粘来粘去的。在win10 1809剪贴板更新之前，这样的需求只能通过重复劳动完成：先把代码复制粘贴，再把样例复制粘贴，经常要在代码与样例间跑来跑去。剪贴板更新了历史记录之后，我们只要规划好要复制的内容的顺序，就不用跑来跑去了，也不用重复复制了，好方便啊。</p><p>（虽然剪贴板已经很方便了，但我还是闲得没事想了一个新方案：分组复制粘贴。</p><p>类比《帝国时代》中我们能给部队编号然后快速定位到军队所在的位置，我们能否给要复制粘贴的内容编个号然后分组处理？比如ctrl+C+1与ctrl+V+1相对应，它们与ctrl+C+2/ctrl+V+2互不干扰，这样子？</p><p>这个方案首先键位比较奇葩……ctrl+C+1要同时用到三根手指然后三根手指还要旋成一个差不多等边的三角形，这对手不是很友好……</p><p>技术实现上，这好像不知是模拟按键了，涉及到剪贴板的工作原理，涉及到内存分配这种系统级编程的问题了……好难啊，做不来。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;熟练地掌握快捷键，在很大程度上能够提高使用计算机（不仅仅是编程）的效率。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="计算机" scheme="https://nessoffice.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>【围炉夜话】对高等教育中的评价体系的简单批判，以浙江大学为例</title>
@@ -59,33 +159,13 @@
   </entry>
   
   <entry>
-    <title>【浮生掠影】流水账：2019年的夏天</title>
-    <link href="https://nessoffice.github.io/2019/09/05/Life_Pattern-Summer_2019/"/>
-    <id>https://nessoffice.github.io/2019/09/05/Life_Pattern-Summer_2019/</id>
-    <published>2019-09-04T16:00:00.000Z</published>
-    <updated>2019-09-05T08:19:58.603Z</updated>
-    
-    <content type="html"><![CDATA[<p>大一的结束。</p><a id="more"></a><h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><p>果然……又咕光了……除了ACM。真的黑洞，时间的黑洞，心情的黑洞。</p><h2 id="课程学习"><a href="#课程学习" class="headerlink" title="课程学习"></a>课程学习</h2><p>（数学学习方法：搞懂每一节的重点内容，记录例题，疏理研究逻辑，在一章结束后进行回顾）</p><p>（计算机学习方法：手工实现每个重点算法，手工生成数据进行测试，记录坑点）</p><p>1.预习概统（+复变）</p><p>2.预习ds（手撸B+树，手撸红黑树）</p><p>3.预习汇编+软保</p><h2 id="其他项目"><a href="#其他项目" class="headerlink" title="其他项目"></a>其他项目</h2><p>1.7月~8月，ACM</p><p>2.Haskell-&gt;Agda，形式验证初步</p><p>3.用unity制作简易的游戏，同时提高合作水平</p><p>4.将之前的游戏部署到服务器上</p><p>5.阅读SICP（不必读完，但需细读）</p><p>6.初探密码学</p><h2 id="休闲"><a href="#休闲" class="headerlink" title="休闲"></a>休闲</h2><p>打游戏，写水文，看电影</p><h2 id="现实"><a href="#现实" class="headerlink" title="现实"></a>现实</h2><p>就不讲自己预习了什么吧……</p><p>Haskell一直咕着，遑论Agda了。</p><p>unity也一直咕咕咕。</p><p>SICP买来积灰，同样积灰的还有patt。</p><p>往服务器上扔了个小项目。嗯，真就小项目呀……游戏是部署了，但未因此对web产生更进一步的认识。</p><p>密码学没看几章……school-bus排名也还是在老后面老后面唉。</p><p>英语能力继续下跌，平时日常读假题。而大家都在学英语，慌慌慌慌慌。</p><p>算法力还是不够（截至2019-09-05，blog上仍然没有一篇关于ACM的文章……），知识树还有很多路径没修通。不过团队配合还是可以的。</p><h1 id="流水账合集"><a href="#流水账合集" class="headerlink" title="流水账合集"></a>流水账合集</h1><p>既然不知道为何而开始，自然也是不知道是从何而结束，的了。</p><p>毕竟我不了解我自己呀，我什么也不了解。</p><h2 id="2019-08-21"><a href="#2019-08-21" class="headerlink" title="2019-08-21"></a>2019-08-21</h2><p>学了学Miller Rabin素性检验，这个检验非常巧妙，也很容易理解，但自己怎么也想不到就是了……至于当选取哪些素数还没有细究，留坑。</p><p>晚上和zwk点了冷饮，睡觉的时候肚子痛痛痛痛痛。</p><p>P.S.好像冷饮还搞得我第二天牙齿痛。</p><h2 id="2019-08-22"><a href="#2019-08-22" class="headerlink" title="2019-08-22"></a>2019-08-22</h2><p>中午学了学Cipolla算法，真的精妙。这种把数论和复数结合在一起的套路，好像解析数论里会用得比较多吧？慢慢学吧。虽然还有一些琐碎的点没搞清楚，就是a的存在性还有取到合适的a的期望步数，但中心思想确实是搞懂了。</p><p>复习naive的数论知识：（拓展）欧拉定理，拓展欧几里得算法，离线O(n)求乘法逆元……本来想把拓展卢卡斯也学掉的，但那些题解真心看不下去，或许我得先复习复习excrt吧。欧拉定理的思想还没有梳理出来，不知道还有哪些问题可以用这种思维方式求解。</p><h2 id="2019-08-23"><a href="#2019-08-23" class="headerlink" title="2019-08-23"></a>2019-08-23</h2><p>“反演大师”称号获得！</p><p>今天的网络赛颇有收获，有的队员学会了反演，有的队员学会了后缀数组，<del>但全世界只有我们不会权值线段树</del>。</p><p>回来上了三道反演题，发现自己对其的理解还不够深刻。</p><p>头晕，睡不着。</p><h2 id="2019-08-24"><a href="#2019-08-24" class="headerlink" title="2019-08-24"></a>2019-08-24</h2><p>学了学斜率优化，四边形不等式优化。前一个还好，（虽然细节不理解）能刷刷刷地推式子，就很爽，板子也好套。后一个嘛……证明没看，对它的理解近乎没有，就当了回码农，调了1h+的bug。</p><p>才发现m记好良心，24软妹=大鸡排+双层汉堡+雪碧+冰淇淋，吃撑了，舒服啊。</p><p>想起高三在KDJ吃中饭晚饭的那一些时刻。</p><p>回来写反演的blog，越写越写不下去（捂脸），因为自己之前对这块知识的理解好像有点偏差？又多了一个坑。</p><p>学了学Polya定理，虽然不知道什么时候会用上。虽然没看证明，但还是被惊到了，日常被惊到了。</p><h2 id="2019-08-25"><a href="#2019-08-25" class="headerlink" title="2019-08-25"></a>2019-08-25</h2><p>莫队，雨。</p><h1 id="文娱生活"><a href="#文娱生活" class="headerlink" title="文娱生活"></a>文娱生活</h1><h2 id="番剧-FSN-UBW"><a href="#番剧-FSN-UBW" class="headerlink" title="番剧-FSN_UBW"></a>番剧-FSN_UBW</h2><p>UBW很好看，视觉意义上的好看，里面没什么深刻的道理，主人公的思想观念我并不是很认可（更认同凛的生存方式）。但是剧情紧凑富有张力悬念迭起，动作元素精彩，作画也来得细腻，总之就是好看呀。缺陷的话，音乐相比于06版差的不是一星半点，至少我对UBW的音乐一点没印象（除了士郎开UBW搞金闪闪那一段，和06版有些像？），06版就不一样了，全靠音乐撑，看剧情看得满头问号的时候只能当自己在欣赏音乐了。花了五六天看完了，比较喜欢库丘林（06版中他的形象也很不错，虽然着墨甚少）。其他人物塑造地也不错，毕竟这是群像剧呀。话说对UBW，jsb学长的点评很有趣：</p><blockquote><p>哎，番里的男主怎么都这样呀！心地善良，敢于吃苦，虽然情商低但都可以把妹归。（划掉）</p></blockquote><h2 id="番剧-Carole-amp-Tuesday"><a href="#番剧-Carole-amp-Tuesday" class="headerlink" title="番剧-Carole &amp; Tuesday"></a>番剧-Carole &amp; Tuesday</h2><p>被阿彪推荐的。初看简介还没啥兴趣，一看staff看到渡边信一郎。嗯，看看吧。</p><p>虽然片头/13集后的ed似乎暗示故事很宏大，但一开篇故事是比较平淡的。不像火星的火星，没有未来感的未来，孤独而热爱音乐的少女，比较套路。故事的发展也比较套路：展露锋芒，参加选秀，对抗劲敌……</p><p>但里面的曲子质量，绝大部分都很高。曲子的魅力同立体的人物结合在一起，大大提高了本作的表现力。尤其Crystal演出时放飞蝴蝶的那一幕，可谓音画交织。</p><p>日常性较高的几集展现了生活的意趣，是亮点。</p><p>Gus的形象可能继承自Jet？但“老男人的魅力”较之稍稍降了一些。</p><p>作画的话，很多时候细节都没有画出来，比如Tuesday脸上的雀斑，这本来应该是萌点的。</p><p><del>从其他角度的赏析，我并不会。</del></p><p>可能后期会探讨更深刻的内容？追番中。（虽然根据前面若干集AI的表现感觉本作对科技的探讨并不会多有深度……但其他方面还是值得期望的）</p><h2 id="电影-Kaspar-Hauser"><a href="#电影-Kaspar-Hauser" class="headerlink" title="电影-Kaspar Hauser"></a>电影-Kaspar Hauser</h2><p>做密码学的时候看到的，看了看影评，感觉自己会喜欢，就摸鱼去了。</p><p>影片的开头颇为惊艳：薄雾下的德国乡村，水波澹澹。还有麦田中的卡农，美极。影片中期，还有后期也会出现这样梦幻的镜头：山与朝圣者，沙漠中的先知。影片用了许多长镜头，拍摄了不少自然风光，虽说很美，但和缺乏波澜的情节搭在一起，也让我有些想睡。</p><p>这些镜头不可不谓漂亮，但是它们，和Kaspar Hauser有何关联呢？Kaspar，给我的第一印象，不是纯洁，不是孤独，而是“不自然”。一个正常的生物学意义下的人类，真的会看到锐器与火焰毫无反应？真的在被刺伤后会那么冷静？这样的设定过于思想实验了。</p><p>至少我完全无法理解Kaspar，虽然他颇为智慧，虽然他对世界的认识独到且自洽，虽然他也是个人类，但他终归是个异类。</p><p>我可能已经被文明了吧。</p><h2 id="电影-The-Fall"><a href="#电影-The-Fall" class="headerlink" title="电影-The Fall"></a>电影-The Fall</h2><p>Tarsem Singh作品。特别喜欢这种天马行空的奇幻的风格。对我而言，这才是故事呀。虽然二人所叙述的故事才是电影的重心，但影片对现实的重视则使其内涵更有高度。前半段是喜剧，但看到后来我们发觉这是个悲伤的故事。但不得不说，自悲到喜的转折做得有些生硬，不够自然。</p><p>开头那幕意义不明却又引人目不暇接的描述火车、湖、马的的升格慢动作黑白镜头给作品奠基了明确的奇幻影调，本身素质也足够高。</p><p>小女孩太可爱了，把morphine读成morphin3然后只拿了3粒药于是男主自杀失败，很偶然也很自然的剧情走向。这里没有什么价值观输出，只有童真。</p><p>这样的童真尤其表现在Mystic被斧头砍了后嘴里吐出鸟来，呼应前面他说的“鸟儿在我的肚子里更安全”，本来这应该是个讽刺的。</p><p><del>没有爱情，太棒了。</del>所以主题是什么呢？困难中的小人物相互拯救，相互造梦呀。</p><p>影片中出现的建筑、人物等都很适合考究，留坑。</p><p>五色战队自然是有所隐喻的，关于历史、文化的隐喻。留坑。</p><h2 id="电影-Braveheart"><a href="#电影-Braveheart" class="headerlink" title="电影-Braveheart"></a>电影-Braveheart</h2><p>比较血腥。战争，暗杀，处刑，看得肚子疼。</p><p>中心思想有些美式个人英雄主义，不是很能接受。</p><p>音乐有些过于刺激了，不过苏格兰风笛很棒。</p><p>不该在看商业片的时候满脑子思考历史思考政治的，我的思维深度比起高三来实在是浅了。</p><p>总体而言影片很流畅，故事在前期很完美，到了中后期节奏偏慢，但总的来说还是无可挑剔的，虽然总觉得不太对劲。</p><p>人物塑造得很立体，欣赏Longshanks的政治态度，也为Robert Bruce，他的真实，他的徘徊，而震撼。</p><p>战场上Robert Bruce被Wallace摘下面具后那幕足够打动人心。</p><p><del>听说哪吒很不错，大家也都安利我去看，但是我和谁去呢。</del></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;大一的结束。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="https://nessoffice.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
     <title>【图灵之路】从零开始的ICPC：杂项整理（2019-08-12更新）</title>
     <link href="https://nessoffice.github.io/2019/08/25/ICPC-Naive_Items/"/>
     <id>https://nessoffice.github.io/2019/08/25/ICPC-Naive_Items/</id>
     <published>2019-08-24T16:00:00.000Z</published>
-    <updated>2019-08-30T14:37:49.981Z</updated>
+    <updated>2019-09-16T05:45:50.416Z</updated>
     
-    <content type="html"><![CDATA[<p>杂项\cry指的不是不好归类的算法，而是一些简单的需要注意的事项。</p><a id="more"></a><p>杂项\cry指的不是不好归类的算法，而是一些简单的需要注意的事项。</p><p>这篇文章很多该写的地方并没有写完甚至没有开写。</p><p>常读常新，提醒自己哪些错误经常犯，有意识地矫正。</p><h1 id="二分中的细节"><a href="#二分中的细节" class="headerlink" title="二分中的细节"></a>二分中的细节</h1><p>左闭右闭：mid = l + r + 1 &gt;&gt; 1，l = mid + 1，r = mid</p><p>左闭右开：mid = l + r &gt;&gt; 1，l = mid，r = mid - 1</p><p>l = mid - 1找区间中满足条件的最大索引；r = mid + 1找区间中满足条件的最小索引</p><p>如果数组是a[] = [1, 3, 3, 3, 5]，那么</p><p>lower_bound(a, a+5, 3) = a+1, upper_bound(a, a+5, 3) = a+4</p><p>lower_bound(a, a+5, 4) = a+4, upper_bound(a, a+5, 4) = a+4</p><p>lower_bound(a, a+5, 5) = a+4, upper_bound(a, a+5, 5) = a+5</p><p>lower_bound(a, a+5, 5) = a+5, upper_bound(a, a+5, 5) = a+5</p><p>概括起来，就是lower_bound返回大于等于x的最小地址，如寻找不到这样的下标，则返回尾地址；至于upper_bound，则把上文的大于等于改为大于。</p><p>常见</p><h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><p>忘记特判。</p><p>未认真读题/关注clarification或notes。</p><p>未初始化全局变量（特例：树状数组在清空后无需初始化）。</p><p>变量名重复。</p><h2 id="关于溢出（数值）"><a href="#关于溢出（数值）" class="headerlink" title="关于溢出（数值）"></a>关于溢出（数值）</h2><p>取模不及时常会导致数字溢出模数，或者忘加LL可能导致中间结果溢出int。</p><p>为防止溢出，最好处处取模，处处用LL（包括所有常数），这是一个ctrl+F/H的事，却能节省不少的没有必要的心思。</p><p>需要指出的是，处处取模只针对大多数情况，如果数字在指数上（如Polya定理的题目），则万不可取模。某些毒瘤出题人把模数取小后会这样坑人。</p><p>有些题目的中间结果可能溢出double，而又只涉及乘法运算，这种时候可以考虑取对数。</p><h2 id="关于溢出（内存）"><a href="#关于溢出（内存）" class="headerlink" title="关于溢出（内存）"></a>关于溢出（内存）</h2><p>把数组开到maxn不一定总是能防止runtime error，具体把数组开到多大，需要留个心眼。</p><p>把数组开到多大才能足够安全并且不会MLE呢？可以采用简单的费米估算：1e6大小的int数组所用空间约为4MB（另，1Mib≈1MB）。</p><p>FTT/NTT中数组必开到二的幂次+eps。</p><p>无向图连边时数组需开到maxn&lt;&lt;1。</p><h1 id="简单的结论"><a href="#简单的结论" class="headerlink" title="简单的结论"></a>简单的结论</h1><p>1.求$x \cdot (x-1) \geq y$的最小解，无需二分。只要检查$x = \lfloor \sqrt y \rfloor$是否满足即可。如不满足，则x++。</p><h1 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h1><p>1.ctrl+H可快速替换int为LL，%d为%lld，1为1LL。</p><p>2.ctrl+F在修改代码中的某类对象时可以指出这类对象都在哪出现过。</p><p>3.namespace中存板子可以降低程序的耦合度，提高程序员的效率。</p><p>4.python极其适合用来生成随机测试数据，图论题的数据除外。</p><h1 id="带东西"><a href="#带东西" class="headerlink" title="带东西"></a>带东西</h1><p>算法书要自己读过理解过，对里面的内容有结构性的认识带过来才派得上用场。<del>当然现场学算法也无不可</del></p><p>语法书在不让使用通讯工具的场合是必要的，比如JAVA的语法书，PYTHON的语法书。C中一些不常用库的语法也要记记，比如time.h等（带小册子也行打印稿也行）</p><p>数学书：数分、线代、概统、离散、数论、<del>图论、抽代</del></p><p>字典要带也带吧，虽然感觉并不能派上用场。（这些出题人怎么都这么骚，经常出阅读理解题，还有unidirectional可还行）</p><h1 id="其他注意事项速查"><a href="#其他注意事项速查" class="headerlink" title="其他注意事项速查"></a>其他注意事项速查</h1><p>1.maxn=5e6是杜教筛中推荐的预处理数组大小。</p>]]></content>
+    <content type="html"><![CDATA[<p>杂项\cry指的不是不好归类的算法，而是一些简单的需要注意的事项。</p><a id="more"></a><p>杂项\cry指的不是不好归类的算法，而是一些简单的需要注意的事项。</p><p>这篇文章很多该写的地方并没有写完甚至没有开写。</p><p>常读常新，提醒自己哪些错误经常犯，有意识地矫正。</p><h1 id="二分中的细节"><a href="#二分中的细节" class="headerlink" title="二分中的细节"></a>二分中的细节</h1><p>左闭右闭：mid = l + r + 1 &gt;&gt; 1，l = mid + 1，r = mid</p><p>左闭右开：mid = l + r &gt;&gt; 1，l = mid，r = mid - 1</p><p>l = mid - 1找区间中满足条件的最大索引；r = mid + 1找区间中满足条件的最小索引</p><p>如果数组是a[] = [1, 3, 3, 3, 5]，那么</p><p>lower_bound(a, a+5, 3) = a+1, upper_bound(a, a+5, 3) = a+4</p><p>lower_bound(a, a+5, 4) = a+4, upper_bound(a, a+5, 4) = a+4</p><p>lower_bound(a, a+5, 5) = a+4, upper_bound(a, a+5, 5) = a+5</p><p>lower_bound(a, a+5, 5) = a+5, upper_bound(a, a+5, 5) = a+5</p><p>概括起来，就是lower_bound返回大于等于x的最小地址，如寻找不到这样的下标，则返回尾地址；至于upper_bound，则把上文的大于等于改为大于。</p><p>常见</p><h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><p>忘记特判。</p><p>未认真读题/关注clarification或notes。</p><p>未初始化全局变量（特例：树状数组在清空后无需初始化）。</p><p>变量名重复。</p><h2 id="关于溢出（数值）"><a href="#关于溢出（数值）" class="headerlink" title="关于溢出（数值）"></a>关于溢出（数值）</h2><p>取模不及时常会导致数字溢出模数，或者忘加LL可能导致中间结果溢出int。</p><p>为防止溢出，最好处处取模，处处用LL（包括所有常数），这是一个ctrl+F/H的事，却能节省不少的没有必要的心思。</p><p>需要指出的是，处处取模只针对大多数情况，如果数字在指数上（如Polya定理的题目），则万不可取模。某些毒瘤出题人把模数取小后会这样坑人。</p><p>有些题目的中间结果可能溢出double，而又只涉及乘法运算，这种时候可以考虑取对数。</p><h2 id="关于溢出（内存）"><a href="#关于溢出（内存）" class="headerlink" title="关于溢出（内存）"></a>关于溢出（内存）</h2><p>把数组开到maxn不一定总是能防止runtime error，具体把数组开到多大，需要留个心眼。</p><p>把数组开到多大才能足够安全并且不会MLE呢？可以采用简单的费米估算：1e6大小的int数组所用空间约为4MB（另，1Mib≈1MB）。</p><p>FTT/NTT中数组必开到二的幂次+eps。</p><p>无向图连边时数组需开到maxn&lt;&lt;1。</p><h1 id="简单的结论"><a href="#简单的结论" class="headerlink" title="简单的结论"></a>简单的结论</h1><p>1.求$x \cdot (x-1) \geq y$的最小解，无需二分。只要检查$x = \lfloor \sqrt y \rfloor$是否满足即可。如不满足，则x++。</p><h1 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h1><p>1.ctrl+H可快速替换int为LL，%d为%lld，1为1LL。</p><p>2.ctrl+F在修改代码中的某类对象时可以指出这类对象都在哪出现过。</p><p>3.namespace中存板子可以降低程序的耦合度，提高程序员的效率。</p><p>4.python极其适合用来生成随机测试数据，图论题的数据除外。</p><h1 id="带东西"><a href="#带东西" class="headerlink" title="带东西"></a>带东西</h1><p>算法书要自己读过理解过，对里面的内容有结构性的认识带过来才派得上用场。<del>当然现场学算法也无不可</del></p><p>语法书在不让使用通讯工具的场合是必要的，比如JAVA的语法书，PYTHON的语法书。C中一些不常用库的语法也要记记，比如time.h等（带小册子也行打印稿也行）</p><p>数学书：数分、线代、概统、离散、数论、<del>图论、抽代</del></p><p>字典要带也带吧，虽然感觉并不能派上用场。（这些出题人怎么都这么骚，经常出阅读理解题，还有unidirectional可还行）</p>]]></content>
     
     <summary type="html">
     
@@ -188,48 +268,6 @@
   </entry>
   
   <entry>
-    <title>【图灵之路】CF记-其四（2019-08-05更新）</title>
-    <link href="https://nessoffice.github.io/2019/08/05/ICPC-Practice-Codeforces_4/"/>
-    <id>https://nessoffice.github.io/2019/08/05/ICPC-Practice-Codeforces_4/</id>
-    <published>2019-08-05T11:53:40.000Z</published>
-    <updated>2019-08-06T15:23:08.850Z</updated>
-    
-    <content type="html"><![CDATA[<p>划水划水，弱鸡划水……</p><a id="more"></a><h1 id="round-577-div2"><a href="#round-577-div2" class="headerlink" title="round #577 div2"></a>round #577 div2</h1><p>关键词：造数据，正确的思路与错误的程序，证明算法的正确性</p><p>休息了若干天重新捡起cf……<a href="https://codeforces.com/contest/1201" target="_blank" rel="noopener">这场</a>做得还是相对顺利的，ABC过得相对比较快。E是个毒瘤题没啥人做，所以决胜的关键就在D上了。</p><p>从时间的分配上看，我在对BC正确性不太确定的情况下在40min内搞出了BC，花了20min想出了D的突破点并写了伪代码。但还是花了40min才码完D，而且对初始情况的处理不是很到位，有一处地方还写错了，以至怎么改交上去都是WA。</p><p>这题，一如之前做到的一些题，码量稍大，程序略复杂，而我在这种情况下便容易出错。</p><p>如何解决码力低下的问题呢？首先是要提高思绪转化为程序时对细节的考虑，而我在这上面做得还比较模糊。</p><p>再来是造数据，虽然这题比较良心，样例指出了我的一些错误，但还是有错没被指出。</p><p>当然，这两种能力是比较软的，应结合具体题目，比如这次的B，D，在实践中提升自己的能力，而不能光说说而已呀。</p><h2 id="AC"><a href="#AC" class="headerlink" title="AC"></a>AC</h2><p>A题就排个序，C题扫一遍模拟（答案是二分验证的，但还是模拟来得快，虽然程序稍微复杂了点，而且要分类讨论可能会写错）。</p><h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p>题意：有n堆石子，每次可以选两堆（有石子的堆）使这两堆的石子数-1。问能否找到一种操作使全部堆在操作完后石子数均为0。</p><p>做的时候我是这么考虑的：操作中的一个不变量显然是石子数的奇偶性，那么先判一下sum的奇偶，只考虑石子数为偶数的情形。再来怎么考虑呢？先把所有石子排一下序好了，如果最高的那堆特别高，比剩下所有的加起来都高，这样的情况也是不行的。那么剩下的情况都可行吗？我随便造了点数据感受了一下，感觉实际的做法就是构造“等高堆”，先把最高的一堆夷到和第二高的那样平，然后再用这两堆来把剩下的堆夷平……（比如2 6 12 14的话，就可以先把14给夷成12，这样操作后是2 4 12 12。然后用两个12把4给夷成2，就是2 2 11 11，两两相等，可行）虽然我描述不出算法的细节，但直觉告诉我这样做是对的，而且这题作为B题不应该考虑那么多。试了一试，哎，AC。此时比赛过去约20min。</p><p>其实正确性的证明也便是和上面的步骤相似的：①用前面所有的堆来削最大的那堆直至它和第二大的堆等高。②这样削完之后，前面n-2堆（可能会少于n-2，因为有的堆没了）内部任意消化，③消化到不能再消化再用剩下两堆一起补，因为这两堆加起来比前面n-2堆高（这个结论我并不会证，但感受它还是较容易地。①中每次贪心地操作最高的堆，②中就有尽可能多的堆被消化。然后对于奇数堆的情形，比如2 2 2，我们是同时把他们变为0 0 0而不是变为0 0 2），而且前面n-2堆的和是整数，所以必然能够补完。④最后两堆相等，做完了。</p><p>个人感觉这个老哥的解释挺不错，放上来（作者是owneriekno1）：</p><blockquote><p>Here is another way to think about it.</p><p>Consider 2 cases:</p><p>①Base case: the largest element is equal to the sum of all the others:</p><p>Let’s  say that each element of the array represents the number of marbles of a  given color. We can take 2 bowls. On the 1st, we put all the marbles of  the largest number, while on the 2nd we put all the remaining ones. On  each operation, we can take one marble from both of them. As they  contain the same number of marbles, they will become empty at the same  time and we are finished!</p><p>②Second case: the sum is bigger than the largest element:</p><p>We  will try to reduce this to the above case! Again, we fill the bowls  with the same way. The difference is that now the 2nd bowl has more  marbles. To solve this, we can begin picking pairs from it until they  are equal! Note that, as the sum is an even number, the parity of the  number of marbles on each bowl is the same (ie. both odd or both even).  That guarantees us that we will 100% reach a point that they are equal!</p></blockquote><h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p>题意：你在一个n×m的棋盘上。棋盘的一些地方做了标记，你需要经过这些地方。开始你在(1, 1)处。往左右走没有限制，但你只能向上走而不能向下走，而且只能沿着一些column向上走。</p><p>既然左右走没有限制，那么可以把问题分层考虑。第一层很明显只有走到最右边的标记点这样一种路径。但之后该如何向第二层转移呢？从哪个safe column上去？上去之后又怎么向第三层走？这样看起来，问题似乎很复杂。</p><p>但我们要注意到，在每一层的最终位置，只可能是最左边的标记点，或是最右边的标记点。如此一来，我们便可以dp了。令$dp[i][0]$表示走到第i层最左边标记点所用的最短步数，$dp[i][1]$表示走到第i层最右边标记点所用的最短步数。</p><p>然后状态怎么转移呢？注意到，$dp[i][0]$只可能由$dp[i-1][0]$或是$dp[i-1][1]$转移而来。从$dp[i-1][0]$到$dp[i][0]$，这个转移的含义就是从第i-1层最左边，沿一条safe column到达第i层，先到第i层最右边，再到第i层最左边。</p><p>那么怎么找safe column才能使到最右边的步数最少呢？画个图就很清楚了，沿某一些safe column上去步数是等价的，而沿另一些safe column上去步数则会增加。经分析，我们需要记录第j列左边最右边的safe column：$lft \  col[j]$，还有它右边最左边的safe column。这样之后还要写个函数$fun(LL \  col1, LL \ col2)$计算从第col1列到第col2列在水平方向上所花费的最小步数。</p><p>这样就好了吗？并没有。如果有些层没有标记点怎么办？那么我们便跳过它。这样一来，我们可以维护一个$up$值，然后转移就是从第i层转移到第i+up层，中间的层都是没有标记的。</p><p>这样一来程序的大框架就有了。答案也便是$min(dp[n][0], dp[n][1])$（是的，即便第n层没有标记点答案也是这个）。我们要记录哪些数据呢？要记录每层最左/最右的标记点$lft[i]$还有$rgt[i]$；要记录$lft \  col[j]$还有$rgt \  col[j]$，而要记录这两项就要记录$safe \  col[maxn]$。除此之外也没什么要记录了，这题也可以做了。</p><p>下面记录一下坑点：首先如果第一行没有东西的话，$rgt[1]$要置为1。而且首先$lft[1]$要特殊处理，改成$rgt[1]$。我并没有关注太关注第一行的特殊处理，以致状态转移方程里面有这样一个隐蔽的错误。</p><p>还有是fun函数的处理，要关注column j左右有safe column，没有safe column的情形。画个图把情况罗列一下，思路更清晰。我这里又搞错掉了，对样例的时候发现。</p><p>然后$lft \  col[j]$是可能取到j的。我一开始设为不可能，以致跑样例都出错。</p><p>最后的最后！我的状态转移方程写错了！本应是</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dp[now][<span class="number">0</span>] = dp[now][<span class="number">1</span>] = up + (rgt[i] - lft[i]);</span><br><span class="line">dp[now][<span class="number">0</span>] += min(dp[now^<span class="number">1</span>][<span class="number">0</span>] + fun(lft[i-up], rgt[i]), dp[now^<span class="number">1</span>][<span class="number">1</span>] + fun(rgt[i-up], rgt[i]));</span><br><span class="line">dp[now][<span class="number">1</span>] += min(dp[now^<span class="number">1</span>][<span class="number">0</span>] + fun(lft[i-up], lft[i]), dp[now^<span class="number">1</span>][<span class="number">1</span>] + fun(rgt[i-up], lft[i]));</span><br></pre></td></tr></table></figure><p>然后我写成了</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dp[now][<span class="number">0</span>] = dp[now][<span class="number">1</span>] = up + (rgt[i] - lft[i]);</span><br><span class="line">dp[now][<span class="number">0</span>] += min(dp[now^<span class="number">1</span>][<span class="number">0</span>] + fun(lft[i-up], lft[i]), dp[now^<span class="number">1</span>][<span class="number">1</span>] + fun(rgt[i-up], lft[i]));</span><br><span class="line">dp[now][<span class="number">1</span>] += min(dp[now^<span class="number">1</span>][<span class="number">0</span>] + fun(lft[i-up], rgt[i]), dp[now^<span class="number">1</span>][<span class="number">1</span>] + fun(rgt[i-up], rgt[i]));</span><br></pre></td></tr></table></figure><p>对此样例就不能帮上忙了，因为样例中每层都只有一个。</p><p>所以我应该如何反思呢？一方面是要强化程序正确性上的证明，不能老写塑料算法（虽然这次BC两个塑料算法都对了），加强从思绪到程序上的转化，不能被传输错误坑。但这些，很难避免。较为容易做到的是造数据，造出更强的能够检验各个细节正确性的数据。虽然lft，rgt这个数据比较难造也比较难判断对错，但跟着它跑一遍还是必要的，因为这样可以发现很多问题。我在造数据上还是太懈怠了，没有分析哪些地方可能出错需要检验，否则怎么会没有妥善处理第一层的特判呢？</p><hr><p>初稿写于2019.06.04</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;划水划水，弱鸡划水……&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="计算机" scheme="https://nessoffice.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【数学之美】复变函数与拉普拉斯变换-金忆丹版：第二章 解析函数</title>
-    <link href="https://nessoffice.github.io/2019/08/03/Notes-Complex_Function-CH02/"/>
-    <id>https://nessoffice.github.io/2019/08/03/Notes-Complex_Function-CH02/</id>
-    <published>2019-08-03T13:22:58.000Z</published>
-    <updated>2019-08-04T05:05:14.168Z</updated>
-    
-    <content type="html"><![CDATA[<p>极限，连续，可导，解析</p><a id="more"></a><h1 id="从复变函数到解析函数"><a href="#从复变函数到解析函数" class="headerlink" title="从复变函数到解析函数"></a>从复变函数到解析函数</h1><p>这章名为“解析函数”。解析，什么意思呢？在一点处解析，就是说在该点及其一个领域内可导。为什么要引入这一概念呢？<del>我怎么知道</del></p><p>不过既然要引入这个概念，就势必要引入其前导概念。要了解解析，我们先要了解可导，而在此之前要先了解连续，而在此之前要先了解极限的概念，函数的概念。</p><p>复变函数的概念，完全可以继承实变函数的概念。故此处不细提了。值得一提的是在实变函数中我们常用的“数形结合”在复变函数中要稍作改变才能用。因为复变函数实际上可以看作一个二维的形状映射为另一个二维形状。这样四维的图形不好用三维空间表述。故而我们“数形结合”时一般会画两张图，一张原象，一张象，来直观地感受复变函数的映射关系。比如书中的例2就值得一看。</p><p>函数的概念了解完，接下来就是极限与连续的概念。复数的极限，一如实数的极限，是通过距离刻画的。而复数的连续，除了用定义考虑外，也可以考虑$f(z) = u(x, y) + iv(x, y)$中$u(x, y), v(x, y)$的连续性。于是问题便化归到我们在微积分II中所学的多元函数的连续上去了。此外，复数极限、连续理论中的很多性质可以直接继承实变函数的概念（不过证明要另加考虑？）。在“有界”的问题上，可以通过取模来化归问题。</p><p>接下来就是导数的概念了。可导必连续，连续不一定可导。前者容易证，后者的例子么，$f(z) = |z|$。这里的证明方法和在实变函数中的证明方法如出一辙，都是考虑函数沿不同路径时的取值。</p><p>接下来就是解析/正则的概念了。在一点处解析，就是说在该点及其一个领域内可导。然后不解析的点叫奇点，而在整个复平面上都解析的函数叫整函数。为什么这么叫？<del>我也不懂啊</del></p><p>然后引入了一些结论。比如，讨论$f(z) = \overline{z}$，这个函数处处不解析。再比如，任意复多项式在复平面上均解析，任意有理函数在除去分母为零的点处都解析。这些比较基础（也因此而蛋疼），就不证了。微分算子的运算法则，还有链式法则此处也略去。</p><p>然后怎样判断一个复变函数是否可导呢？在实变函数里我们判断一个函数是否可导相对比较方便，因为路径只有两条。而在复变函数中，路径是有无穷多条的，通过定义来判很多时候都不好做。于是，前人发现这一定理：复变函数$f(z) = u(x, y) + i v(x, y)$在$z_0$处可导，等价于$u, v$在$z_0$处可微且满足C-R条件（Cauchy-Riemann条件），条件自己回忆，这里就不放上来了。</p><p>这个条件看上去不是很自然，笔者也想不太清它的意义是什么，但证明还是好证的。把（复变）可导、（实变，多元）可微的定义用一用就好了。</p><p>然后有了这个定理，我们判断函数是否解析也方便了。比如前面的$f(z) = \overline{z}$。比如$f(z) = |z|^2$。（这个例子同时也指出了可导和解析的区别）再比如我们可以证明，若$f’(z)$在区域D内恒为0，则$f(z)$在区域D内恒为常数。</p><p>然后对于C-R条件中的式子我们可以深挖一下（求个导），就有$\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} = 0$这么两个式子。然后满足这个条件的函数u被称为D内的调和函数，这个式子叫拉普拉斯方程。然后u和v又通过C-R条件联系在了一起，于是我们称它们为一对共轭调和函数。这样，便可在知道u，知道函数解析的条件下，解出v了（也有很大几率解不出），例子见例7。</p><h1 id="初等解析函数"><a href="#初等解析函数" class="headerlink" title="初等解析函数"></a>初等解析函数</h1><p>基本的概念都说清楚了，下面就可以来定义一些基本解析函数了。联系此前接触过的基本初等函数。这里我们需要考虑的有指数函数、对数函数、幂函数、三角函数和双曲函数。（反三角函数？那是啥呀。）</p><p>首先是指数函数，先把式子转化为实部虚部分离或是模和辐角分离的形式，再证一证它解析。接着，就是观察一下它的实部虚部，模和辐角，周期性（这是复变函数中指数函数所不同于实变函数的一类点），运算法则，图像。嗯，差不多了。例题可看例8，稍微有点绕，不过对理清概念来说还是挺有帮助的。</p><p>然后是对数函数，指数函数的反函数。注意到指数函数的周期性，对数函数一般是多值的，所以我们要框定一个带域（带状的区域，真形象啊）让它单值先，然后用反函数和指数函数的定义就能推出对数函数实部虚部分离或是模和辐角分离的形式了。</p><p>然后有了这样的形式转换，我们也易证复对数函数保持了实对数函数乘积的公式。还有其他性质。</p><p>至于对数函数的解析性，我们先要来考察这一函数的连续性，因$ln z = ln |z| + i arg z$，前者在原点之外处处连续，而后者在原点与负实轴上都不连续。所以对数函数在除去原点和负实轴的复平面上处处连续。考察完连续性之后，我们在来求出对数函数的导数，这由定义可知为$1/z$。故对数函数在除去原点和负实轴的复平面上解析。</p><p>接下来是幂函数，我们可以用前面探究过的指数函数与对数函数加以刻画：$z^{\mu} = e^{\mu Ln z} = e^{\mu (ln|z| + i arg z + i 2k\pi)} = e^{\mu ln z} \cdot e^{2k \pi \mu i}$。注意到$e^{\mu ln z}$为定值，故$z^\mu$是否多值和$\mu$息息相关。结论：当$\mu$为有理数时，$z^{\mu}$有限多值（特例：$\mu$为整数时它是单值的）；当$\mu$为无理数时，$z^{\mu}$有无穷多的取值。</p><p>下面是三角函数与双曲函数，这个定义比较漂亮。结合例题就能记忆函数的定义了。然后三角函数与双曲函数间可以转化：求导或给变量添个i。三角函数与双曲函数的奇偶性、周期性、相关恒等式和实变函数里的这些性质比较相似，就不提了。值得一提的是这条：$|sinz|$并非有理函数，这也好证。</p><h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><p>前三道是关于映射对区域的改变的，不妨从群论的视角视之。</p><p>第四题是洛必达法则，证明同实变函数中的证明。</p><p>第五题的第二小问值得一做，较为tricky。</p><p>第七题是C-R条件在极坐标下的表示。</p><p>第十题可一看，问的是调和函数的和和积是否调和。</p><p>第十三题是简单的证明题，但我不知道这题该归到哪类。</p><p>第十四题是知u知解析性求v那种题，正经做要积分。第一小问如何积呢？</p><p>第十八题的第二小问，问$sin(e^z + 1)$的实部虚部。形式似乎较为复杂？如何简单地解呢？</p><p>第十九题涉及到了函数的共轭和自变量的共轭的关系，可一看。</p><p>第九题，第十一题，第十六题都不会做……</p><hr><p>2019-08-03</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;极限，连续，可导，解析&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="课程笔记" scheme="https://nessoffice.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="数学_分析" scheme="https://nessoffice.github.io/tags/%E6%95%B0%E5%AD%A6-%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
     <title>【艺术其九】从艺术设计的角度看OneShot</title>
     <link href="https://nessoffice.github.io/2019/08/03/Game-OneShot/"/>
     <id>https://nessoffice.github.io/2019/08/03/Game-OneShot/</id>
@@ -248,48 +286,6 @@
       <category term="游戏" scheme="https://nessoffice.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
       <category term="设计" scheme="https://nessoffice.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【数学之美】概率论与数理统计-张帼奋版：前一章 基本概念</title>
-    <link href="https://nessoffice.github.io/2019/07/29/Notes-Probability_and_Statistics-CH01/"/>
-    <id>https://nessoffice.github.io/2019/07/29/Notes-Probability_and_Statistics-CH01/</id>
-    <published>2019-07-29T13:22:59.000Z</published>
-    <updated>2019-07-29T16:01:38.300Z</updated>
-    
-    <content type="html"><![CDATA[<p>概率论，玄学的呀……</p><a id="more"></a><p>首先概率这个概念是比较玄学的，虽然它可以被“数学地”用测度刻画，不过那个东西形式上比较可怕，工科的数学书也不会细讲。学概统，万万不能纠结在“什么是概率”“何谓随机”诸如此类的问题上。（虽然经常不自觉地会纠结……）而是当站在集合论的视角看待它，把它看成一种定义良好的运算，然后再结合组合数学中的方法对具体的问题进行求解。</p><h1 id="样本空间、事件、概率、概型"><a href="#样本空间、事件、概率、概型" class="headerlink" title="样本空间、事件、概率、概型"></a>样本空间、事件、概率、概型</h1><p>首先我们引入样本空间和随机事件的概念。定义就不定义了，举个例子说明一下吧：比方说Alice和Bob在玩游戏，那么{Alice胜，Bob胜，平局}对一局而言便是一个<strong>样本空间</strong>。其中三个元素都是一个<strong>样本点</strong>。<strong>事件</strong>有很多：{第二局Alice胜或者Bob胜}、{第三局Alice不负}，等等等等（组合数学的阴魂在这一刻就注定要缠绕在概统上）。我们发现一些事件是好的，比如{Alice胜}，因为其他事件可以由这些基本事件组和而成，我们便称这样只含一个样本点的事件为<strong>基本事件</strong>。</p><p>不同于实变函数复变函数中将”数“作为集合（往往是数域）的基本元素，概统中的主角是”事件“。”事件“并不好定量地描述，这也使得这门课程有了丝玄学的味道（虽然好定量描述也不是不能搞出玄学）。</p><p>事件的运算，和集合论一开始的定义一样一样的，比如我们熟知的De Morgan律，后面经常会用到它。唯一需要关注的便是积事件的符号了：$\cup$往往省去不写。不知道是哪个鸟人打开偷懒的先风……可能因为在概统中$\cap$的出现频率远低于$\cup$吧。</p><p>知晓了样本空间和事件的概念，我们可以引入概率的概念了。同样也不定义了。{Alice胜}的概率是0.3，这句话里面的概率是什么意思？不谈。但你要知道概率是在样本空间和随机事件之后定义的。</p><p>基本概念都懂了，大家可以来解水题了：甲乙丙三人每个人参加集会的概率是0.4，且三人中至少两人参加的概率为0.3，三人共赴的概率为0.05，求三人中至少一人参加的概率。（$key：0.85$）</p><p>然后我们引入<strong>等可能概型</strong>的概念。啥是等可能概型？就是各个基本事件发生的概率都是等可能的。明显，这是一个理想模型，也不是唯一的概型。既然基本事件发生的概率是等可能的，那么求事件的概率便等价于求事件中样本点的数目，于是很多问题在确定了样本点之后便都能够转化为排列组合问题。举个例子：一副52张牌的扑克牌组，求不放回抽样/放回抽样恰能抽到一红一黑的概率。更一般地，可以求a张红牌b张黑牌中不放回取n张时恰取到k张红的概率。这些都是在等可能概型中求概率的问题。（$key1: 26/51, key2: 1/2, key3: \dfrac{C_a^k \cdot C_b^{n-k}}{C_N^n}$）</p><p>等可能概型中的经典问题，抽签问题：袋中有标号为1-n的n个球，a红b黑。每次摸一个不放回，共摸n次。假设各球大小材质均等，求第k次摸红概率。此题至少有三种解法：①将球号的排列作为样本点；②将“哪一次摸红”的排列作为样本点；③将第k次摸到的球号作为样本点。无论是哪种做法，答案均为$a/(a+b)$，等价于第一次摸红的概率。同样的，我们能够证明某两次摸到红的概率和前两次摸到红的概率相等。</p><p>等可能概型中的另一个模型是生日模型。23个人中，有1/2概率使得存在两人生日相同（假设各人的生日在一年365天中是等可能分布的并且不存在多胞胎的情形）。这一论断似与我们的常识相悖。然而，它说的是“存在两人生日相同”而非“选定某人有另一人与其生日相同”。</p><h1 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>条件概率，顾名思义，是“某一条件下的概率”，这个条件自然也是一个事件。我们记$P(A|B)$为在B事件发生的情况下A事件发生的概率。这个概率和$P(A)$有何关系呢？二者的样本空间不一样。明白了这点，很容易便能得出，$P(A|B) = \dfrac{P(AB)}{P(B)}$。</p><p>水题1.4.1：掷一颗骰子两次，已知两次点数之和大于8，求第一次为6的概率。可以用上面的公式做，也可以用缩减了的样本空间来求解。（$key: 2/5$）</p><p>中档偏水题1.4.2：袋中9球，5红4黑。摸4次，不放回。已知第四次摸红，求前两次均摸红概率。（$key: 3/14$）</p><h2 id="乘法公式"><a href="#乘法公式" class="headerlink" title="乘法公式"></a>乘法公式</h2><p>条件概率有个乘法公式，看着很可怕：$P(A_1 A_2 \dots A_n) = P(A_1) P(A_2 | A_1) P(A_3 | A_1 A_2) \dots P(A_n | A_1 A_2 \dots A_{n-1})$。证明的话，把右边式子按条件概率的公式展开就好。这鬼公式有个什么用？它的用处在于，能够依据一些条件概率求出积事件的概率。正如容斥原理虽然右边的项也远多于左边但仍能派上用场一般，这个公式是有其作用的，尤其在已知的条件概率信息较多的情形之下。</p><p>水题1.4.4：某人打靶，凡三内，一回即中概率为0.6，一回不中而二回中概率为0.7，头二回不中而三回中概率为0.8。问三回以内中概率几何。（$key: 0.976$。分析：考虑反面固然容易，但是考虑正面能加深对于条件概率公式的掌握能力，<del>我不知道我瞎说的</del>）</p><h2 id="全概率公式与贝叶斯公式"><a href="#全概率公式与贝叶斯公式" class="headerlink" title="全概率公式与贝叶斯公式"></a>全概率公式与贝叶斯公式</h2><p>首先呢，这个公式是正确的：$P(A) = P(A \overline{B}) + P(A B) = P(\overline{B}) \cdot P(A|\overline{B}) + P(B) \cdot P(A|B)$。</p><p>这个公式有什么意义呢？就是在$P(A)$不好直接求解，而A事件和B事件的关联较为紧密时，我们可以考虑这样，把含A的样本空间划分为和B有关联的样本空间来思考问题。</p><p>把的$B$和$\overline{B}$替换为$B_i$，集合的划分。这样就能得出全概率公式：$P(A) = \sum\limits_{j = 1}^n P(B_j) \cdot P(A|B_j)$。其中$\bigcup B_i = S$且$\forall i \forall j B_i B_j = \varnothing$。</p><p>然后是贝叶斯公式（Bayes formula）：$P(B_k | A) = \dfrac{P(B_k A)}{P(A)} = \dfrac{P(B_k) \cdot P(A | B_k)}{\sum\limits_{j = 1}^n P(B_j) \cdot P(A | B_j)}$。这个公式……虽然很自洽，但看起来比上面的还麻烦？这个公式又有什么意义？<del>我不知道别问我</del></p><p>例题1.4.6：凡三盒，其一内有三黑五红，其二内有二黑二红，其三内有五黑二红。任选一盒，摸二球，不放回。问若一回摸黑，则二回摸黑概率几何。（$key: 42/89$。分析：枚举第一回摸黑的情形下摸到每个盒子的概率）</p><p>例题1.4.7：日有人失K型车一乘，知县持八成把握以J为之。已知为盗者是日所驾为K型车，而此地驾K型车者，恰十三也。问若J是日驾K型车，其为盗概率几何？（$key: 80/86$。分析：这个题目的麻烦之处在于给定的条件。0.8显然是$P(J)$，而0.3实为$P(K | \overline{J})$（这一点不是马上发现的，而是推式子的时候用到才发现的）。另外，再注意到$P(K | J) = 1$，这个题就能做了。）</p><h1 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h1><p>独立事件不是孤立的定义，而是事件与事件间的关系，比如A表示第一枚骰子投5，B表示第二枚骰子投3，C表示两枚骰子之和为8，那么一般情况下A和B是没关系的，也就是说A的发生与否对B的样本空间不会产生任何缩减作用。但是A、B的发生与否对C的样本空间是会产生缩减作用的。容易看出，这里“独立”的定义和“发生与否”有关，那么，我们可以这样定义A和B独立：$P(B) = P(B | A)$。</p><p>很明显，这个定义和$P(A) = P(A | B)$等价，也和$P(AB) = P(A) \cdot P(B)$等价。实际上书本是用后者来定义A和B独立的。事实上，这些定义和$P(A) = P(A | \overline{B})$、$P(\overline{A}) = P(\overline{A} | \overline{B})$等等，均等价（或者表述为，$AB$相互独立$\Leftrightarrow$ $A\overline{B}$相互独立$\Leftrightarrow \cdots$）。证明，以前两项为例，就是这样的：</p><p>$A = AB \cup A \overline{B} \Rightarrow P(A) = P(AB) + P(A \overline{B}) \Rightarrow P(A \overline{B}) = P(A)(1 - P(B)) = P(A) \cdot P(\overline{B})$，证毕。</p><p>用上面的骰子的例子刻画一下样本空间，我们能够发现，每个样本点都是一个二元组，包含了第一次的信息和第二次的信息。而A和B分别是横着的和竖着的直线，横跨不同的维度。这有点像……笛卡尔积？</p><p>学到这里，我们了解到随机事件A和B间至少有三种关系：包含、不相容、独立。它们间的关系如何呢？它们都是对$P(AB)$与$P(A), P(B)$间关系的刻画。</p><p>例题1.5.1：$P(A) = 0.5, P(B) = 0.4$，求AB分别满足1）不相容；2）B发生必有A发生；3）独立；4）$P(AB) = 0.3$。这四类情况下AB至少有一个发生的概率。这道题目告诉我们，仅仅了解AB的概率还不够，必须要了解AB之间的关系。</p><p>以上是两个事件的情形，那么多个事件呢？我们有定义：ABC中，AB独立，AC独立，BC独立，则称ABC两两独立。而若在此基础上，还满足$P(ABC) = P(A) \cdot P(B) \cdot P(C)$，则称ABC相互独立。相互独立也能推广到n维的情形。</p><p>不难看出，相互独立是个很强的定义，在n元的情况下要$2^{n-1}$个式子都成立才能推出这个结论。式子，也就是信息能否少一些呢？并不能，因为$P(ABC) = P(A) \cdot P(B) \cdot P(C) \not \Rightarrow P(AB) = P(A) \cdot P(B)$。显然，$C = \varnothing$就能证明该式。或者，我们也可以在确定$P(AB) \not = P(A) \cdot P(B)$后再确定$P(ABC)$而动态地调整$P(C)$使得左式成立。总而言之，这两个式子并无甚关联。左边无法推出右边，右边也无法推出左边。关于右边无法推出左边，我们有个好记的例子：袋中有4球，1红1白1黑1红白黑，令A事件表示摸红B事件表示摸白C事件表示摸黑，则ABC两两独立但不相互独立。</p><p>接下来是独立试验和重复试验的定义，前者是试验结果互不影响，后者是子试验条件完全相同。但我们判断事件是否独立往往不是通过定义去判的，而是根据实际情形，比如上面骰子的例子。</p><p>书中后面三道例题，1.5.2，1.5.3，1.5.4，都是值得一做的，<del>比后面的习题质量略高</del>。</p><h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><p>这一章的习题，有些大同小异了，总体而言不难，但可用于巩固概念。</p><p>第二题可一看，以回忆集合论的基础知识。</p><p>第三题及其他题用到了全概率公式。</p><p>第四题指出了：给定$P(A), P(B), P(AB)$，可求出$P(A \cup B), P(\overline{A} \overline{B}), P(\overline{A} B)$等信息。</p><p>第十题是个值得一做的题目（回忆一下组合数学吧2333），其中我们不能通过三号盒子中的球数刻画样本空间——其他两个盒子中的组和对样本数也有影响。</p><p>第十三到十七都是和条件概率相关的，十三稍创新些，其他太过相像，做一道即可。</p><p>第十八题的题干有些新意，尚可一做。</p><p>第二十一题提到了一个判定AB相互独立的充要条件（虽然看起来没什么用），不妨一做，反正这章也没多少证明题。</p><p>第二十四题中提到了“连续抛一枚硬币若干次，$B_j$表示第j-1次抛掷和第j次抛掷是首次出现的一次连续抛掷”。想知道这个$B_j$是否有一般的通项公式，或者递推式？</p><p>第二十七题的第二问可能会做错（菜鸡就做错了，捂脸），可以一看。</p><p>然后呢，还有三门问题，可以一想，此处就不介绍了。</p><p><del>结果学完这章贝叶斯方法还是没搞清楚呢</del></p><hr><p>初稿写于2019.07.23</p><p>完稿写于2019.07.29</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;概率论，玄学的呀……&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="课程笔记" scheme="https://nessoffice.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【图灵之路】基于C语言的数据结构及其算法分析-Weiss版：前两章 基础知识</title>
-    <link href="https://nessoffice.github.io/2019/07/29/Notes-Data_Structure_and_Algorithm_Analysis_In_C-CH01/"/>
-    <id>https://nessoffice.github.io/2019/07/29/Notes-Data_Structure_and_Algorithm_Analysis_In_C-CH01/</id>
-    <published>2019-07-29T13:22:58.000Z</published>
-    <updated>2019-07-29T16:01:04.211Z</updated>
-    
-    <content type="html"><![CDATA[<p>集训的时候发现自己ds真的稀烂（其实早发现了，只是感受没这么强烈），不能不补补了……嗯，先把教材搞透吧。</p><a id="more"></a><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>数据结构是什么？提及数据结构我们往往会想到链表、队列、栈、堆、树等等，但事实上，我们在C语言基础课程中所用的int, char, double，都是数据结构。数据结构，顾名思义，便是存储数据的结构。为什么要考虑数据的结构？因为对于不同特点的数据，对于不同的需求，不同的结构处理问题的复杂度（包括实现的复杂度与计算的复杂度）往往大相径庭。随着计算机科学的发展，我们遇到的问题也在增多，为了处理各式各样各不相同的问题，我们需要用各有特色的数据结构辅助程序设计。</p><p>简言之，数据结构是为提升处理问题的效率而被使用的。数据结构的多样表现在不同容器在特点上的的各不相同。故而学习数据结构时我们需要秉承联系的观点，比较的观点，要清楚什么样的问题该使用什么样的数据结构处理，并能对其效率进行科学的分析。</p><p>以上是学习的目标。</p><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>CH01：简单的回顾性的章节，回顾了一些离散中的概念，还有递归的概念。</p><p>CH02：简单的算法分析的章节，介绍了复杂度相关的概念和记号，一些常见简单算法的复杂度分析，结合了图表和较多实例。</p><p>CH03：线性表、栈、队列</p><p>CH04：树的基础，主要介绍了包括B-树在内的搜索树</p><p>CH05：哈希</p><p>CH06：堆</p><p>CH07：排序</p><p>CH08：并查集</p><p>CH09：图论相关算法</p><p>CH10：算法设计相关知识</p><p>CH11：对前面章节的较难的数据结构进行复杂度分析：斐波那契堆，等</p><p><a href="https://wenku.baidu.com/view/30ab767b5acfa1c7aa00ccec.html" target="_blank" rel="noopener">答案链接（狗日的百度文库）</a></p><h1 id="第一章：预备知识"><a href="#第一章：预备知识" class="headerlink" title="第一章：预备知识"></a>第一章：预备知识</h1><p>首先是两个关于“这本书是讲什么的”的例子。这本书讲数据结构也讲算法，在程序正确性的基础上对效率有了更进一步的要求。于是例子，无非是关于效率的重要性的。第二个例子比较无聊此处略去。第一个例子是“找出n个数中的第k大值“。很明显，我们可以用排序的方式或是其他方式得出正确答案。可是这些个方式足够高效吗？当n为1e7的时候，程序要跑几天呢？事实上，我们有解决这个问题的高效的算法，它是这样的：先……</p><p>接着是介绍本书在算法分析时要用到的一些简单的数学知识：指数的运算法则（有哪些呢？初中内容哦），对数的运算法则（换底公式等），若干前缀和的渐进值（几何级数，还有$\sum i^k$，注意k=-1即调和级数的情形），同余的概念及性质，证明的策略（这里只提到了数归、反证法、举反例，离散书里梳理地更详细些）。</p><p>接下来是递归。递归便是自调用，没什么神奇的。因为函数的行为由其参量决定，所以函数递归调用的过程事实上可以看作一张有向图（简单的情况下会退化为链）的生成过程，图中的节点即参量下的函数。只要里头没有环，有终点，ok，程序就能跑出来。不要管字典，把那个抽象成图要复杂多了，虽然这可能更容易理解。递归函数执行的过程很像把归纳倒过来——为了得出结果，我们需要知道上一步的结果。</p><p>所以关于递归的概念还有什么能讲的呢？<del>程序即证明。</del>书中作为例子的print_digit函数的正确性证明和程序内容的一致性，实则体现了数学归纳法与递归的程序设计这两者的内在一致性。故而在程序设计时，我们可以将递归调用的步骤抽象为一个被证明正确的黑箱子，于是只要设计递归的出口（对应于归纳法中的basis step），状态的转移（对应于inductive step）即可，而不必在乎计算机是如何进行递归的。这样的思维方式具有一定的价值（虽然对debug不一定有价值）。</p><p>顺便，书中还说不宜使用递归来进行数值计算，比如计算Fibonacci数列的第n项。它说原因之后讲。不是关于效率，而是关于习惯。</p><p>这一章的练习都没啥好做的。散。浅。少。当然上面哪个部分感觉学得不扎实，还是不妨做一做对应的习题的，虽然这个量实在补不出什么东西。（虽然”这一章的练习都没啥好做的“这种话很潇洒，但其实是我不会做orz。1.4看不懂题意；1.6d感觉答案的形式颇为复杂）</p><h1 id="第二章：算法分析初步"><a href="#第二章：算法分析初步" class="headerlink" title="第二章：算法分析初步"></a>第二章：算法分析初步</h1><p>首先是big-O, big-Omega, big-Theta记号的定义。不懂的同学去翻下离散书，顺带复习一下它们运算的性质。为什么要引入这些记号呢？因为我们要分析程序的时间复杂度。为了简化问题，我们假设内存无限，“基本操作”所用的时间均为一个单位元。这样理想化以后，程序运行的时间便只和程序的细节，还有输入相关了。我们所要关注的，是输入较大时程序的渐进复杂度，即用什么样的函数可以很好地近似它（这些函数也要尽可能简单，多项式，对数，指数，它们的组和，都挺简单。至于系数？那不是主要矛盾。所以可以把$O(n^2)$视作一个等价类，用它可以刻画好多程序的上界呢）。big-O给出的是上界，big-Omega给出的是下界，而big-Theta则是给出了一个类似“等价”的概念。</p><p>好了，有了好的记号（高德纳提出的，膜），我们来研究时间复杂度吧。具体要怎么研究呢？既然复杂度和问题的规模有关系，我们可以先研究一下最坏的情况（worst case），极端数据；再来研究一下平均情况（average case），数据等概率分布时候的平均复杂度。<del>至于什么期望复杂度我不会分析就不说了，比如什么最小圆覆盖，Pollard Rho，太玄了。</del></p><p>为了对复杂度有一些感性的认识，我们来看一个实际的问题：给定序列$a[1 \dots n]$，求$max \{ \sum\limits_{k = i}^j a_k \}$。</p><p>$O(n^3)$做法：枚举i，枚举j，算sigma，求最大值。炒鸡好理解，也跑的炒鸡慢，n=500就跪了。</p><p>$O(n^2)$做法：枚举i，枚举j，算sigma，求最大值。看上去和上面的流程一样？但是上面的做法在计算sigma时做了很多重复的工作。这里，我们可以在枚举j的同时算sigma（维护前缀和的思想），这样复杂度就降下去一个n啦。炒鸡好理解，跑得比较慢，n=10000会跪。</p><p>$O(nlogn)$做法：分治。具体看书，此处不表。很多情况下复杂度出现$log$都可以考虑是不是用了分治，二分，倍增，等等等等。当然，也有些特殊的情况，这在下面会讲。这个复杂度一般情况下都很棒了，n=1e5可以处理。</p><p>$O(n)$做法：滑动窗口！具体看书，此处不表。在枚举j的同时动态地最优地更新i，嗯，就这样。n=1e7可以处理。顺便，这个做法可以在线做，所以它基本没有空间复杂度！太棒了对吧！</p><p>（以上数据范围都是口胡的，没有测试过，不要信以为真呀。然后所谓“会跪”差不多就是超过1s这样）</p><p>上面的复杂度是怎么分析得出的呢？（随便看看就好了）抓住主要矛盾，常数不要管，就管最高次。关注递归，关注循环，大概就差不多了吧……</p><p>然后书里举了一个非常经典的复杂度爆炸的例子：$fib(n) = fib(n-1) + fib(n-2)$。递归运算的冗余操作太多太多了，以至于复杂度从$O(n)$飙到$O(2^n)$。这个例子告诉我们：不要随便用递归代替循环（如果要也一定要记忆化）。</p><p>然后因为对数复杂度好高效，书里就介绍了三种对数复杂度的算法：二分搜索（从这里可以引出数据结构了！）、欧几里得算法、快速幂。其中Euclid算法为何是$O(logn)$的呢？只要注意到$mod(m, n) \leq m/2$这样一个不等式就好了。这能否说明这一算法是$\Theta (logn)$的呢？嗯……这比较困难，需要“pages and pages of sophisticated mathematical analysis”，不过这个问题（对初学ds者而言）似乎没有什么研究的必要？毕竟这个上界已经很强了不是么。</p><p>上面的复杂度很多都是“感知”出来的。为何检验我们的猜想，我们有两种方案：①跑程序，根据数据-运行时间图感受；②推式子，把$T(n)$求出来然后慢慢化。</p><p>然后这章讲的有些东西是比较难的，碰到一些牛逼的数据结构，比如并查集什么的，普通的分析方法就跪了。这就要具体问题具体分析了，在之后的章节会讲。</p><p>习题的话，2-2是定义题，不妨一做。</p><p>2-7提到了个有趣的随机排列生成算法，不妨一看（<em>programming pearls</em>里面也有），另外它对于前两种做法复杂度的分析也值得一看。</p><p>2-10提到了秦九韶算法。</p><p>2-14提到了埃氏筛法的复杂度，这是个问题……答案指向了<em>TAOCP</em>的第二卷第394页……</p><p>2-19是个比较有意思（duliu）的问题。但是并没有看懂n为奇数的情形……</p><p>2-20题意没看懂。</p><hr><p>初稿写于2019.07.17</p><p>完稿写于2019.07.18</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;集训的时候发现自己ds真的稀烂（其实早发现了，只是感受没这么强烈），不能不补补了……嗯，先把教材搞透吧。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="计算机" scheme="https://nessoffice.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-      <category term="课程笔记" scheme="https://nessoffice.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -358,26 +354,6 @@
   </entry>
   
   <entry>
-    <title>【围炉夜话】神游天外的典型场景，及天外的风景</title>
-    <link href="https://nessoffice.github.io/2019/07/23/Toughts-On_Wondering/"/>
-    <id>https://nessoffice.github.io/2019/07/23/Toughts-On_Wondering/</id>
-    <published>2019-07-23T11:50:59.000Z</published>
-    <updated>2019-07-27T13:05:41.715Z</updated>
-    
-    <content type="html"><![CDATA[<p>总觉得自己不是个心静的人，学习新知识的时候倒是能集中精神一些，但写作业，复习的时候就经常分神，感觉好无聊，宁愿发呆也不想学习。除了复习还有什么时候会分神呢？分神的时候会想些什么呢？这好像也是个有意思的话题。</p><a id="more"></a><p>总觉得自己不是个心静的人，学习新知识的时候倒是能集中精神一些，但写作业，复习的时候就经常分神，感觉好无聊，宁愿发呆也不想学习。除了复习还有什么时候会分神呢？分神的时候会想些什么呢？这好像也是个有意思的话题。</p><p>（我脏话越说越多了……不过这篇主要是娱乐向的，可能有些粗糙？但也挺好玩的）</p><p><strong>听听力</strong>：听力好多呀（几十篇），发怵。不行我不能怂我要锻炼自己提升英语水品。点开这篇听力，嗯，我要好好听！（30s后）？？？他在说什么？我天哪这个话题好无聊不想听停停停刚才那句话是什么唉我又想上网冲浪了查单词的时候水一水好了嗯我刚才到底在干嘛呀！我不是在听听力吗！不行不行，静心，静心……我天哪我到底听了什么东西这个部分有提到吗……倒放倒放……诶我怎么又在摸鱼……</p><p><strong>英语阅读</strong>：（看不懂的时候）这鬼文章在写什么？？？这个部分是干嘛用的？？？天哪上一句又在讲什么这篇文章好搓啊越看越恶心我去喝口水冷静一下……嗯刚才看到哪了……我刚才有看吗？？？不行不能这样瞎看，我要认真分析文章结构把这篇狗屎东西做掉。第一段它讲了……我怎么在看第二段？</p><p><strong>学算法</strong>：可持续化是什么东西？什么是权值线段树？今天晚上要吃什么？好饿我想吃零食。这个人博客怎么写成这样啊差评。我去越看说明越看不下去算算算看代码得了。？？？这什么码风呀，o是什么东西k是什么东西你tm变量名也不解释一下搞毛线啊。模拟一下样例好了，先进入这个函数，再来是……？？？不行这个人写的太差了，下一篇。omg怎么又是这种风格……</p><p><strong>做项目</strong>：哇这个功能还能这样实现，太棒了吧！哇这个库这么好的吗！我得用它来重构一遍代码……舒服……漂亮……（5h过后）我今天都在干嘛啊啊啊啊啊！</p><p><strong>复习wjf</strong>：啊这本书好新一点也不想看，啊后天就考试了不行不行我得认真复习不然要挂科了。上次看到哪了……诶我好像是第一次复习啊，级数……（打哈欠）饿死了好想睡。啊不想看不想看不想做题我想睡觉我想吃东西我想玩（果断丢书，开始水手机）</p><p><strong>睡觉</strong>：想第一类事情（突然）-&gt;想第三类事情（嗯）-&gt;想第七类事情（烦烦烦，转个身）-&gt;想第二类事情……我怎么还没睡着……热热热热热热死了……哇我怎么还没睡着……</p><hr><p>完稿于2019-07-23</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总觉得自己不是个心静的人，学习新知识的时候倒是能集中精神一些，但写作业，复习的时候就经常分神，感觉好无聊，宁愿发呆也不想学习。除了复习还有什么时候会分神呢？分神的时候会想些什么呢？这好像也是个有意思的话题。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="随想" scheme="https://nessoffice.github.io/tags/%E9%9A%8F%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
     <title>【围炉夜话】吉静关于朋友的一些胡思乱想，及友链</title>
     <link href="https://nessoffice.github.io/2019/07/22/Toughts-On_Friends/"/>
     <id>https://nessoffice.github.io/2019/07/22/Toughts-On_Friends/</id>
@@ -429,6 +405,26 @@
     <summary type="html">
     
       &lt;p&gt;不开心的大背景下难得真正开心的一些时刻。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="创作" scheme="https://nessoffice.github.io/tags/%E5%88%9B%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【朝花夕拾】吉静文选 桃园</title>
+    <link href="https://nessoffice.github.io/2019/07/18/History-My_Essays-The_Utopia/"/>
+    <id>https://nessoffice.github.io/2019/07/18/History-My_Essays-The_Utopia/</id>
+    <published>2019-07-18T11:53:50.000Z</published>
+    <updated>2019-07-23T07:00:59.419Z</updated>
+    
+    <content type="html"><![CDATA[<p>最后一段是借鉴的《兽爪》中的某段剧情：第八集的大战之后，一个服用了“药”的社员拖着半截身子在等死，他请求路过的男主给他一把枪自杀，但他接过枪后却企图射杀男主女主。他们跑掉之后，他想要自杀，却没有子弹了。</p><a id="more"></a><p>（版权所有，严禁转载。违者自行承担相应法律责任）</p><p>最后一段是借鉴的《兽爪》中的某段剧情：第八集的大战之后，一个服用了“药”的社员拖着半截身子在等死，他请求路过的男主给他一把枪自杀，但他接过枪后却企图射杀男主女主。他们跑掉之后，他想要自杀，却没有子弹了。</p><p>Cthulhu风格的科幻小说。</p><h1 id="桃园"><a href="#桃园" class="headerlink" title="桃园"></a>桃园</h1><p>这里是桃园，我是根据祖上流传下的地图来的。老人们说此图非关键时刻不得启封。就连我在厕所中郁郁而死的高祖父、死在五十个女人手上的伯父和用两把手枪终结自己生命的父亲都没有打开过这张地图。如今它在我手上，我在桃园，以一个社会调查员的身份。我想知道这颗黄色星球上的最后一片净土是怎么样的。</p><p>岛的外貌和记载的一样，“芳草腥美，落英缤纷”，外沿是桃花盛开。“林尽水源，便得一山……”我沿小孔进入。光在聚集，就像世界在创立，我感到那边是一个美好的新世界。</p><p>这里的确和我们那不同，偌大的村庄内空无一人。古建筑鳞次栉比，这引起了我调查的兴趣。我走入村庄的内部，打算从房子开始调查。</p><p>每所房屋都不是空的，我在屋外能清楚地感受到。然而门窗紧掩、窗帘遮蔽，里头时不时发出大型食肉动物的进食声、婴儿的尖利笑声以及一些不可名状的声音，大脑产生了本能的畏惧感。窗帘、墙壁或是门楣上不时会冒出或消失些圆睁的眼睛注视着我不断移动。我无法想象里面是怎样一种压抑的恐怖，故而我完全没胆敲门。</p><p>这里是北温带，空气中却一直蒸发着一种浓厚的热气，人待久了足以窒息。</p><p>这里的房屋毫无特点，这是我长久观察后惊惶得出的结论。尽管第一眼看上去是第一航道的古代庭市，它们事实上有种蜡似的虚伪感。房屋的材质并非地球上的任何一种已知材料，性质奇特又恶心。它们的反应甚至让我感觉他们具有生命。</p><p>我终于看见人了，那是一个蘑菇头圆圆脸的小孩和一个胖胖的小孩。他们很欢快地跑着跳着，似乎在进行历史书中提到的“婴孩的游戏”。他们靠近了，脸上洋溢的欢快就像太阳驱散乌云，我感到一种无名的快乐自外界涌入身体。他们靠得越来越近了，我能够听到他们玲珑的小嘴里蹦跳着的欢快的音符，那是：</p><p>“肏你妈…肏你妈…”蘑菇头咧着笑脸，拍打着前面的小胖子，用童稚的声音低声笑骂。</p><p>突然小胖子被路上的石头绊倒了。他的表情即刻突变，它的面具好像裂开了一点。它迅速站起，朝着那石头破口大骂：“肏你妈——的屄！”但随后又仿佛自豪于自己刚才所能说出的最后两字，心满意足地拐进一条小巷，不见了。</p><p>天更热了。</p><p>我突然想到卡夫卡的一篇小说，想到那个被父亲一句判决就马上投河了的孩子，从地上捡了把枪。我想找真正的桃园。</p><p>然而尽是这样的劣等枪。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最后一段是借鉴的《兽爪》中的某段剧情：第八集的大战之后，一个服用了“药”的社员拖着半截身子在等死，他请求路过的男主给他一把枪自杀，但他接过枪后却企图射杀男主女主。他们跑掉之后，他想要自杀，却没有子弹了。&lt;/p&gt;
     
     </summary>
     
