@@ -19,6 +19,7 @@ body {
   overflow-x: hidden;
   font-family: Lato, "Microsoft YaHei", sans-serif;
   font-weight: 400;
+  height: 100%;
 }
 .container {
   max-width: 960px;
@@ -128,7 +129,7 @@ body {
     margin-left: 40px;
   }
   .main .content .archive .archive_item {
-    font-size: 14px;
+    font-size: 18px;
     margin-left: 30px;
   }
   .main .content .banner {
@@ -333,7 +334,7 @@ body {
   max-width: 100%;
 }
 .post .post-title {
-  font-size: 1.5em;
+  font-size: 1em;
   border-bottom: 2px dashed #ffc0cb;
   margin-bottom: 10px;
 }
@@ -375,7 +376,7 @@ body {
   margin-top: 0;
 }
 .posts .post-title {
-  font-size: 1.5em;
+  font-size: 1em;
   border-bottom: 2px dashed #ffc0cb;
   margin-bottom: 20px;
 }
